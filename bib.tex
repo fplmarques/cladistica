@@ -1,0 +1,169 @@
+%% (8) REFERÊNCIAS (BibLaTeX)
+\usepackage{csquotes}
+% We are using the 'authoryear' style in this example. Note that the default is the 'numerical' style. It may be necessary to edit authoryear.cbx depending on the version of biblatex you are using.
+%\usepackage[style=authoryear-comp,sorting=nyt,sortcites=false,firstinits=true,dashed=false,maxbibnames=10,maxcitenames=2,isbn=true,babel=other]{biblatex}
+% [sorting=nyt] sorting by name/ year/ title
+% [sortcites=true, false] Whether or not to sort citations if multiple entry keys are passed to a citation command.
+% [firstinits=true] will render all first and middle names as initials.
+% [isbn=false] will suppress any isbn fields included in your .bib file.
+% [dashed=false] (available for the authoryear, authortitle, and verbose bibliography styles) will print recurring author/editor names instead of replacing them by a dash.
+% [maxbibnames=99] will print complete name lists for multi-author/editor works in the bibliography while truncating those lists for in-text citations.
+% [maxcitenames=2] - if a list exceeds this threshold, i. e., if it holds more than integer names, it is automatically truncated according to the setting of the minnames option.
+%[babel=other] to use different languages.
+
+%\usepackage[backend=bibtex8,autocite = superscript]{biblatex}
+%\usepackage[backend=bibtex,style=chem-acs]{biblatex}
+%\usepackage[backend=bibtex,style=chem-angew]{biblatex}
+\usepackage[backend=bibtex,autocite=superscript,style=nature]{biblatex}
+
+% Separate authors list by semicolon instead of comma.
+\renewcommand*{\multinamedelim}{\addsemicolon\space}%
+% Separate authors and dates by comma.
+\renewcommand*{\nameyeardelim}{\addcomma\space} 
+% Change postnote delimiter
+\renewcommand*{\postnotedelim}{}
+
+% Suporte para referências por capítulo
+\usepackage{hyperref}
+
+% Defini arquivo de bibliografia
+\addbibresource{refs.bib} % Informe arquivo.bib
+
+% No quotes for titles on listed entries.
+\DeclareFieldFormat[article,inbook,book,misc,inproceedings,mastersthesis,phdthesis,thesis,incollection,unpublished,]{title}{#1}
+\DeclareFieldFormat[article,inbook,book,misc,inproceedings,mastersthesis,phdthesis,thesis,incollection,unpublished,]{citetitle}{#1}
+
+% With quotes use below
+%\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{citetitle}{\mkbibquote{#1\isdot}}
+%\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{\mkbibquote{#1\isdot}} 
+
+
+% Taking of parentheses around years on References
+\makeatletter
+\def\act@on@bibmacro#1#2{
+\expandafter#1\csname abx@macro@\detokenize{#2}\endcsname
+}
+\def\patchbibmacro{\act@on@bibmacro\patchcmd}
+\def\pretobibmacro{\act@on@bibmacro\pretocmd}
+\def\apptobibmacro{\act@on@bibmacro\apptocmd}
+\def\showbibmacro{\act@on@bibmacro\show}
+\makeatother
+
+% As linhas abaixo servem para ajustar as configurações das citações e referências e poderim ser colocadas no começo de cada capítulo separadamente
+\patchbibmacro{date+extrayear}{%
+  \printtext[parens]%
+}{
+  \addperiod\space%
+  \printtext%
+}{}{}
+
+% Usar itálico em~\textit{et al.}
+\renewbibmacro*{name:andothers}{%
+  \ifboolexpr{
+    test {\ifnumequal{\value{listcount}}{\value{liststop}}}
+    and
+    test \ifmorenames
+    }
+    {\ifnumgreater{\value{liststop}}{1}
+       {\finalandcomma}
+       {}%
+     \andothersdelim\bibstring[\emph]{andothers}}
+    {}}
+
+% Ano com hyperlink usando \citeyear
+\DeclareCiteCommand{\citeyear} 
+  {\boolfalse{citetracker}% 
+   \boolfalse{pagetracker}% 
+   \usebibmacro{prenote}} 
+  {\printtext[bibhyperref]{\printfield{year}}} 
+  {\multicitedelim} 
+  {\usebibmacro{postnote}}
+
+% Location: Publisher <--> Location, Publisher
+\makeatletter
+\renewbibmacro*{publisher+location+date}{%
+  \printlist{location}%
+  \iflistundef{publisher}
+    {\setunit*{\space}}
+    {\setunit*{\addcolon\space}}% Separation by colon
+%    {\setunit*{\addcomma\space}}% Separation by comma
+  \printlist{publisher}%
+  \setunit*{\addcomma\space}%
+  \usebibmacro{date}%
+  \newunit}
+
+% Editor, ed. --> Editor (ed.) @Books
+\makeatletter
+  \renewbibmacro*{bbx:editor}[1]{%
+    \ifboolexpr{
+      test \ifuseeditor
+      and
+      not test {\ifnameundef{editor}}
+    }
+    {\usebibmacro{bbx:dashcheck}
+      {\bibnamedash}
+      {\printnames{editor}%
+  %   \setunit{\addcomma\space}% DELETED
+      \setunit{\addspace}% ADDED
+      \usebibmacro{bbx:savehash}}%
+  %     \usebibmacro{#1}% DELETED
+      \printtext[parens]{\usebibmacro{#1}}% ADDED
+      \clearname{editor}}
+    {\global\undef\bbx@lasthash}}
+\makeatother
+
+% Ed. by --> (eds.) [@InBooks and related entries]
+\renewbibmacro*{byeditor+others}{%
+  \ifnameundef{editor}
+    {}
+    {%
+      \printtext{\usebibmacro{editor}}%
+      \clearname{editor}%
+    }%
+  \usebibmacro{byeditorx}%
+  \usebibmacro{bytranslator+others}%
+}
+
+% ENTRY @Article
+\DeclareFieldFormat[article]{pages}{#1} % Remove pp. from pages.
+\DeclareBibliographyDriver{article}{%
+  \printnames{author}\addperiod\newblock\space
+  \printfield{year}\addperiod\newblock\space
+  \printfield{title}\newunit\newblock
+  \printfield{journaltitle}\space\printfield{volume}\printfield[parens]{number}:\space
+  \printfield{pages}\newunit\newblock%
+  %\usebibmacro{doi+eprint+url}
+  \finentry}
+
+% ENTRY @Book
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{editor}
+  \printnames{author}
+  \addperiod\newblock\space
+  \printfield{year}\addperiod\newblock\space
+  \printfield{title}\newunit\newblock
+  \printfield{edition}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  %\usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}%
+}

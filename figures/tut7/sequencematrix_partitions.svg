@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="sequencematrix_partitions.pdf">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="278.99355"
+     inkscape:cy="704.32811"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1583"
+     inkscape:window-height="901"
+     inkscape:window-x="95"
+     inkscape:window-y="34"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2985"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       units="mm"
+       spacingx="1mm"
+       spacingy="1mm" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;text-anchor:middle;fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-miterlimit:10;stroke-opacity:0;stroke-dasharray:none;stroke-dashoffset:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Arial Bold Italic"
+       x="159.44881"
+       y="255.11809"
+       id="text2987"><tspan
+         sodipodi:role="line"
+         x="159.44881"
+         y="255.11809"
+         id="tspan2995"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:#000000;stroke-opacity:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">&gt;taxon_1</tspan><tspan
+         sodipodi:role="line"
+         x="159.44881"
+         y="272.6181"
+         id="tspan2997"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:#000000;stroke-opacity:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">AAAACCCC</tspan><tspan
+         sodipodi:role="line"
+         x="159.44881"
+         y="290.1181"
+         id="tspan2999"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:#000000;stroke-opacity:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">&gt;taxon_2</tspan><tspan
+         sodipodi:role="line"
+         x="159.44881"
+         y="307.6181"
+         id="tspan3001"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:#000000;stroke-opacity:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">AAA-CCCC</tspan><tspan
+         sodipodi:role="line"
+         x="159.44881"
+         y="325.1181"
+         id="tspan3003"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:#000000;stroke-opacity:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">&gt;taxon_3</tspan><tspan
+         sodipodi:role="line"
+         x="159.44881"
+         y="342.6181"
+         id="tspan3005"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:#000000;stroke-opacity:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">AAAA-CCC</tspan><tspan
+         sodipodi:role="line"
+         x="159.44881"
+         y="360.1181"
+         id="tspan3007"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:#000000;stroke-opacity:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">&gt;taxon_4</tspan><tspan
+         sodipodi:role="line"
+         x="159.44881"
+         y="377.6181"
+         id="tspan3011"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;stroke:#000000;stroke-opacity:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch">AAAACCC-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-miterlimit:10;stroke-opacity:0;stroke-dasharray:none;stroke-dashoffset:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch"
+       x="336.61417"
+       y="255.11809"
+       id="text3807"><tspan
+         sodipodi:role="line"
+         x="336.61417"
+         y="255.11809"
+         id="tspan3815">&gt;taxon_1</tspan><tspan
+         sodipodi:role="line"
+         x="336.61417"
+         y="272.6181"
+         id="tspan3817">GGGGTTTT</tspan><tspan
+         sodipodi:role="line"
+         x="336.61417"
+         y="290.1181"
+         id="tspan3819">&gt;taxon_2</tspan><tspan
+         sodipodi:role="line"
+         x="336.61417"
+         y="307.6181"
+         id="tspan3821">GGG-TTTT</tspan><tspan
+         sodipodi:role="line"
+         x="336.61417"
+         y="325.1181"
+         id="tspan3823">&gt;taxon_3</tspan><tspan
+         sodipodi:role="line"
+         x="336.61417"
+         y="342.6181"
+         id="tspan3825">GGGG-TTT</tspan><tspan
+         sodipodi:role="line"
+         x="336.61417"
+         y="360.1181"
+         id="tspan3827">&gt;taxon_4</tspan><tspan
+         sodipodi:role="line"
+         x="336.61417"
+         y="377.6181"
+         id="tspan3831">GGGGTTT-</tspan><tspan
+         sodipodi:role="line"
+         x="336.61417"
+         y="395.1181"
+         id="tspan3833" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-miterlimit:10;stroke-opacity:0;stroke-dasharray:none;stroke-dashoffset:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch"
+       x="531.49609"
+       y="255.11809"
+       id="text3835"><tspan
+         sodipodi:role="line"
+         id="tspan3837"
+         x="531.49609"
+         y="255.11809">xread</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="272.6181"
+         id="tspan3839">8 4</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="290.1181"
+         id="tspan3841">taxon_1</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="307.6181"
+         id="tspan3843">00000010</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="325.1181"
+         id="tspan3845">taxon_2</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="342.6181"
+         id="tspan3847">11000001</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="360.1181"
+         id="tspan3849">taxon_3</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="377.6181"
+         id="tspan3851">11110000</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="395.1181"
+         id="tspan3853">taxon_4</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="412.6181"
+         id="tspan3855">11111100</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="430.1181"
+         id="tspan3029">taxon_5</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="447.6181"
+         id="tspan3031">11111110;</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="465.1181"
+         id="tspan3857">proc/;</tspan><tspan
+         sodipodi:role="line"
+         x="531.49609"
+         y="482.6181"
+         id="tspan3859" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-miterlimit:10;stroke-opacity:0;stroke-dasharray:none;stroke-dashoffset:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch"
+       x="141.73228"
+       y="237.40155"
+       id="text3861"><tspan
+         sodipodi:role="line"
+         id="tspan3863"
+         x="141.73228"
+         y="237.40155"
+         style="font-weight:bold;-inkscape-font-specification:Courier 10 Pitch Bold">Partição 1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-miterlimit:10;stroke-opacity:0;stroke-dasharray:none;stroke-dashoffset:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold"
+       x="318.89764"
+       y="237.40155"
+       id="text3865"><tspan
+         sodipodi:role="line"
+         id="tspan3867"
+         x="318.89764"
+         y="237.40155">Partição 2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-miterlimit:10;stroke-opacity:0;stroke-dasharray:none;stroke-dashoffset:0;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch Bold"
+       x="513.77954"
+       y="237.40155"
+       id="text3869"><tspan
+         sodipodi:role="line"
+         id="tspan3871"
+         x="513.77954"
+         y="237.40155">Partição 3</tspan></text>
+  </g>
+</svg>

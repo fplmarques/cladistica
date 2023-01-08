@@ -1,0 +1,489 @@
+%%% PREAMBLE %%%
+
+%% FORMATAÇÃO BÁSICA
+\usepackage[english,brazilian]{babel} % Suporte para inglês e português (hifenação e caracteres especiais)
+\usepackage[utf8]{inputenc} % Codificação do arquivo
+\usepackage{cmap} % Mapear caracteres especiais no PDF
+\usepackage[T1]{fontenc} % Codificação da fonte
+\usepackage{times} % Fonte tradicional Serif
+\usepackage{amsmath,amssymb,amsfonts,textcomp} % Funções e símbolos
+\usepackage{enumerate} % Permite enumerar com carácteres vários
+%% NEW COMMANDS
+\newcommand{\shellcmd}[1]{\texttt{\$ #1}}
+\newcommand{\userprompt}[1]{\texttt{alan@turing:$\sim$\$ #1}}
+\newcommand{\rootprompt}[1]{\texttt{root@turing:$\sim$\# #1}}
+\newcommand{\poyprompt}[1]{\texttt{poy> #1}}
+\newcommand{\ie}{\textit{i.e.},}
+\newcommand{\eg}{\textit{e.g.},}
+%% LAYOUT
+\usepackage{listings}
+\usepackage{setspace} % Definir espaçamento
+\setlength{\parskip}{0cm} % Espaçamento do texto para o frame
+\usepackage{anysize} % Habilita edição de margens em uma página específica
+\marginsize{1.6cm}{1.6cm}{1cm}{1cm}
+\usepackage[portuguese]{minitoc}
+% Formatação das headings de seções e subseções
+\makeatletter
+\renewcommand{\section}{\@startsection
+{section} % the name
+{1} % the level
+{0mm} % the indent
+{-\baselineskip} % the before skip
+{0cm} % the after skip
+{\normalfont\Small}} % the style
+\makeatother
+% Redefinindo heading \subsection
+\makeatletter
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}
+
+{-\baselineskip}%
+{0.1cm}{\normalfont\normalsize\scshape}}%
+\makeatother
+
+
+%% ELEMENTOS GRÁFICOS
+% Color text blocks
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\newenvironment{blackBlock}[1]{%
+    \tcolorbox[%
+    noparskip,breakable,
+    colback=white,%
+    colframe=gray,%
+    title=#1]}%
+    {\endtcolorbox}
+\usepackage{graphicx} % Para incluir figuras (pacote extendido)
+\usepackage{epstopdf} % Para incluir figuras .eps
+\usepackage{wrapfig} % Para fazer o texto fluir através ou ao lado das figuras
+%%%OBSERVACAO%%%
+% Isso fará que a figura seja convertida de .eps para .pdf e então inserida do documento.
+% Ainda assim talvez falte mais um detalhe. E você poderá continuar recebendo a mesma mensagem. O último passo é acessar o arquivo /etc/texmf/texmf.cnf
+% Sugiro que use o nano:
+% $ nano /etc/texmf/texmf.cnf 
+% Procure a linha começando com 'shell_escape' e troque o valor de 'f' para 't'. Não mude mais nada, só isso. 
+%%%%%%%%%%%%%
+\usepackage{color, colortbl} % Suporte a cores
+\usepackage[font=small,labelfont=bf]{caption} % Customizar as legendas de figuras e tabelas
+\usepackage{floatrow} % Legendas do tamanho do objeto
+\usepackage{multicol} % Criar ambientes com 2 ou mais colunas
+
+%% TABELAS
+\usepackage{array} % Elementos extras para formatação de tabelas
+\usepackage{booktabs} % Tabelas com qualidade de publicação
+\usepackage{longtable} % Para criar tabelas maiores que uma página
+% \usepackage{lscape} % Adicionar tabelas e figuras como landscape
+\usepackage{pdflscape} % Possibilita landscape no PDF
+\usepackage{afterpage} % Permite que o texto flua através de uma página específica
+\usepackage{changepage} % Permitir alterações no tamanho de páginas dentro do documento
+\usepackage[table]{xcolor} % Permitir colora\cc\~ao de c\'elulas, http://ctan.org/pkg/xcolor
+
+%% NOTAS DE RODAPÉ
+\usepackage{footnote} % Lidar com notas de rodapé em diversas situações
+\makesavenoteenv{tabular} % Notas criadas nas tabelas ficam no fim das tabelas
+
+%% LINKS DINÂMICOS
+\usepackage{hyperref} % Suporte para hipertexto, links para referências e figuras
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{6}
+% Abaixo, configurações dos links e metatags do PDF a ser gerado
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=[rgb]{0,0.5,0.5},
+            pdfauthor={Marques, Fernando Portella de Luna},
+            pdftitle={TitleEnglish},
+            pdfsubject={Subject},
+            pdfkeywords={Keywords},
+            pdfproducer={LaTeX},
+            pdfcreator={PDFLaTeX}}
+\usepackage{lastpage} % Conta o número de páginas
+
+%% TABLE OF CONTENTS
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Não inclui lista de tabelas e figuras no índice
+
+%% PONTUAÇÃO E UNIDADES
+\usepackage{icomma} % Posicionar inteligentemente a vírgula como separador decimal
+\usepackage[tight]{units} % Formatar as unidades com as distâncias corretas
+
+%% CABEÇALHO E RODAPÉ
+\usepackage{fancyhdr} % Controlar os cabeçalhos e rodapés
+\pagestyle{fancy} % Usar os estilos do pacote fancyhdr
+\fancypagestyle{plain}{\fancyhf{}}
+\fancyhead{} % Limpar os campos do cabeçalho atual
+%\fancyhead[RO]{\nouppercase{\small{Relatório Parcial Fapesp No. 2011/18947-9}}} % Cabeçalho: nome da seção do lado direito [R] em páginas ímpares [O]
+\fancyhead[LE]{\nouppercase{\small{Marques, F.P.L.}}} % Cabeçalho: nome do autor do lado esquerdo [L] em páginas pares [E]
+\renewcommand{\headrulewidth}{0pt} % Omitir linha de separação entre cabeçalho e conteúdo
+\headheight 12pt % Altura do cabeçalho
+\fancyfoot{} % Limpar os campos do rodapé
+\fancyfoot[RO,LE]{\thepage} % Rodapé: número da página do lado direito [R] nas páginas ímpares [O] e do lado esquerdo [L] nas páginas pares [E]
+\renewcommand{\footrulewidth}{0pt} % Omitir linha de separação entre rodapé e conteúdo
+
+%% OUTROS COMANDOS CUSTOMIZADOS
+\newenvironment{myindentpar}[1] % Ident full paragraph
+ {\begin{list}{}
+         {\setlength{\leftmargin}{#1}}
+         \item[]
+ }
+ {\end{list}}
+
+%% Pacotes adicionais
+\usepackage{enumerate} % Permite editar a forme de enumerar itens
+
+%% REDEFININDO OUTROS PACOTES E ESTILOS
+% Redefinindo heading \section
+\makeatletter
+\renewcommand{\section}{\@startsection
+{section} % the name
+{1} % the level
+{0mm} % the indent
+{-\baselineskip} % the before skip
+{0.1cm} % the after skip
+{\normalfont\Small\bf}} % the style
+\makeatother
+% Redefinindo heading \subsection
+\makeatletter
+\renewcommand{\subsection}{\@startsection{subsection}{1}{0mm}
+{-\baselineskip}%
+{0.2cm}{\normalfont\normalsize\scshape}}%
+\makeatother
+
+% A3 page environment
+\newenvironment{hugepage}
+  % Text to replace \begin{hugepage}
+  {\newpage \pagestyle{plain} \cleardoublepage
+  % PDF output page --> A3
+  \setlength{\pdfpagewidth}{11.7in}
+  \setlength{\pdfpageheight}{16.5in}
+  % \changepage{textheight}{textwidth}{evensidemargin}{oddsidemargin}{columnsep}{topmargin}{headheight}{headsep}{footskip}
+  \changepage{146mm}{100mm}{5mm}{5mm}{}{0.1mm}{}{}{0.1mm}}
+  % Text to replace \end{hugepage}
+  {\cleardoublepage
+  \pagestyle{fancy}}
+
+
+%% IMPEDIMENTO DE HÍFENS
+\hyphenation{% Liste abaixo as palavras que não devem ser divididas por hífens
+Acanthobothium
+ACANTHOBOTHRIE
+Acanthobothrium
+Acanthotaenia
+aiereba
+altavela
+amazonensis
+angelae
+asotus
+atrus
+batis
+Batoidea
+bifurcatum
+bifurcatus
+boesemani
+Bothriocephalus
+Bothriuocephali
+Bothrops
+bovinus
+Brachaelurus
+brevissime
+californica
+Calophysus
+Carcharhiniformes
+cartagenensis
+castexi
+cemiculus
+Chondrichthyes
+clavata
+corollata
+corollatum
+corollatus
+coronatum
+coronatus
+COURONNÉ
+Dasyatidae
+Dasyatis
+Dipturus
+Echinocephalus
+eglanteria
+entemedor
+etini
+Eucestoda
+Eutetrarhynchus
+exanthematicus
+fai
+falkneri
+fitzgeraldae
+fluviatilis
+Gangesia
+gerrardi
+glanis
+gnomus
+grabata
+grandiceps
+guttata
+Gymnura
+Gymnuridae
+Heelandicum
+jaenneae
+japonicus
+jarara
+jararaca
+kuhlii
+laevis
+lasti
+lenha
+leoparda
+lobistoma
+logus
+macracanthum
+macropterus
+maculatus
+margaritella
+margieae
+masnihae
+mattaylori
+megacephalum
+mexicanus
+microcephalum
+miraletus
+monopterygius
+motoro
+Myliobatidae
+Myliobatiformes
+Myliobatis
+Narcine
+Nematoda
+Neotrygon
+nipponensis
+Nomimoscolex
+oceanharvestae
+onchobothrii
+Onchobothriidae
+Ophiotaenia
+orbignyi
+Orectolobiformes
+Orectolobus
+Paragaleus
+parasiluri
+Paratrygon
+parviuncinatum
+parvum
+Pastinachus
+pectoralis
+Perca
+percae
+peruviense
+Phractocephalus
+Phractocephalus
+Phyllobothiidae
+piracatinga
+pirarara
+planiceps
+Plesiotrygon
+polylepis
+popi
+Potamotrygon
+Potamotrygonidae
+Potamotrygonocestus
+Potomotrygon
+Pristiophoriformes
+Pristis
+Proteocephalidea
+Proteocephalus
+Pteromylaeus
+quinonesi
+raiae
+raiaebatis
+raja
+Raja
+rajabatis
+rajaebatis
+Rajiformes
+ramiroi
+regoi
+Rhinebothrium
+Rhinebothroides
+Rhiniformes
+Rhinobatiformes
+Rhinobatos
+rhinobatos
+Rhinobatos
+Rhinobatos
+Rhynchobatus
+rodmani
+romanowi
+Rudolphiella
+sabina
+saliki
+santarosaliense
+say
+schmardae
+schoenleinii
+schroederi
+Scyliorhynus
+septentrionale
+siluri
+Silurotaenia
+Silurus
+Sorubimichthys
+Squatiniformes
+squireorum
+stellaris
+Taenia
+Taeniura
+terezae
+Tetraphyllidea
+tetrastomus
+Torpediniformes
+tripartium
+uarnacoides
+Uncibilocularis
+undulata
+urarnak
+Urobatis
+Urotrygonidae
+Varanus
+velezi
+waddi
+walga
+woodsholei
+yepezi
+zainili
+Zanobatus
+zimmeri
+Zygobothriumliotrygon
+hemioliopterus
+herronorum
+Heterodontiformes
+Heterodontus
+Himantura
+histrix
+holorhini
+hypermekkolpos
+Hypnos
+Hypomesus
+icelandicum
+jaenneae
+japonicus
+jarara
+jararaca
+kuhlii
+laevis
+lasti
+lenha
+leoparda
+lobistoma
+logus
+macracanthum
+macropterus
+maculatus
+margaritella
+margieae
+masnihae
+mattaylori
+megacephalum
+mexicanus
+microcephalum
+miraletus
+monopterygius
+motoro
+Myliobatidae
+Myliobatiformes
+Myliobatis
+Narcine
+Nematoda
+Neotrygon
+nipponensis
+Nomimoscolex
+oceanharvestae
+onchobothrii
+Onchobothriidae
+Ophiotaenia
+orbignyi
+Orectolobiformes
+Orectolobus
+Paragaleus
+parasiluri
+Paratrygon
+parviuncinatum
+parvum
+Pastinachus
+pectoralis
+Perca
+percae
+peruviense
+Phractocephalus
+Phractocephalus
+Phyllobothiidae
+piracatinga
+pirarara
+planiceps
+Plesiotrygon
+polylepis
+popi
+Potamotrygon
+Potamotrygonidae
+Potamotrygonocestus
+Potomotrygon
+Pristiophoriformes
+Pristis
+Proteocephalidea
+Proteocephalus
+Pteromylaeus
+quinonesi
+raiae
+raiaebatis
+raja
+Raja
+rajabatis
+rajaebatis
+Rajiformes
+ramiroi
+regoi
+Rhinebothrium
+Rhinebothroides
+Rhiniformes
+Rhinobatiformes
+Rhinobatos
+rhinobatos
+Rhinobatos
+Rhinobatos
+Rhynchobatus
+rodmani
+romanowi
+Rudolphiella
+sabina
+saliki
+santarosaliense
+say
+schmardae
+schoenleinii
+schroederi
+Scyliorhynus
+septentrionale
+siluri
+Silurotaenia
+Silurus
+Sorubimichthys
+Squatiniformes
+squireorum
+stellaris
+Taenia
+Taeniura
+terezae
+Tetraphyllidea
+tetrastomus
+Torpediniformes
+tripartium
+uarnacoides
+Uncibilocularis
+undulata
+urarnak
+Urobatis
+Urotrygonidae
+Varanus
+velezi
+waddi
+walga
+woodsholei
+yepezi
+zainili
+Zanobatus
+zimmeri
+Zygobothrium
+}
