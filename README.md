@@ -16,3 +16,10 @@ If you have a Lynux computer running Ubuntu 22.04LTS, you can install all the pa
 ```
 wget http://lhe.ib.usp.br/downloads/install_packages_ubuntu_22.04.zip
 ```
+
+## Download tutorials
+
+You can download only the tutorials by executing:
+```
+svn checkout https://github.com/fplmarques/cladistica/trunk/tutorials/
+```
