@@ -161,14 +161,14 @@ Há duas formas de acessar o modo texto do sistema. Você pode acessar um termin
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA DO FILE SYSTEM %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A segunda forma é usar um ``emulador de terminal'', isto é, dentro do modo gráfico, abre-se um programa que funciona com linha de comando. Na instalação disponibilizada no curso, o terminal está disponível na barra de ferramentas lateral (veja Figura \ref{tut1:fig:terminal1}). De forma geral, em Ubuntu 14.4.02 LTS, você pode acessar o terminal via Painel inicial (também na barra de ferramentas lateral) digitanto o termo ``terminal'' (veja Figura \ref{tut1:fig:terminal2}).\\
+A segunda forma é usar um ``emulador de terminal'', isto é, dentro do modo gráfico, abre-se um programa que funciona com linha de comando. Na instalação disponibilizada no curso, o terminal está disponível na barra de ferramentas lateral (veja Figura \ref{tut1:fig:terminal1}). De forma geral, em Ubuntu 14.4.02 LTS, você pode acessar o terminal via Painel inicial (também na barra de ferramentas lateral) digitando o termo ``terminal'' (veja Figura \ref{tut1:fig:terminal2}).\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA DO TERMINAL 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
     %\ffigbox[\FBwidth]
-      {\includegraphics[scale=0.35]{figures/tut1/terminal1.eps}}
-      {\caption[\textit{Acesso ao terminal via interface gráfica GNOME}]{Acesso ao terminal via interface gráfica GNOME na barra de ferramentas lateral.}\label{tut1:fig:terminal1}}
+      {\includegraphics[scale=0.35]{figures/tut1/terminal1.jpg}}
+      {\caption[\textit{Acesso ao terminal via interface gráfica GNOME}]{Acesso ao terminal via interface gráfica GNOME na barra de ferramentas lateral. [exemplo: imagem do Xubuntu, edição de 2023]}\label{tut1:fig:terminal1}}
   \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA DO FILE SYSTEM %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -177,8 +177,8 @@ A segunda forma é usar um ``emulador de terminal'', isto é, dentro do modo gr�
 %  \vspace{-1em}
   \begin{figure}[H]
     %\ffigbox[\FBwidth]
-      {\includegraphics[scale=0.35]{figures/tut1/terminal2.eps}}
-      {\caption[\textit{Acesso ao terminal via interface gráfica GNOME usando o Painel incial}]{Acesso ao terminal via interface gráfica GNOME na barra de ferramentas lateral  usando o Painel incial.}\label{tut1:fig:terminal2}}
+      {\includegraphics[scale=0.35]{figures/tut1/terminal2.jpg}}
+      {\caption[\textit{Acesso ao terminal via interface gráfica GNOME usando o Painel inicial}]{Acesso ao terminal via interface gráfica GNOME na barra de ferramentas lateral  usando o Painel inicial. [exemplo: imagem do Xubuntu, edição de 2023}\label{tut1:fig:terminal2}}
   \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA DO FILE SYSTEM %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -192,7 +192,7 @@ O BASH (Bourne Again Shell) é o shell desenvolvido para o projeto GNU, da \text
 %  \vspace{-1em}
   \begin{figure}[H]
     %\ffigbox[\FBwidth]
-      {\includegraphics[scale=0.8]{figures/tut1/command_structure.eps}}
+      {\includegraphics[scale=0.8]{figures/tut1/command_line.pdf}}
       {\caption[\textit{Estrutura de comandos}]{Estrutura de comandos\: \textit{std\_in} representa \textit{standard input}, informações de entrada para o comando;  \textit{std\_out} representa \textit{standard output}, resultado do processamento feito pelo comando.}\label{tut1:fig:commands}}
 
   \end{figure}
@@ -202,7 +202,7 @@ O BASH (Bourne Again Shell) é o shell desenvolvido para o projeto GNU, da \text
 \subsection{Comandos:}\label{tut1:text_mode:commands:commands}
  Nesta seção, examinaremos alguns comandos simples do BASH. É importante que você saiba que não é preciso decorar os comandos apresentados. Para aprendê-los de fato, você deve ir praticando com os exercícios propostos e conforme a sua necessidade.\\
 %
-Uma noção sobre comandos é importante. Comandos executam tarefas. Não existe comando que não faça nada! Para executar tarefas, comandos necessitam de material para executar a tarefa para o qual ele foi concebido. Esse ``material'' é informação, dados. O comando pegará essa informação e retornará o resultado do processamento, ou seja, o resultado de seu trabalho. Veja a representação desses conceitos na Figura \ref{tut1:fig:commands}. Todo comando requer implicita ou explicitamente uma informação de entrada, \textit{stardard input}, que será processada e exibida como resultado, \textit{stardard input}, na tela ou redireciona a um arquivo (veja Seção \ref{tut1:pipered} abaixo). Guarde esta estrutura, ela será fundamental para você entender o conceito de \textsc{pipes} no final deste tutorial (Seção \ref{tut1:pipered:pipe})\\
+Uma noção sobre comandos é importante. Comandos executam tarefas. Não existe comando que não faça nada! Para executar tarefas, comandos necessitam de material para executar a tarefa para o qual ele foi concebido. Esse ``material'' é informação, dados. O comando pegará essa informação e retornará o resultado do processamento, ou seja, o resultado de seu trabalho. Veja a representação desses conceitos na Figura \ref{tut1:fig:commands}. Todo comando requer implícita ou explicitamente uma informação de entrada, \textit{stardard input}, que será processada e exibida como resultado, \textit{stardard input}, na tela ou redireciona a um arquivo (veja Seção \ref{tut1:pipered} abaixo). Guarde esta estrutura, ela será fundamental para você entender o conceito de \textsc{pipes} no final deste tutorial (Seção \ref{tut1:pipered:pipe})\\
 %
 \subsubsection{Prompt:}\label{tut1:text_modeommands:prompt}
 O prompt do BASH tem a seguinte aparência:\\
@@ -275,16 +275,17 @@ Liste todo o conteúdo do seu diretório home, incluindo os itens ocultos. (Quan
  \shellcmd{ls -l /}\\
 imprime:
 \\
-\indent\indent\texttt{total 44\\
-drwxr-xr-x 2 alan alan 4096 Mar  2 11:07 Desktop\\
-drwxr-xr-x 2 alan alan 4096 Feb 27 08:25 Documents\\
-drwxr-xr-x 2 alan alan 4096 Feb 27 08:25 Downloads\\
--rw-r--r-- 1 alan alan 8980 Feb 27 03:59 examples.desktop\\
-drwxr-xr-x 2 alan alan 4096 Feb 27 08:25 Music\\
-drwxr-xr-x 2 alan alan 4096 Feb 27 08:25 Pictures\\
-drwxr-xr-x 2 alan alan 4096 Feb 27 08:25 Public\\
-drwxr-xr-x 2 alan alan 4096 Feb 27 08:25 Templates\\
-drwxr-xr-x 2 alan alan 4096 Feb 27 08:25 Videos}\\
+\indent\indent\texttt{total 40\\
+drwxrwxr-x 4 alan alan 4096 jan 24 22:40 bin
+drwxr-xr-x 2 alan alan 4096 jan 24 20:12 Desktop
+drwxr-xr-x 2 alan alan 4096 jan 24 20:12 Documents
+drwxr-xr-x 2 alan alan 4096 jan 24 20:12 Downloads
+drwxr-xr-x 2 alan alan 4096 jan 24 20:12 Music
+drwxr-xr-x 2 alan alan 4096 jan 24 20:12 Pictures
+drwxr-xr-x 2 alan alan 4096 jan 24 20:12 Public
+drwx------ 3 alan alan 4096 jan 24 20:55 snap
+drwxr-xr-x 2 alan alan 4096 jan 24 20:12 Templates
+drwxr-xr-x 2 alan alan 4096 jan 24 20:12 Videos
  \textit{Permissões:}
 
  A primeira letra (d) indica que ``Desktop'' é um diretório. Se fosse um arquivo normal, teríamos um ``-'' no lugar (é o caso de examples.desktop). Os próximos nove caracteres representam as permissões do diretório. As permissões de um arquivo ou diretório são r, w e x, apresentadas anteriormente (lembra-se? Leitura, escrita e execução).\\
