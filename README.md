@@ -1,7 +1,7 @@
 # cladistica
 Course on computational cladistics offered at University of São Paulo - Brazil. This repository has the latex source for the tutorials as well as the files associated with the lab exercises.
 
-## Lynux image (Xubuntu 22.04)
+## Linux image (Xubuntu 22.04)
 
 You can use a pre-installed virtual machine to run in VMWare Player. The adminstration password for this image is 'turing':
 
