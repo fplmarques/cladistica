@@ -1,0 +1,10 @@
+>seq_1
+acgcaggaatggcaga
+>seq_2
+acgcagcaagggacgttt
+>seq_3
+acgcagctaccgacgttt
+>seq_4
+acgttctacaccgacgttt
+>seq_5
+attcaataccgacgttt
