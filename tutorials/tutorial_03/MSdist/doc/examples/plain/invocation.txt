@@ -1,0 +1,8 @@
+1)
+java -jar MSdist.jar -w 2 -i plain.trees -o plain.trees.w_2.out
+
+2)
+java -jar MSdist.jar -s -i plain.trees -o plain.trees.s.out
+
+3)
+java -jar MSdist.jar -m -i plain.trees -o plain.trees.m.out 

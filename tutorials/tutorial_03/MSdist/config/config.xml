@@ -1,0 +1,16 @@
+<?xml version = "1.0" ?>
+<config>
+	<defined_metrics>
+		<metric> 
+			<name>MatchingSplit</name>
+			<command_name>ms</command_name>
+			<class>treecmp.metric.MatchingSplitMetric</class>
+			<description>-Matching Split metric for unrooted trees</description>
+		</metric>
+	</defined_metrics>
+	<reporting>
+		<filed_separator>tab</filed_separator>
+		<main-section>yes</main-section>
+		<summary-section>yes</summary-section>
+	</reporting>
+</config>

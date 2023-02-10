@@ -44,7 +44,7 @@ Este tutorial requer que seu computador possua os seguintes aplicativos:
 
 \begin {myindentpar}{0.5cm}
 \begin{enumerate}[\itshape i.]
-	\item{TNT:}\label{tut3:require:tnt} Esse programa deve estar instalado em seu computador e executável pelo comando \shellcmd{tnt}.
+	\item{TNT:}\label{tut3:require:tnt} Esse programa  \parencite{GoloboffETAL2008} deve estar instalado em seu computador e executável pelo comando \shellcmd{tnt}.
 
 	\item{R:}\label{tut3:require:R} O \textbf{\href{http://www.r-project.org/}{R}} é um ambiente livre de computação gráfica e estatística. Caso seu computador não possua o \textbf{R} instalado, você deverá fazê-lo pelo comando ``\texttt{sudo apt-get install r-base-core}''. Adicionalmente você deverá instalar algumas bibliotecas que são necessárias para a execução deste tutorial: \texttt{scatterplot3d} e \texttt{vegan}. Para instalar essas bibliotecas você deverá abrir o \textbf{R} com o comando ``\texttt{sudo R}'' e executar o seguinte comando no \textit{prompt} do \textbf{R}: ``\texttt{install.packages("scatterplot3d")}''.\\
 	O \textbf{R} solicitará que você escolha um repositório do qual ele deverá baixar o pacote solicitado. Você poderá escolher qualquer um dos países listados. Feita a escolha, o pacote começará a ser instalado.\\
@@ -93,12 +93,13 @@ drwxrwxr-x 7 alan alan      4096 Mar  2 13:07 MSdist
 \section{Contextualização teórica}\label{tut3:context}
 
 \subsection{Topologias binárias e grafos}\label{tut3:context:graphs}
-	As dicussões levantadas por \textcite{Mindell_2013} e \textcite{Morrison_2014} com relação ao modelo de representação gráfica geralmente adotado em estudos filogenéticos é muito interessante. Os argumentos expressos por \textcite{Morrison_2014}, principalmente, sugere que devemos refletir se o modelo que estamos adotando é apropriado para o estudo que estamos interessados. De qualquer forma, atualmente, topologias binárias são prevalentes em estudos filogenéticos e embora isso possa mudar no futuro, devemos explorar algumas de suas propriedades -- mesmo porque o curso fará uso exclusivo desses diagramas em inferência filogenética.
+	As discussões levantadas por \textcite{Mindell_2013} e \textcite{Morrison_2014} com relação ao modelo de representação gráfica geralmente adotado em estudos filogenéticos é muito interessante. Os argumentos expressos por \textcite{Morrison_2014}, principalmente, sugere que devemos refletir se o modelo que estamos adotando é apropriado para o estudo que estamos interessados. De qualquer forma, atualmente, topologias binárias são prevalentes em estudos filogenéticos e embora isso possa mudar no futuro, devemos explorar algumas de suas propriedades -- mesmo porque o curso fará uso exclusivo desses diagramas em inferência filogenética.
 	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA FLAT %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
+  \centering
     %\ffigbox[\FBwidth]
       {\includegraphics[scale=0.60]{figures/tut3/undirected_graph_topologies.eps}}
       {\caption[\textit{Gráfos}]{Dois grafos (\textbf{A} e \textbf{B}) com a mesma topologia expressa pelas relações entre vértices (\textit{i.e.}, \textbf{V}), terminais (\textit{i.e.}, \textbf{L}) e arestas (\textit{i.e.}, \textbf{\texttt{e}}).}\label{tut3:fig:graph}}
@@ -111,6 +112,7 @@ drwxrwxr-x 7 alan alan      4096 Mar  2 13:07 MSdist
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA FLAT %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
+  \centering
     %\ffigbox[\FBwidth]
       {\includegraphics[scale=0.60]{figures/tut3/directed_graph.eps}}
       {\caption[\textit{Gráfos}]{Grafo acíclico direcionado. Direcionamento é dado pela raíz (\textbf{R}), único vértice de graus 2.}\label{tut3:fig:rooted_graph}}
@@ -179,35 +181,45 @@ drwxrwxr-x 7 alan alan      4096 Mar  2 13:07 MSdist
 
 \section{Explorando o espaço de topologias}\label{tut3:tree_space_expĺore}
 
-	A seguir, vamos explorar alguns conceitos relacionados com o espaço de topologias. Iremos fazer uma série de exercícios e é importante que ao executá-los, você tome nota dos resultados, pois você deverá compará-los à medida em que vai respondendo os exercícios. Grande parte dos exercícios será executado com um \textit{script} escrito em PERL. Este \textit{script} possui três rotinas básicas, cada qual requer sintax própria e exibe o resultado em gráficos.
+	A seguir, vamos explorar alguns conceitos relacionados com o espaço de topologias. Iremos fazer uma série de execuções do \textit{script} \texttt{tree\_space.py} e é importante que ao executá-las, você tome nota dos resultados (uma opções é salvas as figuras geradas), pois você deverá compará-los à medida em que vai respondendo os exercícios. Este \textit{script} possui três rotinas básicas que serão explicadas no decorrer deste tutorial (Figura \ref{tut3:fig:prompt}).
 
-\subsection{Rotina 1}\label{tut3:subs:flat}
-	Iremos iniciar avaliando como o número de terminais afeta o espaço de topologias. Para tanto, iremos utilizar uma rotina que gera uma matriz de dados contendo um único caráter no formato compatível com TNT \parencite{GoloboffETAL2008}. Em seguida, todas as topologias possíveis para $n$ terminais (4 a 10\footnote{não exceda o limite superior desta rotina, pois o resultado demorará muito.}) são avaliadas e o \textit{script} exibe um gráfico e um histograma compilando os resultados da análise (veja Figura \ref{tut3:fig:flat}).
-
-\indent\textit{Sintaxe:}\\
-\indent\indent\indent\shellcmd{ perl tree\_space.pl -f 6}\\
-
-Nesta linha de comando, o argumento ``\texttt{6}'', logo após a opção ``\texttt{-f}'' (que define esta rotina), refere ao número de terminais inseridos na matriz.\\
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA FLAT %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% FIGURA PROMPT %%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
+  \centering
     %\ffigbox[\FBwidth]
-      {\includegraphics[scale=0.80]{figures/tut3/flat.eps}}
-      {\caption[Rotina 1]{Gráficos associados à Rotina 1. Veja texto abaixo para a descrição dos componentes desta figura.}\label{tut3:fig:flat}}
+      {\includegraphics[scale=0.60]{figures/tut3/tree_space_prompt.png}}
+      {\caption[Opções de \texttt{tree\_space.py}]{Opções de \texttt{tree\_space.py}. Veja texto abaixo para a descrição de cada uma dessas opções.}\label{tut3:fig:prompt}}
+  \end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA PROMPT %%%%%%%%%%%%%%%%%%
+
+
+\subsection{Opção 1}\label{tut3:subs:flat}
+	Iremos iniciar avaliando como o número de terminais afeta o espaço de topologias na ausência de informação provinda de caracteres cladísticos. Na opção 1, este \textit{script} avalia todas as topologias possíveis (\textit{i.e.}, grafos binários) para determinado número de terminais $\ge 4 \le 10$\footnote{não exceda o limite superior desta rotina, pois o resultado demorará muito.}. Se você selecionar a opção 1 e pedir para o \textit{script} avaliar o espaço de topologias para 5 terminais você deverá obter dois gráficos representados da Figura \ref{tut3:fig:flat}.
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA Opt 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \vspace{-1em}
+  \begin{figure}[H]
+  \centering
+    %\ffigbox[\FBwidth]
+      {\includegraphics[scale=0.65]{figures/tut3/opcao_1_6_terminals.pdf}}
+      {\caption[\textit{\textit{No informative characters} }]{Gráficos associados à opção 1 considerando 6 terminais sem informação cladística. À direita você encontra o custo de todas as topologias e à direita a frequência de distribuição destes custos.}\label{tut3:fig:flat}}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA FLAT %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA Opt 1 %%%%%%%%%%%%%%%%%%%%%
 
-	A execução desta rotina exibe os gráficos na Figura \ref{tut3:fig:flat}. Nesta figura, à direita você encontra um gráfico no qual o eixo $y$ está o custo das topologias\footnote{O ``custo'' refere-se ao número de transformações de estado de caráter para cada topologia.} e o eixo $x$ exibe as topologias enumeradas. Ao lado direito desta figura, há um histograma mostrando a distribuição dos custos (\textit{Scores}) das topologias encontradas.\\
+
+	Nesta figura, à direita você encontra um gráfico no qual o eixos $x$ e $y$ representam as coordenadas de todas as topologias geradas e no eixo $z$ seus respectivos custos  (\textit{Scores})\footnote{O ``custo'' refere-se ao número de transformações de estado de caráter para cada topologia.}. Ao lado direito desta figura, há um histograma mostrando a distribuição dos custos das topologias encontradas.\\
 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercicio 3.\arabic{ex}}}\label{tut3:ex:3.\arabic{ex}}
-	Considere estes gráficos como uma representação aproximada da complexidade do espaço de topologias.
+	Considere estes gráficos como uma representação aproximada da complexidade do espaço de topologias. Faça algumas execuções deste \textit{script} variando o número de terminais e responda:
 \begin {myindentpar}{0.5cm}
 \begin{enumerate}[\itshape i.]
- \item{Há um único parâmetro deste espaço que é afetado pelo número de terminais. Qual seria esse parâmetro?}\label{tut3:ex1}\\
+ \item{Há um único parâmetro deste espaço que é afetado pelo número de terminais. Qual seria esse parâmetro e de que forma o espaço de topologias está variando?}\label{tut3:ex1}\\
   \begin{center}
+  \line(1,0){400}\\
   \line(1,0){400}\\
   \line(1,0){400}\\
   \end{center}
@@ -219,7 +231,7 @@ Nesta linha de comando, o argumento ``\texttt{6}'', logo após a opção ``\text
 
 Como você pode observar, os custos de todas as topologias são idênticos. No entanto, considere a Figura \ref{tut3:fig:enumeration_indexed}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA FLAT %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA ENUM %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
     %\ffigbox[\FBwidth]
@@ -227,7 +239,7 @@ Como você pode observar, os custos de todas as topologias são idênticos. No e
       {\caption[Enumeração indexada]{Enumeração das topologias para 6 terminais indexadas segundo o arquivo \texttt{06\_enumeration.tre}. Observe a lógica de indexação desta topologia pelos dígitos entre colchetes (\textit{i.e.}, \texttt{[1.3.5.1]}).}\label{tut3:fig:enumeration_indexed}}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA FLAT %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA ENUM %%%%%%%%%%%%%%%%%%%%%
 
 Observe que essas tolologias divergem à medida em que se afastam da topologia inicial (\textit{i.e.}, \texttt{[1]}). É evidente que nosso primeiro exercício não detecta este componente do espaço de árvores. No entanto, isso seria possível avaliando a distância topológica de acordo com alguma outra métrica.\\
 
@@ -260,7 +272,7 @@ end files>
 >verbose
 \end{lstlisting}
 
-	Neste arquivo de configuração, a linha 1 define a ID (identidade) da análise. As linhas 2 a 5 definem os arquivos que contém as topologias a serem comparadas. A linha 6 define a topologia de referência. As linhas 7 e 8 configuram o tipo de comparação que o programa irá executar (veja documentação do programa para maiores detalhes). A linha 9 informa o táxon de enraizamento -- necessário para computar as distâncias. Finalmente, a linha 10 configura o programa para informar ao usuário as estapas que estão sendo executadas à medida em que o programa prossegue.
+Neste arquivo de configuração, a linha 1 define a ID (identidade) da análise. As linhas 2 a 5 definem os arquivos que contém as topologias a serem comparadas. A linha 6 define a topologia de referência. As linhas 7 e 8 configuram o tipo de comparação que o programa irá executar (veja documentação do programa para maiores detalhes). A linha 9 informa o táxon de enraizamento -- necessário para computar as distâncias. Finalmente, a linha 10 configura o programa para informar ao usuário as estapas que estão sendo executadas à medida em que o programa prossegue.
 
 	\item{} Executar o \href{http://www.ib.usp.br/grant/anfibios/researchSoftware.html/}{YBYRÁ} da seguinte forma:
 
@@ -334,48 +346,50 @@ Este arquivo contém os resultados que deseja e estão sumarizados na Tabela \re
 \end{blackBlock}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA STRUC %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA Opt 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
+  \centering
     %\ffigbox[\FBwidth]
-      {\includegraphics[scale=0.80]{figures/tut3/struc.eps}}
-      {\caption[\textit{\textit{structured space} }]{Gráficos associados à Rotina 2. À direita você encontra o custo de todas as topologias e à direita a frequência de distribuição destes custos.}\label{tut3:fig:struc}}
+      {\includegraphics[scale=0.65]{figures/tut3/opcao_2_6_terminals_24_characters.pdf}}
+      {\caption[\textit{\textit{Random space} }]{Gráficos associados à opção 2 considerando 6 terminais e 24 caracteres aleatórios. À direita você encontra o custo de todas as topologias e à direita a frequência de distribuição destes custos.}\label{tut3:fig:rand}}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA STRUC %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA OIpt 2 %%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{Rotina 2}\label{tut3:subs:struc}
-
-	Nesta rotina, iremos adicionar mais um componente para avaliar o espaço de topologias. A rotina gera uma matriz para um número definido de terminais (4 a 10). A matriz gerada representa uma topologia estabelecida ao acaso (\textit{i.e.}, aleatória) sem que haja nenhum caráter conflitante (\textit{i.e.}, não há homoplasias). Em seguida, o TNT computa o custo desta matrix para todas as topologias possíveis dado o número de terminais. O resultado apresentado é identico à rotina anterior, ou seja, os custos são exibidos em um gráfico (à esquerda) e em um histograma (à direita) como exemplificado na Figura \ref{tut3:fig:struc}.
-
-\indent\textit{Sintaxe:}\\
-\indent\indent\indent\shellcmd{ perl tree\_space.pl -s 6}\\
-
-Nesta linha de comando, o argumento ``\texttt{6}'', logo após a opção ``\texttt{-s}'', refere ao número de terminais inseridos na matriz.\\
-
-	Observe que ambos componentes deste gráfico mudaram drasticamente (compare com a Figura \ref{tut3:fig:flat}). 
-
-
-\subsection{Rotina 3}\label{tut3:subs:rand}
-
-	Esta rotina difere da anterior em alguns pontos importantes. Lembre-se que na Rotina 2, uma tolopogia aleatória definia a matriz de dados que, por sua vez, não continha nenhuma homoplasia. A Rotina 3 aleatoriza estados de caracteres $0$ e $1$ para $n$ caracteres (para $n$ antre 1 e $\infty$), com a probabilidade de $0.5$ para cada um desses estados, e $m$ terminais (para $m$ entre 4 e 10). Uma vez gerada a matriz aleatória, o \textit{script} compila o custo das topologias enumeradas e exibe o resultado. A exibição dos resultados, no entanto, irá diferir de acordo com o número de terminais selecionados, como será apresentado a seguir:
+\subsection{Opção 2}\label{tut3:subs:rand}
+A opção 2 faz com que o \textit{script} proceda da seguinte forma (Figura \ref{tut3:fig:rand}). Dado o número de terminais e caracteres, \texttt{tree\_space.py} gera uma matriz aleatória com $n$ caracteres binários cuja probabilidade de $0$ ou $1$ é igual a $0.50$. Esta matriz de dados é submetida ao programa TNT para computar o custo de todas a topologias possíveis dado o número de terminais.\\
 
 
 
-\indent\textit{Sintaxe 1} ($7 \leq m \leq 10$): \\
-\indent\indent\indent\shellcmd{ perl tree\_space.pl -r 20 7}\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA RAND %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \vspace{-1em}
+  \begin{figure}[H]
+  \centering
+    %\ffigbox[\FBwidth]
+      {\includegraphics[scale=0.65]{figures/tut3/opcao_3_6_terminals_24_characters.pdf}}
+      {\caption[\textit{\textit{Structured space} }]{Gráficos associados à opção 2 considerando 6 terminais e uma matriz de representação (sem homoplasias). À direita você encontra o custo de todas as topologias e à direita a frequência de distribuição destes custos.}\label{tut3:fig:struc}}
+  \end{figure}
 
-Nesta linha de comando, o argumento ``\texttt{20}'', logo após a opção ``\texttt{-r}'' -- de \textit{random}, refere-se ao número de caracteres inseridos na matriz. O segundo arqumento, ``\texttt{7}'', refere-se ao número de terminais. Executada desta forma, ou seja com número de terminais entre 7 e 10, essa rotina imprime como resultado os mesmos gráficos das rotinas anteriores, como na Figura \ref{tut3:fig:struc}. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA RAND %%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\subsection{Opção 3}\label{tut3:subs:struc}
+
+Esta rotina difere da anterior em alguns pontos importantes (Figura \ref{tut3:fig:struc}). Ao definir o número de terminais, \texttt{tree\_space.py} gera uma topologia aleatória e uma matriz de representação. Por esta razão, não há como definir o número de caracteres, pois estes são dependentes dos números de nós da topologia binária para os quais a matriz de representação dará suporte. Porteriomente, TNT avalia o custo desta matriz de represetação em relação ao universo de enumerção de todas as topologias binárias. \\
 
 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercicio 3.\arabic{ex}}}\label{tut3:ex:3.\arabic{ex}}
-	Você deverá fazer uma série de execuções para comparar os resultados da Rotina 2 e 3, esta última considerando a \textit{Sintaxe 1}. Com base nos seus resultados, responda:
+	Você deverá fazer uma série de execuções das opções 2 e 3. Compare os resultados salvando as figuras se considerar necessário. Com base nos seus resultados, responda:
 \begin {myindentpar}{0.5cm}
 \begin{enumerate}[\itshape i.]
  \item{Como se comporta o espaço de topologias em ambas as rotinas?}\label{tut3:ex3}\\
   \begin{center}
+  \line(1,0){400}\\
   \line(1,0){400}\\
   \line(1,0){400}\\
   \end{center}
@@ -390,9 +404,10 @@ Nesta linha de comando, o argumento ``\texttt{20}'', logo após a opção ``\tex
   \begin{center}
   \line(1,0){400}\\
   \line(1,0){400}\\
+  \line(1,0){400}\\
   \end{center}
 
- \item{Como você explicaria que dados aleatórios geram topologias que diferem em custos?}\\
+ \item{Como você obteve algum resultado da opção 2 que resultou em uma única topologia com o menor custo? Você acha isso relevânte para inferência filogenética?}\\
   \begin{center}
   \line(1,0){400}\\
   \line(1,0){400}\\
@@ -404,39 +419,6 @@ Nesta linha de comando, o argumento ``\texttt{20}'', logo após a opção ``\tex
 \end{blackBlock}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA STRUC %%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  \vspace{-1em}
-  \begin{figure}[H]
-    %\ffigbox[\FBwidth]
-      {\includegraphics[scale=0.80]{figures/tut3/distances.eps}}
-      {\caption[\textit{\textit{random space} }]{Gráficos associados à rotina \textit{structured}. Veja texto abaixo para a descição dos componentes desta figura.}\label{tut3:fig:distances}}
-  \end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA STRUC %%%%%%%%%%%%%%%%%%%%%
-
-\indent\textit{Sintaxe 2} ($4 \leq m \leq 6$): \\
-\indent\indent\indent\shellcmd{ perl tree\_space.pl -r 20 6}\\
-
-	Essa mesma rotina, quando executada com números de terminais $m \leq 6$	adiciona um novo elemento gráfico nos resultados (veja Figura \ref{tut3:fig:distances}). Quando $m \leq 6$, a rotina calcula a distância entre todas as topologias baseado na métrica de \textit{Matching Cluster (MC) distance} proposta por \textcite{BogdanowiczETGiaro_2013} e implementada no programa MSdist -- uma extensão da métrica de Robinson-Foulds \parencite{Robinson_and_Foulds_1981} que usamos anteriormente. A complexidade do cálculo destas distâncias obedece uma função quadrática, por essa razão o \textit{script} limita o número de terminais nesta rotina -- por razões óbvias. Você verá que o próprio limite de 6 terminais a execução leva um pouco de tempo!\\
-
-	Na Figura \ref{tut3:fig:distances}, o gráfico à esquerda representa as distâncias calculadas par a par entre todas as topologias encontradas -- observe que essas distâncias são independentes dos custos da topologia. O histograma central apresenta a distribuição de frequência destas distâncias. Finalmente, à direita você observa um \textit{Shepard plot} destas distâncias. Sem entrar nas tecnicalidades deste gráfico, ele faz parte de uma classe de procedimentos estatísticos chamada de \textit{multidimensional scaling} (MDS) cujo propósito é representar visualmente padrões de proximidades em um espaço multidimensional de um conjunto de objetos. As interpretações deste tipo de gráfico dependem de outras métricas (\textit{i.e.}, stress) não cosideradas aqui. De forma geral, este gráfico serve como uma representação aproximada das distâncias entre as topologias, pois a redução dimencional destes gráficos trás consigo várias limitações (veja \cite{Berlund_2011}), no diretório de literatura, ou \href{http://www.analytictech.com/borgatti/mds.htm}{nesta página}, caso tenha interesse sobre o assunto).\\
-
-
-\stepcounter{ex}
-\begin{blackBlock}{\textbf{Exercicio 3.\arabic{ex}}}\label{tut3:ex:3.\arabic{ex}}
-	Você deverá executar essa rotina considerando o intervado de 4 a 6 terminais. Observe bem o compotamento das distâncias e responda:
-\begin {myindentpar}{0.5cm}
-\begin{enumerate}[\itshape i.]
- \item{O comportamento das distâncias reflete o que você observou no Exercício \ref{tut3:subs:flat}.\ref{tut3:ex2}?}\label{tut3:ex4}\\
-  \begin{center}
-  \line(1,0){400}\\
-  \line(1,0){400}\\
-  \end{center}
-
-\end{enumerate}
-\end{myindentpar}
-
-\end{blackBlock}
 
 \vspace{20pt}
 

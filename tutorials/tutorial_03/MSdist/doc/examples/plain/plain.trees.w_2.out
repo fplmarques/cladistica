@@ -1,0 +1,7 @@
+state	MatchingSplit (avg)	MatchingSplit (stddev)
+1	2.0000	0.0000
+2	2.0000	0.0000
+---------
+Summary:
+Name	Avg	Std	Min	Max	Count
+MatchingSplit	2.0	0.0	2.0	2.0	2

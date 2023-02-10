@@ -1,0 +1,8 @@
+1)
+java -jar MSdist.jar -w 5 -i ALIGN1.nex -o ALIGN1.nex.w_5.out
+
+2)
+java -jar MSdist.jar -s -i ALIGN1.nex -o ALIGN1.nex_s.out
+
+3)
+java -jar MSdist.jar -m -i ALIGN1.nex -o ALIGN1.nex_m.out
