@@ -64,10 +64,10 @@ Para abrir o \texttt{gedit} basta procurar o aplicativo no Painel Inicial do Ubu
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA DO GEDIT %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Nano}\label{tut2:text:editors:nano}
+\subsubsection{nano}\label{tut2:text:editors:nano}
 
-\texttt{Nano} é um editor que deve ser executado a partir de um terminal, e se concentra em simplicidade. \texttt{Nano} é um clone do antigo editor de texto \texttt{Pico}, o editor para o cliente de e-mail \texttt{Pine}, que foi muito popular lá pelos anos 90, em UNIX e sistemas do tipo LINUX. \texttt{Nano} foi criado em 1999 com o nome de \texttt{``TIP''} (uma sigla, um acrônimo recursivo que significa ``\texttt{TIP Isn't Pine}'', por Chris Allagretta. Allagretta decidiu criar este clone do \texttt{Pico} porque o programa não foi liberado sob a GPL. O nome foi mudado oficialmente em 10 de janeiro de 2000 para diminuir a confusão entre o novo editor e o comando ``\texttt{tip}'' (o comando ``\texttt{tip}'' é comum em Sun Solaris, uma distribuição de UNIX).\\
-\texttt{Nano} usa combinações muito simples de teclas para trabalhar com arquivos. Um arquivo é aberto ou iniciado com o comando: \\
+O \texttt{nano} é um editor que deve ser executado a partir de um terminal, e se concentra em simplicidade. O \texttt{nano} é um clone do antigo editor de texto \texttt{pico}, o editor para o cliente de e-mail \texttt{pine}, que foi muito popular lá pelos anos 90, em UNIX e sistemas do tipo LINUX. O \texttt{nano} foi criado em 1999 com o nome de \texttt{``TIP''} (uma sigla, um acrônimo recursivo que significa ``\texttt{TIP Isn't Pine}'', por Chris Allagretta. Allagretta decidiu criar este clone do \texttt{pico} porque o programa não foi liberado sob a GPL. O nome foi mudado oficialmente em 10 de janeiro de 2000 para diminuir a confusão entre o novo editor e o comando ``\texttt{tip}'' (o comando ``\texttt{tip}'' é comum em Sun Solaris, uma distribuição de UNIX).\\
+O \texttt{nano} usa combinações muito simples de teclas para trabalhar com arquivos. Um arquivo é aberto ou iniciado com o comando: \\
 
 \shellcmd{nano <arquivo>}\\
 
@@ -77,7 +77,7 @@ Se você executa em um terminal o comando:\\
 \shellcmd{nano teste.txt}\\
 
 
-\texttt{Nano} irá abrir um arquivo vazio se \texttt{teste.txt} não existir no seu diretório de trabalho. No entanto, se você abrir o mesmo arquivo que abriu anteriormente utilizando \texttt{nano}, o arquivo \texttt{10\_tax\_all\_1000\_trees.tre} que está no diretório \texttt{tutorial\_02}, você deverá observar o terminal ilustrado na Figura \ref{tut2:fig:nano}.\\
+O \texttt{nano} irá abrir um arquivo vazio se \texttt{teste.txt} não existir no seu diretório de trabalho. No entanto, se você abrir o mesmo arquivo que abriu anteriormente utilizando \texttt{nano}, o arquivo \texttt{10\_tax\_all\_1000\_trees.tre} que está no diretório \texttt{tutorial\_02}, você deverá observar o terminal ilustrado na Figura \ref{tut2:fig:nano}.\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA DO NANO %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
@@ -90,7 +90,7 @@ Se você executa em um terminal o comando:\\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA DO NANO %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Quando o arquivo estiver aberto no \texttt{Nano}, você verá uma pequena lista de sintaxe de comando na parte inferior da janela do terminal (marcado em vermelho na Figura \ref{tut2:fig:nano}). Todas as combinações de teclas para \texttt{Nano} começam com a tecla \texttt{Ctrl}, o \texttt{Ctrl} convencionalmente é representado pelo símbolo ``\texttt{\^{}}''. Para executar um comando você deve manter a tecla \texttt{Ctrl} pressionada e clicar na segunda tecla para executar a ação. As combinações mais comuns para \texttt{Nano} são:\\
+Quando o arquivo estiver aberto no \texttt{nano}, você verá uma pequena lista de sintaxe de comando na parte inferior da janela do terminal (marcado em vermelho na Figura \ref{tut2:fig:nano}). Todas as combinações de teclas para o \texttt{nano} começam com a tecla \texttt{Ctrl}, o \texttt{Ctrl} convencionalmente é representado pelo símbolo ``\texttt{\^{}}''. Para executar um comando você deve manter a tecla \texttt{Ctrl} pressionada e clicar na segunda tecla para executar a ação. As combinações mais comuns para o \texttt{nano} são:\\
 
 \noindent\textbf{\texttt{Ctrl-x}} - Sai do editor. Se você estiver no meio da edição de um arquivo, o processo de saída irá perguntar se você quer salvar seu trabalho.\\
 \textbf{\texttt{Ctrl-R}} - Ler um arquivo em seu arquivo de trabalho atual. Isso permite que você adicione o texto de outro arquivo enquanto trabalha dentro de um novo arquivo.\\
@@ -102,9 +102,9 @@ Quando o arquivo estiver aberto no \texttt{Nano}, você verá uma pequena lista 
 \textbf{\texttt{Ctrl-w}} - faz uma busca no texto.\\
 \textbf{\texttt{Ctrl-a}} - leva o cursor para o início da linha.\\
 \textbf{\texttt{Ctrl-e}} - leva o cursor para o fim da linha.\\
-\textbf{\texttt{Ctrl-g}} - mostra a ajuda do \texttt{Nano}.\\
+\textbf{\texttt{Ctrl-g}} - mostra a ajuda do \texttt{nano}.\\
 
-Existem muitos outros comandos disponíveis em \texttt{Nano}. Para ver a lista de comandos, use o comando \textbf{\texttt{Ctrl-g}}.\\
+Existem muitos outros comandos disponíveis no \texttt{nano}. Para ver a lista de comandos, use o comando \textbf{\texttt{Ctrl-g}}.\\
 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercício 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
@@ -127,7 +127,7 @@ Você deverá criar um arquivo chamado \texttt{matrix.txt} utilizando \texttt{Na
 
 Há outras formas de visualizar e/ou obter informações rápidas de arquivos texto. Abaixo iremos explorar algumas delas:\\
 \paragraph{Comando \texttt{cat:}}\label{tut2:text:editors:texttools:cat}
-O comando \texttt{cat} foi introduzido a vocês no Tutorial \ref{tut1} (item \ref{tut1:text_mode:commands:cat}). Na ocasião, aprenderam que este comando permite a impressão do conteúdo de arquivos texto no terminal, bem como seu uso para concatenar arquivos textos utilizando os caracteres de direcionamento (\textit{i.e.}, ``\texttt{>}'' e ``\texttt{>>}''; veja item \ref{tut1:pipered} do Tutorial \ref{tut1}). No entanto, o comando \texttt{cat} pode também ser utilizado para criar arquivos de forma bem mais rudimentar do que o \texttt{nano}. Um exemplo é dado no próximo exercício.\\
+O comando \texttt{cat} foi introduzido a vocês no Tutorial \ref{tut1}. Na ocasião, aprenderam que este comando permite a impressão do conteúdo de arquivos texto no terminal, bem como seu uso para concatenar arquivos textos utilizando os caracteres de direcionamento (\textit{i.e.}, ``\texttt{>}'' e ``\texttt{>>}''; veja o Tutorial \ref{tut1}). No entanto, o comando \texttt{cat} pode também ser utilizado para criar arquivos de forma bem mais rudimentar do que o \texttt{nano}. Um exemplo é dado no próximo exercício.\\
 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercício 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
@@ -161,14 +161,14 @@ O \texttt{sort} é um programa interno de Linux que organiza as linhas de um arq
 
 O \texttt{argumento} é, via de regra, o arquivo que contém as informações que você quer organizar. Há diversas opções para esse programa (veja \texttt{\$ man sort}, para maiores detalhes); no entanto, iremos apresentar algumas poucas que podem ser úteis utilizando alguns exemplos.\\
 
-Veja uma utilidade simples deste programa. O arquivo \texttt{sort\_example\_1.tre} contém uma série de topologias compiladas pelo POY \parencite[][]{VaronETAL_2010, VaronETAL_2014} -- um programa desenvolvido para análises de homologia dinâmica, que veremos no Tutorial \ref{tut9}. Para saber o número de topologias contidas neste arquivo basta usar o comando \texttt{wc} com a opção \texttt{-l} (veja Tutorial \ref{tut1}, seção \ref{tut1:text_mode:commands:wc}). O programa \texttt{sort} tem o termo ``\texttt{-u}'' como uma de suas opções, nela são consideradas apenas as linhas que são únicas, ou seja, diferentes. Desta forma, a linha de comando:\\
+Veja uma utilidade simples deste programa. O arquivo \texttt{sort\_example\_1.tre} contém uma série de topologias compiladas pelo POY \parencite[][]{VaronETAL_2010, VaronETAL_2014} -- um programa desenvolvido para análises de homologia dinâmica, que veremos no Tutorial \ref{tut9}. Para saber o número de topologias contidas neste arquivo basta usar o comando \texttt{wc} com a opção \texttt{-l} (veja Tutorial \ref{tut1}). O programa \texttt{sort} tem o termo ``\texttt{-u}'' como uma de suas opções, nela são consideradas apenas as linhas que são únicas, ou seja, diferentes. Desta forma, a linha de comando:\\
 
 \texttt{\$ sort -u sort\_example\_1.tre}\\
 
 retorna apenas as topologias únicas contidas neste arquivo. \\
 
 \stepcounter{ex}
-\begin{blackBlock}{\textbf{Exercicio 2.\arabic{ex}}}\label{tut2:ex:2.3}
+\begin{blackBlock}{\textbf{Exercício 2.\arabic{ex}}}\label{tut2:ex:2.3}
 
 Quantas topologias únicas existem neste arquivo?.
 
@@ -315,7 +315,7 @@ Por outro lado, se você executar:\\
 Você obterá as 35 linhas finais deste arquivo.\\
 
 \stepcounter{ex}
-\begin{blackBlock}{\textbf{Exercicio 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
+\begin{blackBlock}{\textbf{Exercício 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
 
 Execute os comandos abaixo e para cada um deles descreva quais tarefas ele efetuam:\\
  
@@ -359,7 +359,7 @@ ou ainda:
 Após evocar o comando \texttt{less}, a tecla \textsc{enter} faz com que a rolagem do documento ocorra linha por linha ao passo que a tecla \textsc{Page Down} apresenta a página seguinte. Para sair do \texttt{less} basta pressionar a tecla \texttt{q}. Há dois comandos que você deve saber para o comando \texttt{less}. Se você digitar ``\texttt{/}'' seguido por qualquer padrão de busca (seja uma palavra ou uma expressão regular [Seção \ref{tut2:regex}, abaixo]), \texttt{less} executa a busca a partir da segunda linha exibida na tela. Se você digitar ``\texttt{?}'' seguido por qualquer padrão,  \texttt{less} executará a busca no sentido reverso.\\
 
 \stepcounter{ex}
-\begin{blackBlock}{\textbf{Exercicio 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
+\begin{blackBlock}{\textbf{Exercício 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
 
 Examine o arquivo \texttt{garli\_screen.log} usando o comando \texttt{less} e busque pela palavra \texttt{best}. Em qual réplica desta análise encontra-se a melhor solução?
 \begin{center}
@@ -412,7 +412,7 @@ Uma expressão regular, em ciências da computação, define um padrão a ser us
 Antes de entendermos como as \textsc{RegEx} são expressas e usadas, é necessário introduzir alguns termos. \textbf{Caracteres literais}, \textit{literals}, é um conjunto de caracteres que usamos em uma busca, por exemplo, para encontrar \textit{inu} em \textit{Linux}, \textit{inu} é uma sequência de caracteres (em computação definida como \textit{string}) literais. \textbf{Meta-caráter}, \textit{meta character}, é um ou mais caracteres especiais que possuem um significado único e não são usados como \textbf{caracteres literais} na busca, ou define um \textbf{meta-caráter}. Por exemplo, no item \ref{tut2:text:editors:texttools:grep:ex2} de \ref{tut2:text:editors:texttools:grep} os termos ``\texttt{.}'' e ``\texttt{*}'' são exemplos de \textbf{meta-caracteres}. \textbf{Sequência de escape}, \textit{scape sequence}, é uma forma de indicar que nós queremos usar \textbf{meta-caracteres} como \textbf{caracteres literais}. Em \textsc{RegEx} uma sequência de escape envolve a inserção de ``\textbackslash {}'' anterior a um \
 \textbf{meta-caráter}. Por exemplo, para encontrar um ``\texttt{.}'' ou um ``\texttt{*}'' em um texto é necessário o uso das sequências de escape ``\texttt{\textbackslash .}'' e ``\texttt{\textbackslash *}'', respectivamente. A \textbf{sequência de caracteres alvo}, \textit{target string}, define a sequência de caracteres que estamos buscando e o \textbf{padrão de busca}, \textit{search pattern} ou \textit{construct}, descreve a expressão que estamos usando para buscar a \textbf{sequência de caracteres alvo}.\\
 
-Há três componentes importantes em \textsc{RegEx}: âncoras, conjunto de caracteres e modificadores. \textbf{Âncoras} são usadas para especificar a posição do padrão em relação a uma linha de texto e, por definição, são meta-caracteres. \textbf{Conjunto de caracteres} correspondem a um ou mais caracteres em uma única posição, e aqui podem ser expressos caracteres literais e/ou meta-caracteres. \textbf{Modificadores} especificam quantas vezes o conjunto de caracteres anterior é repetido e, também são considerados meta-caracteres. Um exemplo simples que demonstra todos os três componentes é a expressão regular ``\texttt{\^{}\#*}''. O acento circunflexo é uma âncora que indica o início da linha. O caráter ``\texttt{\#}'' é um conjunto de caracteres simples que corresponde ao de um único caráter ``\texttt{\#}''. O asterisco é um modificador de ``\texttt{\#}'' -- acentando zero ou mais ocorência deste caráter. Esta é uma expressão regular inútil, mas exemplifica os componentes frequentemente encontrados em \textsc{RegEx}.\\
+Há três componentes importantes em \textsc{RegEx}: âncoras, conjunto de caracteres e modificadores. \textbf{Âncoras} são usadas para especificar a posição do padrão em relação a uma linha de texto e, por definição, são meta-caracteres. \textbf{Conjunto de caracteres} correspondem a um ou mais caracteres em uma única posição, e aqui podem ser expressos caracteres literais e/ou meta-caracteres. \textbf{Modificadores} especificam quantas vezes o conjunto de caracteres anterior é repetido e, também são considerados meta-caracteres. Um exemplo simples que demonstra todos os três componentes é a expressão regular ``\texttt{\^{}\#*}''. O acento circunflexo é uma âncora que indica o início da linha. O caráter ``\texttt{\#}'' é um conjunto de caracteres simples que corresponde ao de um único caráter ``\texttt{\#}''. O asterisco é um modificador de ``\texttt{\#}'' -- aceitando zero ou mais ocorrência deste caráter. Esta é uma expressão regular inútil, mas exemplifica os componentes frequentemente encontrados em \textsc{RegEx}.\\
 
 Vamos entender as duas instâncias em que foram utilizadas \textsc{RegEx} no item \ref{tut2:text:editors:texttools:grep:ex2} acima e entender os componentes das \textsc{RegEx} utilizadas. Ao executarmos o comando  \texttt{grep '\^{}Information .* search' onychophora\_poy\_std.err} a \textsc{RegEx} está contida entre aspas, ``\texttt{\^{}}'', ``\texttt{.}'' e ``\texttt{*}'' são \textbf{meta-caracteres} - dentre os quais ``\texttt{\^{}}'' é uma âncora e ``\texttt{*}'' é um \textbf{modificador}, ao passo que ``\texttt{Information}'' e ``\texttt{search}'' são \textbf{caracteres literais}. No comando \texttt{grep '\^{}Information .*\textbackslash d*\textbackslash stimes' onychophora\_poy\_std.err}, \texttt{``times''} é um novo \textbf{caráter literal} e \texttt{``\textbackslash d''} \texttt{``\textbackslash s''} são novos \textbf{meta-caracteres} expressos como \textbf{sequência de escape}.\\
 
@@ -424,7 +424,7 @@ primeiro caráter em uma expressão regular. O ``\texttt{\$}'' é apenas uma ân
 Para ilustrar o conceito de âncoras, vamos executar uma busca no arquivo \texttt{random\_trees.tre} para identificar em quantas topologias os táxons \texttt{A}, \texttt{B}, \texttt{C} e \texttt{D} estão na raiz.\\
 
 \stepcounter{ex}
-\begin{blackBlock}{\textbf{Exercicio 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
+\begin{blackBlock}{\textbf{Exercício 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
 
 Execute o seguinte comando:\\
 \shellcmd{egrep A random\_trees.tre}\\
@@ -450,7 +450,7 @@ Qual e a fução do pipe (\textit{i.e.}, ``\texttt{|}'') nesta \textsc{RegEx}?
 \vspace{15pt}
 
 \stepcounter{ex}
-\begin{blackBlock}{\textbf{Exercicio 2.\arabic{ex}}}\label{tut2:ex:9.\arabic{ex}}
+\begin{blackBlock}{\textbf{Exercício 2.\arabic{ex}}}\label{tut2:ex:9.\arabic{ex}}
 
 A opção ``\texttt{-c}'' do \texttt{egrep}, faz com que esse comando retorne o número de linhas que contém o padrão de busca que você usou. Isto posto, você deverá anotar abaixo o número de topologias que os táxons \texttt{A}, \texttt{B}, \texttt{C} e \texttt{D} estão na raiz.\\
 
@@ -502,7 +502,7 @@ A opção ``\texttt{-c}'' do \texttt{egrep}, faz com que esse comando retorne o 
 As Tabelas \ref{tut2:table:classes}, \ref{tut2:table:scape} e \ref{tut2:table:multiple} contém padrões de \textsc{RegEx} relacionados com classes de caracteres pré-definidos, caracteres de escape e modificadores. Esta é uma pequena amostra de meta-caracteres disponíveis para expressar padrões de busca em \textsc{RegEx}. O uso de \textsc{RegEx} é pessoal, pois basta examinar alguns destes meta-caracteres para perceber que há diversas maneiras de expressar um mesmo padrão de busca. Para o propósito deste curso, é importante que vocês saibam o que é uma \textsc{RegEx} e como elas funcionam e podem ser usadas. Para atingir este objetivo, alguns poucos exemplos serão apresentados a seguir. Você verá que alguns desses meta-caracteres são usados frequentemente e que o domínio de alguns poucos elementos de \textsc{RegEx} pode ser uma ferramenta muito vantajosa NO SEU DIA A DIA. Como só se aprende na prática, vamos fazer algumas tentativas de utilizar \textsc{RegEx} para extrair algumas informações de alguns arquivos.\\
 
 \stepcounter{ex}
-\begin{blackBlock}{\textbf{Exercicio 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
+\begin{blackBlock}{\textbf{Exercício 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
 \begin {myindentpar}{0.5cm}
 \begin{enumerate}[\itshape i.]
  \item{Considere a seguinte topologia gerada por TNT:}\label{tut2:regex:modifiers:ex1}\\
@@ -648,7 +648,7 @@ As Tabelas \ref{tut2:table:classes}, \ref{tut2:table:scape} e \ref{tut2:table:mu
 
 \subsection{Introdução e sintaxe básica:}\label{tut2:sed:intro}
 
-	\textbf{Sed}, de \textit{\textbf{s}tream \textbf{ed}itor}, é uma das ferramentas mais antigas e usadas em Linux. Ele é um editor não interativo e orientado por linhas. Isso significa que os comandos de edição são inseridos por comandos de linhas ou estão contidos em um arquivo. \textbf{Sed} manipula os arquivos sem modificar o original e caso você queira manter a cópia modificada basta direcionar o resultado do comando para um outro arquivo (veja Tutorial \ref{tut1}, seção \ref{tut1:pipered}). \textbf{Sed} é fundamentalmente uma ferramenta para substituir textos e sua vantagem está no fato de que ele lê linha por linha, diferentemente editores de texto convencionais que carrega todo o arquivo inicialmente. Por esta razão, \textbf{Sed} é capaz lidar com arquivos muito grandes, o que pode ser impraticável utilizando os editores de texto que você tem mais familiaridade. Considere por exemplo o arquivo \texttt{sed\_exercicio\_1.txt} no diretório \texttt{tutorial\_02}. Este arquivo contém 5000 dados para 20 gêneros que variam de 1 a 20 espécies. No total, este documento possui 180 linhas, 900.360 palavras e 5.403.645 de caracteres! Para cada linha você encontra dados para um gênero, uma espécie e 5000 medidas obedecendo o seguinte formato: \texttt{Genus\_01 species\_0	0.869	0.610	0.904	...}. Suponha que você desejasse, substituir todos os pontos (``\texttt{.}'') por vírgulas (``\texttt{,}''). Como você faria isso? A edição convencional em um computador com 8 processadores e 24 G de RAM tomou mais de 9 minutos entre abrir, substituir e salvar a cópia modificada! Outro benefício do \textbf{Sed} que você pode criar arquivos contendo comandos de substituição para tarefas repetitivas, algumas das quais você se deparará durante este curso.\\
+	\textbf{Sed}, de \textit{\textbf{s}tream \textbf{ed}itor}, é uma das ferramentas mais antigas e usadas em Linux. Ele é um editor não interativo e orientado por linhas. Isso significa que os comandos de edição são inseridos por comandos de linhas ou estão contidos em um arquivo. \textbf{Sed} manipula os arquivos sem modificar o original e caso você queira manter a cópia modificada basta direcionar o resultado do comando para um outro arquivo (veja Tutorial \ref{tut1}, seção \ref{tut1:pipered}). \textbf{Sed} é fundamentalmente uma ferramenta para substituir textos e sua vantagem está no fato de que ele lê linha por linha, diferentemente editores de texto convencionais que carrega todo o arquivo inicialmente. Por esta razão, \textbf{Sed} é capaz lidar com arquivos muito grandes, o que pode ser impraticável utilizando os editores de texto que você tem mais familiaridade. Considere por exemplo o arquivo \texttt{sed\_Exercício\_1.txt} no diretório \texttt{tutorial\_02}. Este arquivo contém 5000 dados para 20 gêneros que variam de 1 a 20 espécies. No total, este documento possui 180 linhas, 900.360 palavras e 5.403.645 de caracteres! Para cada linha você encontra dados para um gênero, uma espécie e 5000 medidas obedecendo o seguinte formato: \texttt{Genus\_01 species\_0	0.869	0.610	0.904	...}. Suponha que você desejasse, substituir todos os pontos (``\texttt{.}'') por vírgulas (``\texttt{,}''). Como você faria isso? A edição convencional em um computador com 8 processadores e 24 G de RAM tomou mais de 9 minutos entre abrir, substituir e salvar a cópia modificada! Outro benefício do \textbf{Sed} que você pode criar arquivos contendo comandos de substituição para tarefas repetitivas, algumas das quais você se deparará durante este curso.\\
 
 \textit{Sintaxe:}\\
  \shellcmd{sed -opção '\textsc{comando\_de\_edição'} arquivo\_de\_entrada}\\
@@ -764,7 +764,7 @@ Uau! Vamos entender as \textsc{RegEXs} utilizadas acima. Meu padrão de busca é
 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercício 2.\arabic{ex}}}\label{tut2:ex:2.\arabic{ex}}
-Quanto tempo você leva para substituir os pontos (\textit{i.e.},``\texttt{.}'') por vírgulas (\textit{i.e.},\texttt{``,''}) do arquivo sed\_exercicio\_1.txt?
+Quanto tempo você leva para substituir os pontos (\textit{i.e.},``\texttt{.}'') por vírgulas (\textit{i.e.},\texttt{``,''}) do arquivo sed\_Exercício\_1.txt?
 
 \begin{center}
 \line(1,0){350}\\

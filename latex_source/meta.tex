@@ -1,5 +1,4 @@
 %%% PREAMBLE %%%
-
 %% FORMATAÇÃO BÁSICA
 \usepackage[english,brazilian]{babel} % Suporte para inglês e português (hifenação e caracteres especiais)
 \usepackage[utf8]{inputenc} % Codificação do arquivo
@@ -85,7 +84,13 @@
 \makesavenoteenv{tabular} % Notas criadas nas tabelas ficam no fim das tabelas
 
 %% LINKS DINÂMICOS
-\usepackage{hyperref} % Suporte para hipertexto, links para referências e figuras
+% ref packages
+\usepackage{nameref}
+% folowing  must be in this order
+\usepackage{varioref}
+\usepackage{hyperref}
+\usepackage{cleveref}
+%\usepackage{hyperref} % Suporte para hipertexto, links para referências e figuras
 \setcounter{secnumdepth}{6}
 \setcounter{tocdepth}{6}
 % Abaixo, configurações dos links e metatags do PDF a ser gerado
