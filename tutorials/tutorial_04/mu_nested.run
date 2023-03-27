@@ -1,0 +1,13 @@
+mxram 512;
+macro =;
+proc zilla.tnt
+hold 10000;
+log mu_nested.txt;
+loop 10+10 100
+  loop 1+1 10
+    mu: rep #1 hold #2;
+    Mu;
+  stop
+stop
+log/;
+macro -;

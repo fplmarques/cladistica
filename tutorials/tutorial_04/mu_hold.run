@@ -1,0 +1,11 @@
+mxram 512;
+macro =;
+proc zilla.tnt
+hold 10000;
+log mu_hold.txt;
+loop 10+1 20
+    mu: rep 5 hold #1;
+    mu;
+stop
+log/;
+macro -;

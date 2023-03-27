@@ -1,0 +1,5 @@
+tread
+'topologias para o exercicio_1.tnt' 
+(taxon_1 (taxon_3 (taxon_2 (taxon_4 (taxon_5 taxon_6)))))* 
+(taxon_1(taxon_5(taxon_3(taxon_2(taxon_4 taxon_6)))))* 
+(taxon_1 (taxon_2 (taxon_3 (taxon_6 (taxon_4 taxon_5)))));

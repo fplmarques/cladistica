@@ -1,0 +1,11 @@
+mxram 512;
+macro =;
+proc zilla.tnt
+hold 10000;
+log mu_rsa.txt;
+loop 10+10 100
+    mu: rep #1 hold 5;
+    mu;
+stop
+log/;
+macro -;
