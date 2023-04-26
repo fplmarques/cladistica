@@ -1,0 +1,14 @@
+xread
+'Tabela 1 Coddington & Scharff (1994: Cladistics 10:415-423)'
+5 7
+taxon_A	00000
+taxon_B	00001
+taxon_C	10011
+taxon_D	01111
+taxon_E	01111
+taxon_F	11111
+taxon_G	11111
+;
+taxname=;
+collapse [;
+

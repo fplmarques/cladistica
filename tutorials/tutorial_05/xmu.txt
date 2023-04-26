@@ -1,0 +1,67 @@
+ 
+XMULT
+    Run multiple replications, using sectorial searches, drifting,  ratchet 
+    and fusing combined.  Options are: 
+      hits N             produce N hits to best length and stop 
+      replications N     for each hit, search initially with N replications 
+      [no]targetscore N  search until score N found (only with fusing) 
+      [no]update         do not update targetscore 
+      [no]giveupscore N  give up search as soon as score N found 
+      [no]rss            use random sectorial searches (settings with 
+                         sectsch:options) 
+      [no]css            use constraint sectorial searches (settings with 
+                         sectsch:options) 
+      [no]xss            use exclusive sectorial searches (settings with 
+                         sectsch:options) 
+      [no]fuse           use fusing (settings with tfuse:options) 
+      [no]gfuse N        every N hits, fuse all trees (=score check) 
+      [no]dumpfuse       if fusing fails to produce trees of target score, 
+                         dump the trees produced by fusing (may prevent 
+                         "clogging" of subsequent fuses by keeping only the 
+                         most distinct trees) 
+      [no]drift N        use N cycles of drifting (settings with drif:options) 
+      [no]ratchet N      use N cycles of ratchet (settings with rat:options) 
+      [no]autoconst N    use consensus of previous run and initial stages of 
+                         current as constraint for initial stages. 1=previous 
+                         and wagner, 2=previous and SPR, 3=previous and TBR.  
+                         The first replication of a new hit is never 
+                         constrained (i.e. hits are totally independent). 
+                         Note that level=2 defaults to 1 when "skipspr" 
+                         is on. 
+      [no]xmix           after unsuccesful fusing, start a new set of  
+                         replications as autoconstrained (otherwise, don't) 
+      [no]prvmix         if trees existed in memory before running xmult, use 
+                         last one to autoconstrain first xmult replication 
+      [no]consense N     consense untill consensus is stabilized N times 
+      conbase N          base hits to check for consensus stabilizations 
+                         (larger numbers make more reliable estimations) 
+      confactor N        factor to increase number of hits to check consensus 
+                         stabilization (10-100, larger numbers: more reliable) 
+      conmax N           maximum new hits to recheck consensus (default=12) 
+      [no]keepall        keep trees from all replications.  This has a different 
+                         meaning when "hits" is 1 (=default) and when "hits" >1. 
+                         When "hits" = 1, it is trees from each of the RAS + TBR + 
+                         SS or DFT or RAT, in addition to the trees resulting from 
+                         fusing those.  When "hits" > 1, then it means the trees 
+                         resulting from fusing the initial starting trees for each 
+                         of starting points.  Thus, to find N trees, each resulting 
+                         from S starting points (RAS+TBR+etc) and fusing, use 
+                         "xmult = hit N noupdate rep S keepall". 
+      [no]retouch N      before trying new replications, repeat sectorial 
+                         search and ratchet/drifting 
+      level N            set level of search (0-10). Use 0-2 for easy data 
+                         sets, 2-5 for medium, above 5 for difficult 
+      chklevel N         check search parameters during run, every N hits. 
+                         The parameters are increased or decreased, starting 
+                         from user settings.  If N is preceded by +F (between 
+                         0 and 2), the entire level is changed by F. If N is 
+                         preceded by -, user settings are starting point 
+      [no]multiply       after hitting target score, find additional trees 
+                         by fusing suboptimal with optimal trees 
+      [no]verbose        produce verbose reports 
+    Options are set with "xmult:options;" or "xmult=options;" (using 
+    ":" only settings are changed; "=" runs as well). With "xmult:;" 
+    current settings are displayed.  If consensing, / followed by a taxon list 
+    removes the specified taxa from the consensus (this must follow all the 
+    other options).  If css, rss, and xss are specified css is done first, 
+    then rss, and xss last. 

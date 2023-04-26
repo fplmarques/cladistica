@@ -1,0 +1,18 @@
+xread
+13 10
+peixe		00000000?0010
+sapo		0110110000011
+tartaruga	1120110000010
+piramboia	00001100?0010
+salamandra	0110110000011
+crocodilo	1120112001100
+lagarto		1120112110010
+aves		1231112001100
+mamifero	1[12]41111000010
+cobra		1?20112110010
+;
+hold 1000;
+taxname=;
+collapse [;
+proc-/;
+

@@ -24,12 +24,11 @@
 \vspace{2pt}
 \end{center}
 %% TEXTO DO RESUMO
-Este tutorial visa apresentar as ferramentas mais avançadas de busca em TNT. Estas ferramentas são os algoritmos mais poderosos de TNT e garantem a esse programa muita eficiência em explorar o espaço de árvores, especialmente em bancos de dados complexos (\textit{i.e.}, grande número de terminais e caracteres). O tutorial explica brevemente os métodos implementados em TNT. No entanto, o componente teórico contido neste tutorial é superficial e o estudante é encorajado a consultar a literatura primária citada neste documento. Este tutorial também contém exercícios sobre reconstrução de estados ancestrais em topologias, bem como os comandos associados à diagnose de grupos em TNT. Eles são importantes para que o estudante tenha conhecimento de como explorar evolução de caracteres, bem como identificar os caracteres que sustentam grupos em sua análise usando este aplicativo. Os arquivos associados a este tutorial estão disponíveis em \url{http://lhe.ib.usp.br/cladistica}. Você pode baixá-los diretamente com o seguinte comando:
+Este tutorial visa apresentar as ferramentas mais avançadas de busca em TNT. Estas ferramentas são os algoritmos mais poderosos de TNT e garantem a esse programa muita eficiência em explorar o espaço de árvores, especialmente em bancos de dados complexos (\textit{i.e.}, grande número de terminais e caracteres). O tutorial explica brevemente os métodos implementados em TNT. No entanto, o componente teórico contido neste tutorial é superficial e o estudante é encorajado a consultar a literatura primária citada neste documento. Este tutorial também contém exercícios sobre reconstrução de estados ancestrais em topologias, bem como os comandos associados à diagnose de grupos em TNT. Eles são importantes para que o estudante tenha conhecimento de como explorar evolução de caracteres, bem como identificar os caracteres que sustentam grupos em sua análise usando este aplicativo. Os arquivos associados a este tutorial estão disponíveis no \href{https://github.com/fplmarques/cladistica/tree/main/tutorials/}{GitHub}. Você baixar todos os tutoriais com o seguinte comando:
 
 \begin{center}
-\small \texttt{wget http://lhe.ib.usp.br/downloads/tutorial\_05.zip}\\
+\small \texttt{svn checkout https://github.com/fplmarques/cladistica/trunk/tutorials/}\\
 \end{center}
-
 
 \newpage
 \pagestyle{fancy} % Inclui o cabeçalho definido no meta.tex
@@ -85,7 +84,7 @@ O segundo deles é o \textit{tree-fusing}. O \textit{tree-fusing} pertence a uma
 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercicio 5.\arabic{ex}}}\label{tut4:ex:5.1}
-No Tutorial \ref{tut4} fizemos uma série de buscas no arquivo \texttt{zilla.tnt} utilizando os algoritmos tradicionalmente implementados em programas filogenéticos (\textit{i.e.}, \textit{random sequence addition}, RAS ou árvore de Wagner, seguidas de refinamento por algoritmos de \textit{swap}, tais como SPR e TBR) para buscas heurísticas. Vocês devem ter observado que muito provavelmente ninguém obteve 100 topologias ao custo de 16218 passos. Neste tutorial iremos explorar a eficiência dos algoritmos descritos acima e verificar se de fato ele possibilitam um melhor resultado com a análise da matriz em \texttt{zilla.tnt}.
+No Tutorial \ref{tut4} fizemos uma série de buscas no arquivo \texttt{zilla.tnt} utilizando os algoritmos tradicionalmente implementados em programas filogenéticos (\textit{i.e.}, \textit{random addition sequence}, RAS ou árvore de Wagner, seguidas de refinamento por algoritmos de \textit{swap}, tais como SPR e TBR) para buscas heurísticas. Vocês devem ter observado que muito provavelmente ninguém obteve 100 topologias ao custo de 16218 passos. Neste tutorial iremos explorar a eficiência dos algoritmos descritos acima e verificar se de fato ele possibilitam um melhor resultado com a análise da matriz em \texttt{zilla.tnt}.
 \end{blackBlock}
 
 \begin {myindentpar}{0.3cm}

@@ -1,0 +1,7 @@
+tread 'tree(s) from TNT, for data in coddington_and_scharff_1994_matrix.tnt'
+(taxon_A (taxon_B (taxon_C (taxon_D (taxon_E (taxon_F taxon_G ))))))*
+(taxon_A (taxon_B (taxon_C (taxon_E (taxon_D (taxon_F taxon_G ))))))*
+(taxon_A (taxon_B (taxon_C ((taxon_D taxon_E )(taxon_F taxon_G )))))*
+(taxon_A (taxon_B (taxon_C (taxon_F (taxon_G (taxon_D taxon_E ))))))*
+(taxon_A (taxon_B (taxon_C (taxon_G (taxon_F (taxon_D taxon_E ))))));
+proc-;
