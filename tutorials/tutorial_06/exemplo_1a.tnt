@@ -1,0 +1,12 @@
+xread
+1 6
+taxon_A 0
+taxon_B 1
+taxon_C 2
+taxon_D 3
+taxon_E 4
+taxon_F 5
+;
+cc +0;
+collapse [;
+

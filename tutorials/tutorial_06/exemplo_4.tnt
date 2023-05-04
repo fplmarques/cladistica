@@ -1,0 +1,17 @@
+xread
+1 7
+taxon_A 0
+taxon_B 1
+taxon_C 1
+taxon_D 1
+taxon_E 1
+taxon_F 1
+taxon_G 1
+;
+collapse-;
+tread
+(taxon_A (taxon_B taxon_C taxon_D (taxon_E taxon_F taxon_G )))*
+(taxon_A ((taxon_B taxon_C) taxon_D (taxon_E taxon_F taxon_G )))*
+(taxon_A (taxon_B taxon_C taxon_D (taxon_E (taxon_F taxon_G ))));
+
+

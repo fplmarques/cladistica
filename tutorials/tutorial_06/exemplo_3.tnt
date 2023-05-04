@@ -1,0 +1,10 @@
+nstates dna;
+xread
+5 5
+taxon_1 AACTA
+taxon_2 CGCCA
+taxon_3 CGCCT
+taxon_4 CGTTT
+taxon_5 CGTTA
+;
+collapse [;
