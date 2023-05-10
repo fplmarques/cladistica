@@ -1,0 +1,152 @@
+#!/usr/bin/python3
+def main():
+    from Bio import SeqIO
+    version = str('PhyloConvert 0.0.4 - May 2022 by Fernando P. L. Marques')
+    print (' ')
+    print (version)
+    print (' ')
+    print ('############################################################################')
+    print ('#          THIS PROGRAM CONVERTS FILES FOR PHYLOGENETIC ANALYSES           #')
+    print ('#                                                                          #')
+    print ('# YOUR OPTIONS ARE:                                                        #')
+    print ('#                                                                          #')
+    print ('#   1. For GenBank (*.gb) format to FASTA/POY using accession numbers.     #')
+    print ('#   2. For GenBank (*.gb) format to FASTA/POY using terminal names.        #')
+    print ('#   3. For GenBank (*.gb) format to FASTA/POY using numbers and names.     #')
+    print ('#   4. For clean FASTA files to XREAD format (for TNT).                    #')
+    print ('#   5. For clean FASTA files to NEXUS format (for PAUP).                   #')
+    print ('#   6. Generate accession numbers list from GenBank (*.gb) file.           #')
+    print ('#   7. Generate taxon name list from GenBank (*.gb) file.                  #')
+    print ('#   8. Generate a file containing translation rules for SED.               #')
+    print ('#   x. Exit program.                                                       #')
+    print ('#                                                                          #')
+    print ('############################################################################')
+    print (' ')
+    print (' ')
+    option = input('Select the option desired: ')
+    if option == 'x':
+        exit()
+    if option == '1' or option == '3' or option == '6' : # this function takes GenBank format file and converts them to clean FASTA files using accession numbers
+        InputSeqFile = input("Type the name of the input file (GenBank format): ")
+        OutputFileName = input("Type the name of the output file: ")
+        infile = open(InputSeqFile)
+        outfile = open(OutputFileName, 'w')
+        for seq_record in SeqIO.parse(infile, "genbank"):
+            AccNum = seq_record.name                    # this line provides accession numbers for the sequences if uncommented
+            AccNum = AccNum.replace(" ","_")
+            AccNum = AccNum.replace(".","")
+            names = seq_record.annotations["organism"]
+            names = names.replace(" ","_")
+            names = names.replace(".","")
+            seqs = str(seq_record.seq)                      # this line outputs sequence data to the output_file defined above
+            if option == '1':
+               outfile.write('>'+AccNum+'\n')
+               outfile.write(seqs+'\n')
+            elif option == '3':
+                outfile.write('>'+AccNum+'_'+names+'\n')
+                outfile.write(seqs+'\n')
+            else:
+                outfile.write('>'+AccNum+'\n')
+                outfile.write(seqs+'\n')
+        infile.close()
+        outfile.close()
+        print (' ')
+        print ("I am done YO! Please, check file --> "+ OutputFileName +".")
+    if option == '2'or option == '7': # this function takes GenBank format file and converts them to clean FASTA files using taxon names
+        InputSeqFile = input("Type the name of the input file (GenBank format): ")
+        OutputFileName = input("Type the name of the output file: ")
+        infile = open(InputSeqFile)
+        outfile = open(OutputFileName, 'w')
+        for seq_record in SeqIO.parse(infile, "genbank"):
+            names = seq_record.annotations["organism"]  # this line provides taxon names for the sequences if uncommented. If so, uncomment the line above
+            names = names.replace(" ","_")
+            names = names.replace(".","")
+            seqs = str(seq_record.seq)                      # this line outputs sequence data to the output_file defined above
+            if option == '7':
+                outfile.write(names+'\n')
+            else:
+                outfile.write('>'+names+'\n')
+                outfile.write(seqs+'\n')
+        infile.close()
+        outfile.close()
+        print (' ')
+        print ("I am done YO! Please, check file --> "+ OutputFileName +".")
+    if option == '4' : # this function takes fasta files and convert them to xread format for TNT
+            InputSeqFile = input("Type the name of the input file (fasta format): ")
+            OutputFileName = input("Type the name of the output file: ")
+            infile = open(InputSeqFile)
+            outfile = open(OutputFileName, 'w')
+            outfile.write('nstates dna'+';'+'\n')
+            outfile.write('xread'+'\n')                         # writing heads in XREAD file
+            outfile.write("'"+'This is the conversion of fasta file to TNT format by '+version+"'"+'\n')
+            GetCharNum = SeqIO.parse(infile, "fasta")
+            CharNum = GetCharNum.next()
+            Chars = str(len(CharNum.seq))
+            outfile.write(Chars+'\t')
+            infile.close()
+            infile = open(InputSeqFile)
+            GetTaxNum = list(SeqIO.parse(infile, "fasta"))
+            TaxNum = str(len(GetTaxNum))
+            outfile.write(TaxNum+'\n')
+            # outfile.write('&[dna]'+'\n') # this was in earlier version, line outfile.write('nstates dna'+';'+'\n') above replaced the instruction
+            infile.close()
+            infile = open(InputSeqFile)
+            for seq_record in SeqIO.parse(infile, "fasta"):
+                terminals = str(seq_record.id)                  # var terminals receive taxon names
+                outfile.write(terminals+'\t')                   # write name in output_file followed by TAB
+                seqs = str(seq_record.seq)                      # var seqs  receive sequence data for each terminal
+                outfile.write(seqs+'\n')                        # write sequence data in output_file followed by new line
+            outfile.write(';'+'\n'+'proc/;')                            # tail for TNT file
+            infile.close()
+            outfile.close()
+            print (' ')
+            print (' ')
+            print ("I am done YO! Please, check file --> "+ OutputFileName +".")
+    if option == '5' : # this function takes fasta files and convert them to NENUX format for PAUP
+            InputSeqFile = input("Type the name of the input file (fasta format): ")
+            OutputFileName = input("Type the name of the output file (*.nex): ")
+            infile = open(InputSeqFile)
+            outfile = open(OutputFileName, 'w')
+            outfile.write('#NEXUS'+'\n')                         # writing heads in NEXUS file
+            outfile.write('['+'This is the conversion of fasta file to NEXUS format by '+version+']'+'\n'+'begin data;'+'\n')
+            GetCharNum = SeqIO.parse(infile, "fasta")
+            CharNum = GetCharNum.next()
+            Chars = str(len(CharNum.seq))
+            #outfile.write(Chars+'\t')
+            infile.close()
+            infile = open(InputSeqFile)
+            GetTaxNum = list(SeqIO.parse(infile, "fasta"))
+            TaxNum = str(len(GetTaxNum))
+            #outfile.write(TaxNum+'\n')
+            infile.close()
+            outfile.write('\t'+'dimensions ntax='+TaxNum+' nchar='+Chars+';'+'\n')
+            outfile.write('\t'+'format datatype=dna matchchar=. gap=- interleave missing=N;'+'\n'+'\t'+'options gapmode=newstate;'+'\n'+'MATRIX'+'\n')
+            infile = open(InputSeqFile)
+            for seq_record in SeqIO.parse(infile, "fasta"):
+                terminals = str(seq_record.id)                  # var terminals receive taxon names
+                outfile.write(terminals+'\t')                   # write name in output_file followed by TAB
+                seqs = str(seq_record.seq)                      # var seqs  receive sequence data for each terminal
+                outfile.write(seqs+'\n')                        # write sequence data in output_file followed by new line
+            outfile.write(';'+'\n'+'end;')                            # tail for TNT file
+            infile.close()
+            outfile.close()
+            print (' ')
+            print (' ')
+            print ("I am done YO! Please, check file --> "+ OutputFileName +".")
+    if option == '8': # this function takes GenBank format file and converts them to clean FASTA files using accession numbers
+        InputSeqFile = input("Type the name of the input file (GenBank format): ")
+        OutputFileName = input("Type the name of the output file (*.sed format): ")
+        infile = open(InputSeqFile)
+        outfile = open(OutputFileName, 'w')
+        for seq_record in SeqIO.parse(infile, "genbank"):
+            AccNum = seq_record.name                    # this line provides accession numbers for the sequences if uncommented
+            AccNum = AccNum.replace(" ","_")
+            AccNum = AccNum.replace(".","")
+            names = seq_record.annotations["organism"]
+            names = names.replace(".","")
+            seqs = str(seq_record.seq)                      # this line outputs sequence data to the output_file defined above
+            outfile.write('s/'+AccNum+'/"'+names+' ['+AccNum+']'+'"/'+'\n')
+            print (' ')
+            print (' ')
+            print ("I am done YO! Please, check file --> "+ OutputFileName +".")
+main()

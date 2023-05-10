@@ -323,8 +323,15 @@ O arquivo ''\texttt{dias\_et\_al\_2013\_accession\_numbers.csv}'' contém todos 
 \begin {myindentpar}{0.3cm}
 \begin{enumerate}[\itshape i.]
 	\item{Gerar um arquivo texto que contenha apenas os números de tombo referentes a respectiva região genômica. Para cada um dos arquivos, utilize a extensão ``\texttt{.acc}'' -- de \textit{accession} (\textit{e.g}, \texttt{12s.acc}). Esta não é uma extensão particular, somente uma sugestão para que você possa mater seus arquivos organizados.}
+ 
+    \tiny{\textbf{Dica:} Inspecione o arquico em CSV, voce poderia usar a seguinte linha de comando para extrais os números de acesso do cyt-b, que estão na segunda coluna, com a seguinte linha de comando: \texttt{tail -n +2 dias\_et\_al\_2013\_accession\_numbers.csv | cut -d',' -f5 | sed 's/"//g' > 12s.acc}}
+    \normalsize
 	\item{Utilizar a feramenta do \textit{Batch Entrez} para recuperar os registros referentes a cada um dos arquivos.}
-	\item{Salvar as sequências de cada região genômica em seus respectivos arquivos no formato \textit{GenBank (full)}. Para cada um dos arquivos, utilize a extensão ``\texttt{.gb}'' -- de \textit{GenBank} (\textit{e.g}, \texttt{12s.bg}).}
+
+    \tiny{\textbf{Atenção:} Ao fazer o download do GenBank/NCBI o repositório criará um documento chamado \texttt{sequence.gb} que será salvo no diretório de Download de seu sistema.}
+    \normalsize
+ 
+	\item{Salvar as sequências de cada região genômica em seus respectivos arquivos no formato \textit{GenBank (full)}. Para cada um dos arquivos, utilize a extensão ``\texttt{.gb}'' -- de \textit{GenBank} (\textit{e.g}, \texttt{12s.gb}).}
 \end{enumerate}
 \end{myindentpar}
 
@@ -348,7 +355,7 @@ Ao executá-lo você obterá as seguintes opções:\\
 
 \scriptsize
 
-\noindent\texttt{PhyloConvert~0.0.3~-~April~2014~by~Fernando~Marques}\\
+\noindent\texttt{PhyloConvert~0.0.4~-~May~2022~by~Fernando~Marques}\\
 
 \noindent\texttt{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
 
@@ -374,6 +381,8 @@ Ao executá-lo você obterá as seguintes opções:\\
 
 \noindent\texttt{\#~~~7.~Generate~taxon~name~list~from~GenBank~(*.gb)~file.~~~~~~~~~~~~~~~~~~\#}
 
+\noindent\texttt{\#~~~8.~Generate~a~file~containing~translation~rules~for~SED.~~~~~~~~~~~~~~~\#}
+
 \noindent\texttt{\#~~~x.~Exit~program.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\#}
 
 \noindent\texttt{\#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\#}
@@ -387,6 +396,8 @@ Ao executá-lo você obterá as seguintes opções:\\
 As três primeiras opções manipulam arquivos no formato \textit{GenBank (full)} transformando-os em arquivos FASTA. A diferença entre estas opções reside na informação que será inserida nos terminais. Por exemplo:\\
 
 \texttt{Select the option desired: 1}\\
+
+\vspace{1.cm}
 
 Resulta em:\\
 
@@ -465,117 +476,113 @@ Neste exercício você deverá gerar um arquivo no formato FASTA para cada um do
 
 A opção \texttt{-f} diz ao \texttt{sed} que as instruções de substituição estão no arquivo \texttt{12s\_sub.fas} que serão aplicadas ao arquivo \texttt{12s.fas} e o resultado será redirecionado (\texttt{>}) para o arquivo \texttt{12s\_renamed.fas}.
 
-\subsection{Verificação e edição FASTA em BioEdit}\label{tut7:handling_files:bioedit}
+\subsection{Verificação e edição FASTA em AliView}\label{tut7:handling_files:AliView}
 
-Uma vez editado os nomes dos terminais é necessário verificar as sequências nucleotídicas e, via de regra, editar o arquivo. Para isso usaremos o aplicativo chamado \href{http://www.mbio.ncsu.edu/bioedit/bioedit.html}{BioEdit} \parencite{Hall_1999}. BioEdit é uma aplicativo muito útil e intuitivo de usar. Infelizmente, a única versão disponível é  para Windows, o que requer que sua execução nos sistemas operacionais Linux e/ou OS X seja feito com o auxílio de outros programas como \href{http://www.winehq.org/}{Wine}.\\
+Uma vez editado os nomes dos terminais é necessário verificar as sequências nucleotídicas e, via de regra, editar o arquivo. Para isso usaremos o aplicativo chamado \href{https://ormbunkar.se/aliview/}{AliView} \parencite{larson_2014}. AliView é uma aplicativo muito útil e intuitivo de usar. Há outras ferramentas disponíveis para esse propósito, tais como \href{http://pbil.univ-lyon1.fr/software/seaview3.html#:~:text=SeaView%20is%20a%20graphical%20multiple,to%20locally%20improve%20the%20alignment.}{SeaView} e \href{https://www.geneious.com/}{Geneious} -- entre outros, caso ele não atenda suas necessidades. Para os propósitos de nosso curso, ele será suficiente.
 
-Para abrir o BioEdit, digite o nome do programa no painel inicial (veja Figura \ref{tut7:fig:bioedit}); você deverá obter\footnote{Alternativamente, você pode iniciar o BioEdit em um terminal simplesmente digitando ``\texttt{bioedit}'' (espere um momento, pois demora alguns segundos).}:\\
+O AliView é iniciado em um terminal. Abra um terminal e execute o comando \texttt{aliview}. Após a execução, você deverá obter a janela do programa tal qual na Figura \ref{tut7:fig:AliView}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA BIOEDIT %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA AliView %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
     %\ffigbox[\FBwidth]
        \centering
-      {\includegraphics[scale=0.3]{figures/tut7/bioedit.eps}}
-	{\caption[Bioedit: busca no Ubuntu]{Busca de BioEdit no Painel Inicial do Ubuntu.}\label{tut7:fig:bioedit}}
+      {\includegraphics[scale=0.5]{figures/tut7/aliview_01.png}}
+	{\caption[AliView: janela inicial]{Janela inicial do AliView.}\label{tut7:fig:AliView}}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA BIOEDIT %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA AliView %%%%%%%%%%%%%%%%%%%%%
 
-A execução do programa resulta em:
+Para demonstrar alguns atributos de AliView, eu irei apresentar uma série comandos no programa utilizando o arquivo \texttt{exemplo\_aliwiew\_cyt-b.fas} que encontra-se disponível no diretório \texttt{tutorial\_07}. Esse arquivo foi gerado a partir das sequências de Citocromo B de \textcite{dias_et_al_2013} após eu ter criado um arquivo FASTA (usando a opção 1) utilizando o \textit{script} \texttt{phyloconvert}, como vocês fizeram no Exercício 7.1.\\
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA BIOEDIT 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+No AliView, vá em \textbf{File > Open} File e abra o arquivo \texttt{exemplo\_aliwiew\_cyt-b.fas} que está no diretório \texttt{tutorial\_07}. Uma vez aberto, corra a barra de rolagem horizontal até o final das sequências nucleotídicas como ilustrado na Figura \ref{tut7:fig:AliView_2}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA AliView 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
     %\ffigbox[\FBwidth]
        \centering
-      {\includegraphics[scale=0.5]{figures/tut7/bioedit_2.eps}}
-	{\caption[Bioedit]{Execução inicial de BioEdit.}\label{tut7:fig:bioedit_2}}
+      {\includegraphics[scale=0.4]{figures/tut7/aliview_02.png}}
+	{\caption[AliView]{Arquivo \texttt{exemplo\_aliwiew\_cyt-b.fas} aberto no AliView.}\label{tut7:fig:AliView_2}}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA BIOEDIT 2 %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA AliView 2 %%%%%%%%%%%%%%%%%%%%%
 
-Para demonstrar alguns atributos de BioEdit, eu irei apresentar uma série comandos no programa utilizando o arquivo \texttt{exemplo\_bioedit.fas} que encontra-se disponível no diretório \texttt{tutorial\_7}. Esse arquivo foi gerado a partir das sequências de Citocromo B de \textcite{dias_et_al_2013} após eu ter criado um arquivo FASTA utilizando o \textit{script} \textit{phyloconvert}, como vocês fizeram no Exercício 7.1.\\
 
-Ao abrir o arquivo \texttt{exemplo\_bioedit.fas} em BioEdit, nota-se inicialmente que as sequências diferem em tamanho (veja Figura \ref{tut7:fig:exemplo_1}). No entanto, esse é um gene codificante para o qual as diferenças de tamanho entre estas sequências está relacionado ao sequenciamento diferencial entre táxons e não à eventos de inserções e deleções comuns em genes não codificantes\footnote{Inserções e deleções podem ocorrer em genes codificadores. Quando ocorre, no entanto, estes eventos deletam ou inserem códon - ou sejas 3 pares de bases.}. Quando esse é o caso, é necessário alinhar as sequências. Alinhamento é o processo pelo qual sequências de tamanhos diferentes são igualadas quanto ao tamanho com a inserção de \textit{gaps} (``-''). Nós iremos discutir detalhadamente algoritmos de alinhamento e a relação entre alinhamento e hipóteses filogenéticas em breve. No momento, por se tratar de uma região codificadora, a expectativa é que os \textit{gaps} sejam inseridos no começo e no final de cada sequência.\\
+Você deverá observar que no arquivo \texttt{exemplo\_aliview\_cyt-b.fas} as sequências nucleotídicas diferem de tamanho (Figura \ref{tut7:fig:AliView_2}). Estas diferenças se dão por sequenciamento diferencial das amostras. Adicionalmente, o Citocromo B é um gene codificante, onde raramente ocorrem inserções e deleções e quando ocorrem tendem a atuar sobre códon -- portanto três nucleotídios. Para que possamos proceder com análises filogenéticas desses dados é necessário alinhar essas sequências.  Alinhamento é o processo pelo qual sequências de tamanhos diferentes são igualadas quanto ao tamanho com a inserção de \textit{gaps} (``-''). Nós iremos discutir detalhadamente algoritmos de alinhamento e a relação entre alinhamento e hipóteses filogenéticas no próximo tutoria. No momento, por se tratar de uma região codificadora, a expectativa é que os \textit{gaps} sejam inseridos no começo e no final de cada sequência.\\
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+O alinhamento de sequências em AliView requer inicialmente que todas as sequências sejam selecionadas. Para fazer isso clique em \textbf{Selection > Select all}. Uma vez selecionadas, clique em \textbf{Align > Realign everything} e clique em OK para iniciar o alinhamento. Na configuração padrão de AliView, o programa de alinhamento é o \href{https://www.ebi.ac.uk/Tools/msa/muscle/}{Muscle} -- que será discutido no próximo tutorial. Quando o processo de alinhamento terminar -- indicado pela mensagem ``\texttt{Done}'', feche a janela \texttt{Align with Muscle}. O resultado final deverá ser semelhante ao que é apresentado na Figura \ref{tut7:fig:AliView_aligned}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA AliView EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[h!]
     %\ffigbox[\FBwidth]
        \centering
-      {\includegraphics[scale=0.3]{figures/tut7/exemplo_bioedit_1.eps}}
-	{\caption[Bioedit: abertura de arquivos]{Abertura de arquivos em BioEdit: \texttt{exemplo\_bioedit.fas}.}\label{tut7:fig:exemplo_1}}
+      {\includegraphics[scale=0.4]{figures/tut7/aliview_03.png}}
+	{\caption[AliView: alinhamento]{Alinhamento via Muscle em AliView das sequências em \texttt{exemplo\_aliview\_cyt-b.fas}.}\label{tut7:fig:AliView_aligned}}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA AliView EXAMPLE %%%%%%%%%%%%%%%%%%%%%
 
-O alinhamento de sequências em BioEdit requer inicialmente que todas as sequências sejam selecionadas em \texttt{Edit/Select All Sequences} ou \texttt{Ctrl+A}. Em seguida, você deve selecionar a opção de alinhamento utilizando ClustalW (\texttt{Accessory Application/ClustalW Multiple alignment}). ClustalW \parencite{Larkin_et_al_2007} é um dos programas mais utilizados para alinhamento (veja aulas subsequentes). Ao executar o alimento sem modificar nenhuma das opções de ClustalW, você deverá obter um alinhamento de acordo com a Figura \ref{tut7:fig:bioedit_aligned}.\\
+Observe que após esse procedimento todas as sequências possuem o mesmo comprimento (612 pares de base [bp]). O Muscle inseriu a maioria dos \textit{gaps} na porção inicial das sequências, chamados \textit{leading gaps}, nenhum \textit{gap} no meio das sequências, e algumas sequências com \textit{gaps} no final, estes chamados de \textit{trailling gaps}. Os \textit{gaps} iniciais e finais resultam do processo de sequenciamento diferencial para cada terminal. Se as sequências são mantidas como estão, estes \textit{gaps} podem ser considerados como um quinto estado de caráter (\textit{i.e.}, A, C, G, T e -) quando não deveriam. Desta forma, é necessário editar as regiões iniciais destas sequências. Isso pode ser feito de duas formas. Uma delas é removendo as regiões iniciais das sequências, a outra forma é substituindo os \textit{gaps} por ``\texttt{N}s''. Considere que a substituição de \textit{leading} e \textit{trailling gaps} por ``\texttt{N}'' insere ambiguidade nos dados, pois ``\texttt{N}'' é considerado como ``\texttt{?}'' durante análises filogenéticas. Por outro lado, a remoção destas regiões pode resultar na perda de dados que pode ser importante para resolver a topologia. Por exemplo, há 7 sequências em que há \~300 pares de base faltantes no final. Isso levou a inserção de muitos \textit{gaps}. Se você optar pela exclusão desta região, você perde a metade dos seus dados aproximadamente. A decisão entre remover ou substituir é arbitrária.\\
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  \vspace{-1em}
-  \begin{figure}[h!]
-    %\ffigbox[\FBwidth]
-       \centering
-      {\includegraphics[scale=0.3]{figures/tut7/bioedit_aligned.eps}}
-	{\caption[Bioedit: alinhamento]{Alinhamento via ClustalW em BioEdit das sequências em \texttt{exemplo\_bioedit.fas}.}\label{tut7:fig:bioedit_aligned}}
-  \end{figure}
+Neste exemplo iremos fazer os dois procedimentos. O primeiro deles é remover os 17 pares de base da região inicial do alinhamento. Para remover esta região no AliView basta você selecionar esta região com o mouse e pressionar \texttt{Ctrl+Del}. Você deverá obter o que é ilustrado na Figura\ref{tut7:fig:AliView_trimmed}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%
 
-Observe que após esse procedimento todas as sequências possuem o mesmo comprimento (155 pares de base [bp]). O ClustalW inseriu a maioria dos \textit{gaps} na porção inicial das sequências, chamados \textit{leading gaps}, poucos \textit{gaps} no meio das sequências, e nenhum \textit{gaps} no final, estes chamados de \textit{trailling gaps}. Os \textit{gaps} iniciais e finais resultam do processo de sequenciamento diferencial para cada terminal. Se as sequências são mantidas como estão esses \textit{gaps} podem ser considerados como um quinto estado de caráter (\textit{i.e.}, A, C, G, T e -) quando não deveriam. Desta forma, é necessário editar as regiões iniciais destas sequências. Isso pode ser feito de duas formas. Uma delas é removendo as regiões iniciais das sequências, a outra forma é substituindo os \textit{gaps} por ``\texttt{N}s''. Considere que a substituição de \textit{leading} e \textit{trailling gaps} por ``\texttt{N}'' insere ambiguidade nos dados, pois ``\texttt{N}'' é considerado como ``\texttt{?}'' durante análises filogenéticas. Por outro lado, a remoção destas regiões pode resultar na perda de dados que pode ser importante para resolver a topologia. A decisão entre remover ou substituir é arbitrária.\\
-Neste exemplo iremos fazer os dois procedimentos. Para remover regiões é necessário inicialmente passar o Bioedit para o modo de edição. Isso é feito selecionando \texttt{Edit} e \texttt{Overwrite} nas opções de \texttt{Mode} (veja Figura \ref{tut7:fig:bioedit_mode}).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA AliView EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
     %\ffigbox[\FBwidth]
        \centering
-      {\includegraphics[scale=0.5]{figures/tut7/bioedit_mode.eps}}
-	{\caption[Bioedit: modo de edição]{Modificando BioEdit para o modo de edição.}\label{tut7:fig:bioedit_mode}}
+      {\includegraphics[scale=0.4]{figures/tut7/aliview_04.png}}
+	{\caption[AliView: remoção da região inicial]{Arquivo \texttt{exemplo\_aliview\_cyt-b.fas} com a remoção dos primeiros 17 pares de base.}\label{tut7:fig:AliView_trimmed}}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA AliView EXAMPLE %%%%%%%%%%%%%%%%%%%%%
 
-Uma vez no modo de edição você será capaz de fazer as modificações necessárias. A primeira que será apresentada é a remoção das bases entre as posições 1 e 17. O primeiro passo é marcar a região pressionando a escala na posição 1 e mantendo a tecla \texttt{shift} acionada, pressione o cursor na posição 17. Isso marcará a região que você deseja remover como ilustrado na Figura \ref{tut7:fig:bioedit_mark}. Uma vez selecionada a área, basta pressionar a tecla \texttt{Delete}.
+O segundo passo será transformar os \textit{gaps} iniciais e finais em ``\texttt{N}s''. Isso pode ser feito de duas formas. A primeira delas é manualmente, mas isso pode ser indesejável quando o número de sequências é relativamente grande, a outra é usando um \textit{script} que faz isso por você. Vamos usar as duas estratégias. Para fazer isso manualmente na região inicial, basta selecionar a região de \textit{gaps} de uma determinada sequência e pressionar a tecla ``\texttt{n}''. Você deverá obter o que está ilustrado na Figura \ref{tut7:fig:AliView_init}. A segunda forma é utilizar o \textit{script} \texttt{subedgesgaps.py} para executar a mesma tarefa, mas agora na região final das sequências nucleotídicas. Para isso, eu vou salvar este alinhamento parcialmente editado em \textbf{File > Save as Fasta} sob o nome de \texttt{exemplo\_aliview\_cyt-b\_aln\_trim.fas} e vou fechar o AliView.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA AliView EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
     %\ffigbox[\FBwidth]
        \centering
-      {\includegraphics[scale=0.3]{figures/tut7/bioedit_mark.eps}}
-	{\caption[Bioedit: marcando regiões de edição]{Marcação de regiões para remoção. A posição do \textit{mouse} indica a posição final da área selecionada na escala.}\label{tut7:fig:bioedit_mark}}
+      {\includegraphics[scale=0.4]{figures/tut7/aliview_05.png}}
+	{\caption[AliView: edição da região inicial]{Inserção manual de ``\texttt{N}s'' na região inicial do alinhamento.}\label{tut7:fig:AliView_init}}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%
-
-O segundo procedimento será substituir ``\texttt{-}'' por ``\texttt{N}'' nestas regiões iniciais. Isto é feito simplesmente editando manualmente cada sequência. Basta colocar o cursor no inicio na sequência que se quer digitar e digitar quantos ``\texttt{N}s'' forem necessários. Como você está no modo ``\texttt{Overwrite}'', você irá substituir os ``\texttt{-}s'' por ``\texttt{N}s''. O resultado final é ilustrado na Figura \ref{tut7:fig:bioedit_edited}.\\
-
-No entanto, a inserção de ``\texttt{N}s'' pode tomar um tempo e ser extremamente tediante. Uma alternativa seria salvar o arquivo alinhado e editado (\textit{i.e.}, com regiões removidas) -- preferencialmente com o nome diferente do original -- e utilizar um \textit{script} que desempenhe essa tarefa. No diretório deste tutorial há um \textit{script} para substituir \textit{leading} e \textit{tralling gaps} por ``\texttt{N}s''. O \textit{script} é chamado \texttt{subedgesgaps.py}. Você deverá executá-lo  em um terminal utilizando a seguinte linha de comando, por exemplo:\\
-
-\shellcmd{python3 subedgesgaps.pl -i 12s\_aln.fas > 12s\_aln\_mod.fas}\\
-
-Onde \texttt{12s\_aln.fas} é o arquivo que você editou no BioEdit e \texttt{12s\_aln\_mod.fas} seria esse arquivo modificado, no qual \textit{leading} e \textit{tralling gaps} foram substituidos por ``\texttt{N}s''. Como esse \textit{script} não foi testado agressivamente, recomenda-se inspecionar o resultado visualizando o arquivo de saída em BioEdit.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA AliView EXAMPLE %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA AliView EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
     %\ffigbox[\FBwidth]
        \centering
-      {\includegraphics[scale=0.3]{figures/tut7/bioedit_edited.eps}}
-	{\caption[Bioedit: Edição final de \textit{gaps} inicias]{Edição final de \textit{gaps} inicias para as sequências em \texttt{exemplo\_bioedit.fas}.}\label{tut7:fig:bioedit_edited}}
+      {\includegraphics[scale=0.4]{figures/tut7/aliview_06.png}}
+	{\caption[AliView: edição da região final]{Inserção de ``\texttt{N}s'' na região final do alinhamento utilizando o \textit{script} \texttt{subedgesgaps.py}.}\label{tut7:fig:AliView_end}}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA AliView EXAMPLE %%%%%%%%%%%%%%%%%%%%%
 
-Completadas estas tarefas, basta salvar o arquivo editado -- preferencialmente sob outro nome -- e o arquivo pode ser transformado para o formato compatível com o programa de inferência filogenética que deseja. Uma última ponderação sobre o exemplo acima. Observe que ainda restam \textit{gaps} internos nas sequências, o que não é compatível com o que deveríamos observar em genes codificadores. A existência desses \textit{gaps} é decorrente da sequência de \textit{Odontophrynus\_carvalhoi}. Para esse terminal, o \textit{gap} na posição 62 e a base \texttt{G} da posição 76 fogem do padrão observado nos demais terminais e muito provavelmente são erros de leitura no sequenciamento.\\
+Agora vamos editar a parte final deste alinhamento utilizando o \textit{script} \texttt{subedgesgaps.py}. Essa operação é relativamente simples. Em um terminal execute o seguinte comando:
+
+\shellcmd{python3 subedgesgaps.pl -i exemplo\_aliview\_cyt-b\_aln\_trim.fas > exemplo\_aliview\_cyt-b\_aln\_trim\_ed.fas}\\
+
+
+Se abrirmos o arquivo \texttt{exemplo\_aliview\_cyt-b\_aln\_trim\_ed.fas} no AliView e observarmos o final do alinhamento iremos ver que todos aqueles \textit{gaps} terminais foram preenchidos com ``\texttt{N}s'' como ilustrado na Figura \ref{tut7:fig:AliView_end}. Essa estratégia poderia ter sido adotada logo no início,  após a deleção dos primeiros 17 pares de base. A operação anterior foi simplesmente para demonstrar que o AliView permite a edição das sequências manualmente.
+
+
+Recomendo que em cada etapa de edição parcial você salve o arquivo editado sob outro nome. Geralmente eu uso a notação ``\texttt{\_aln}'' para arquivos editados, ``\texttt{\_trim}'' para arquivos em que eu removi as regiões iniciais e\/ou finais (de \textit{trimmed}) e ``\texttt{\_ed}'' quando eu implemento edições. Isso possibilita que você volte a alguma etapa anterior caso detecte algum erro. Seu objetivo é chegar a uma edição final no qual o arquivo está no formato compatível com o programa de inferência filogenética que você deseja utilizar, incluindo como as regiões de inserção e deleção devam ser tratadas. Uma última ponderação sobre o exemplo acima; em alguns casos, o alinhamento apresentará \textit{gaps} internos. Para genes ribossomais, estes devem ser tratados como quinto estado de caráter. Em regiões codificantes, a existência desses \textit{gaps} não é usual e deve ser acompanhada de \textit{triplets} -- três \textit{gaps} via de regra.
+
+\vspace{0.5cm}
 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercício 7.\arabic{ex}}}\label{tut7:ex:ex3}
 
-Para que você se familiarize com o BioEdit, você deverá editar e salvar as edições de todos os arquivos que você gerou no Exercício 7.1.
+Para que você se familiarize com o AliView, você deverá editar e salvar as edições de todos os arquivos que você gerou no Exercício 7.1.
 
 \end{blackBlock}
 
@@ -606,6 +613,8 @@ Transformar um arquivo FASTA em um arquivo passível de análises filogenéticas
 
 
 \normalsize
+
+\vspace{0.5cm}
 
 Neste exemplo temos 4 terminais com sequências de 20 pares de base. A edição deste arquivo para que seja passível de análise filogenética em TNT é simples e pode ser feita manualmente. Veja como seria:\\
 
@@ -669,7 +678,7 @@ Como vocês viram na seção \ref{tut7:handling_files:phyloconvert}, o \textit{s
     \href{https://code.google.com/p/sequencematrix/}{SequenceMatrix}
 	\parencite{Vaidya_et_all_2010} é um aplicativo relativamente simples, mas muito útil para transformar arquivos FASTA em outros formatos. O aplicativo também permite concatenar bancos de dados distintos de forma muito amigável. \href{https://code.google.com/p/sequencematrix/}{SequenceMatrix} tem uma série de funções que não serão exploradas em detalhe neste tutorial, consulte a página do aplicativo e o trabalho de \textcite{Vaidya_et_all_2010} para maiores informações. Vejamos como ele funciona considerando as três partições ilustradas na Figura \ref{tut7:fig:partitions}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA AliView EXAMPLE %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
   \begin{figure}[H]
     %\ffigbox[\FBwidth]
@@ -678,7 +687,7 @@ Como vocês viram na seção \ref{tut7:handling_files:phyloconvert}, o \textit{s
 	{\caption[Três exemplos de partições de dados]{Partições de dados utilizadas no exemplo de SequenceMatrix. As duas primeiras partições estão em formato FASTA. A terceira partição é uma arquivo para dados morfológicos no formato \texttt{xread} de TNT. Observe que a terceira partição contém um terminal a mais que as demais.}\label{tut7:fig:partitions}}
   \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA AliView EXAMPLE %%%%%%%%%%%%%%%%%%%%%
 
 A execução do \texttt{SequenceMatrix} é feita do terminal da sequinte forma:\\
 
@@ -833,7 +842,7 @@ Neste exercício você deverá transformar os arquivos que gerou no Exercício 7
 \line(1,0){400}\\
 \line(1,0){400}\\
 \end{center}
-
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% HERE ENDS TEXT AND ADDS REFERENCES %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Referências}\label{tut7:refs}
 \printbibliography[heading=none]
