@@ -569,7 +569,7 @@ O segundo passo será transformar os \textit{gaps} iniciais e finais em ``\textt
 
 Agora vamos editar a parte final deste alinhamento utilizando o \textit{script} \texttt{subedgesgaps.py}. Essa operação é relativamente simples. Em um terminal execute o seguinte comando:
 
-\shellcmd{python3 subedgesgaps.pl -i exemplo\_aliview\_cyt-b\_aln\_trim.fas > exemplo\_aliview\_cyt-b\_aln\_trim\_ed.fas}\\
+\shellcmd{./subedgesgaps.pl -i exemplo\_aliview\_cyt-b\_aln\_trim.fas > exemplo\_aliview\_cyt-b\_aln\_trim\_ed.fas}\\
 
 
 Se abrirmos o arquivo \texttt{exemplo\_aliview\_cyt-b\_aln\_trim\_ed.fas} no AliView e observarmos o final do alinhamento iremos ver que todos aqueles \textit{gaps} terminais foram preenchidos com ``\texttt{N}s'' como ilustrado na Figura \ref{tut7:fig:AliView_end}. Essa estratégia poderia ter sido adotada logo no início,  após a deleção dos primeiros 17 pares de base. A operação anterior foi simplesmente para demonstrar que o AliView permite a edição das sequências manualmente.
