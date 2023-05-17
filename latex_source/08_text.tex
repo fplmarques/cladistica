@@ -24,7 +24,7 @@
 \vspace{2pt}
 \end{center}
 %% TEXTO DO RESUMO
-O objetivo deste tutorial é apresentar os conceitos associados ao alinhamento múltiplo de sequências nucleotídicas e subsequente análise filogenética. Neste tutorial iremos avaliar os resultados de três programas tradicionalmente utilizados para produzir alinhamentos (Clustalw,Clustal--$\Omega$ Muscle e MAFFT) e alguns dos componentes analíticos comuns a estes programas. Este tutorial requer a execução de uma série de exercícios e a avaliação dos resultados obtidos frente a leitura do artigo de Phillips \textit{et al.} (2000). Ao completar este tutorial, o estudante terá uma visão geral dos algoritmos e estratégias de alinhamento múltiplo disponíveis para análises filogenéticas dentro do conceito de homologia estática, bem como dos problemas associados a esta prática em inferência filogenética. Os arquivos associados a este tutorial estão disponíveis no \href{https://github.com/fplmarques/cladistica/tree/main/tutorials/}{GitHub}. Você baixar todos os tutoriais com o seguinte comando:
+O objetivo deste tutorial é apresentar os conceitos associados ao alinhamento múltiplo de sequências nucleotídicas e subsequente análise filogenética. Neste tutorial iremos avaliar os resultados de três programas tradicionalmente utilizados para produzir alinhamentos (Clustalw, Clustal--$\Omega$, Muscle e MAFFT) e alguns dos componentes analíticos comuns a estes programas. Este tutorial requer a execução de uma série de exercícios e a avaliação dos resultados obtidos frente a leitura do artigo de Phillips \textit{et al.} (2000). Ao completar este tutorial, o estudante terá uma visão geral dos algoritmos e estratégias de alinhamento múltiplo disponíveis para análises filogenéticas dentro do conceito de homologia estática, bem como dos problemas associados a esta prática em inferência filogenética. Os arquivos associados a este tutorial estão disponíveis no \href{https://github.com/fplmarques/cladistica/tree/main/tutorials/}{GitHub}. Você baixar todos os tutoriais com o seguinte comando:
 
 \begin{center}
 \small \texttt{svn checkout https://github.com/fplmarques/cladistica/trunk/tutorials/}\\
@@ -85,14 +85,14 @@ Observe que estes dois alinhamentos propõem diferentes séries de transformaç�
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA BIOEDIT EXAMPLE %%%%%%%%%%%%%%%%%%%%%
 
-Um dos conceitos mais importantes relacionados aos procedimentos de alinhamento é compreendê-lo como um processo de inferência similar às estimativas de hipóteses filogenéticas. Pares de bases (\textit{i.e.}, \texttt{A}, \texttt{C}, \texttt{G} e \texttt{T}) são observações, mesmo que indiretamente apresentadas pelos cromatogramas de sequenciamento. Os \textit{gaps}, por outro lado, são inseridos durante o processo de alinhamento para traçar as correspondências necessárias -- dentro do contexto de homologia estática \parencite{Wheeler_2001} -- para proceder com a análise filogenética. Igualmente importante é reconhecer que a inserção de \textit{gaps} postulam eventos de inserção e deleções (\textit{i.e.}, \textbf{INDELs}), eventos históricos que consequentemente possuem informação filogenética. Isso é relevante, pois requer que \textit{gaps} sejam tratados como um quinto estado de caráter em análises filogenéticas de sequências nucleotídicas.
+Um dos conceitos mais importantes relacionados aos procedimentos de alinhamento é compreendê-lo como um processo de inferência similar às estimativas de hipóteses filogenéticas. Pares de bases (\textit{i.e.}, \texttt{A}, \texttt{C}, \texttt{G} e \texttt{T}) são observações, mesmo que indiretamente apresentadas pelas plataformas de sequenciamento. Os \textit{gaps}, por outro lado, são inseridos durante o processo de alinhamento para traçar as correspondências necessárias -- dentro do contexto de homologia estática \parencite{Wheeler_2001} -- para proceder com a análise filogenética. Igualmente importante é reconhecer que a inserção de \textit{gaps} postulam eventos de inserção e deleções (\textit{i.e.}, \textbf{INDELs}), eventos históricos que consequentemente possuem informação filogenética. Isso é relevante, pois requer que \textit{gaps} sejam tratados como um quinto estado de caráter em análises filogenéticas de sequências nucleotídicas.
 
 Neste tutorial iremos explorar os principais conceitos associados ao procedimento de alinhamento de sequências nucleotídicas. O tutorial seguirá um formato distinto do que vocês estão acostumados até então. Durante o tutorial vocês farão uma série de exercícios cujo objetivo é apresentar a vocês algumas das ferramentas disponíveis para alinhamentos múltiplos, entender os componentes metodológicos associados aos alinhamentos e verificar como as premissas de alinhamento impactam os resultados de análises filogenéticas. No final deste tutorial você encontrará uma série de perguntas que deverão ser respondidas para a próxima aula em referências ao artigo de \textcite{Phillips_et_al_2000}.
 
 
 \section{Alinhamento, aplicativo e topologias}\label{tut8:msa}
 
-\subsection{Alinhamento manual no Bioedit}\label{tut8:msa:man}
+\subsection{Alinhamento manual no AliView}\label{tut8:msa:man}
 
 Não é incomum encontrarmos publicações nas quais o alinhamento foi efetuado integralmente ou parcialmente à mão. Os chamados alinhamentos ``\textit{by eye}'' são menos frequentes atualmente, isso é fato, mas seus defensores argumentavam que nosso cérebro era capaz de tomar decisões mais prudentes que os algoritmos disponíveis para essa tarefa. Há uma série de problemas com essa prática que iremos discutir na próxima aula \parencite[veja ][]{Phillips_et_al_2000}. \\
 
@@ -100,13 +100,13 @@ Não é incomum encontrarmos publicações nas quais o alinhamento foi efetuado 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercício 8.\arabic{ex}}}\label{tut8:ex:8.1}
 
-Você deverá fazer o alinhamento manual das sequências no arquivo \texttt{seqdata1.fas} utilizando BioEdit. Caso tenha problemas em utilizar esse programa, revise a seção \ref{tut7:handling_files:bioedit} do Tutorial \ref{tut7}. É importante que você tente fazer o melhor alinhamento que considerar possível -- embora devemos reconhecer que a noção de ``melhor'' é extremamente subjetiva --, mas gaste alguns bons minutos ponderando as decisões que o levaram a inserir um \textit{gap} aqui e ali. Após finalizar este alinhamento você deverá salvá-lo sob o nome de ''\texttt{seqdata1\_man.fas}''.
+Você deverá fazer o alinhamento manual das sequências no arquivo \texttt{seqdata1.fas} utilizando AliView. Em AliView, para inserir um gap em determinada região, basta posicionar o cursor na região desejada e pressionar a tecla de espaço. Note que o Aliview tende a inserir gaps no final da sequência que deverão ser removidos ao final de seu alinhamento manual. É importante que você tente fazer o melhor alinhamento que considerar possível -- embora devemos reconhecer que a noção de ``melhor'' é extremamente subjetiva --, mas gaste alguns bons minutos ponderando as decisões que o levaram a inserir um \textit{gap} em determinadas regiões. Após finalizar este alinhamento você deverá salvá-lo sob o nome de ''\texttt{seqdata1\_man.fas}''.
 
 \end{blackBlock}
 
 \subsection{Clustalw}\label{tut8:msa:clustalw}
 
-Um dos aplicativos mais utilizados para alinhamento múltiplo é o Clustalw \parencite{Larkin_et_al_2007}. No Tutorial \ref{tut7} vocês usaram este programa em BioEdit \parencite{Hall_1999}. A documentação do programa pode ser encontrada em \url{http://www.clustal.org/clustal2/} e a documentação das linhas de execução que iremos utilizar estão disponíveis em \url{http://helixweb.nih.gov/multi-align/man/clustalw.1.html}. Não é o objetivo deste tutorial fazer qualquer explanação sobre os algoritmos e estratégias utilizadas pelo Clustalw, mas em \textcite{Phillips_et_al_2000} você encontrará parte dessas informações. O Clustalw está disponível no sistema de vocês. Caso esteja usando uma outra instalação ou sistema operacional, certifique-se que o programa está instalado.
+Um dos aplicativos mais utilizados para alinhamento múltiplo é o Clustalw \parencite{Larkin_et_al_2007}. A documentação do programa pode ser encontrada em \url{http://www.clustal.org/clustal2/}. Não é o objetivo deste tutorial fazer qualquer explanação sobre os algoritmos e estratégias utilizadas pelo Clustalw, mas em \textcite{Phillips_et_al_2000} você encontrará parte dessas informações. O Clustalw está disponível no sistema de vocês. Caso esteja usando uma outra instalação ou sistema operacional, certifique-se que o programa está instalado.
 
 
 \stepcounter{ex}
@@ -141,7 +141,7 @@ Neste exercício você deverá fazer um alinhamento das sequências do arquivo \
 
 \end{blackBlock}
 
-A descrição destas opções pode ser verificada digitando ``\texttt{clustalo {-}{-}help}'' em um terminal ou consultando a doscumentação do programa.
+A descrição destas opções pode ser verificada digitando ``\texttt{clustalo {-}{-}help}'' em um terminal ou consultando a doscumentação do programa (\href{http://www.clustal.org/omega/README}{Doumentação}).
 
 
 \subsection{Muscle}\label{tut8:msa:muscle}
@@ -151,7 +151,7 @@ A descrição destas opções pode ser verificada digitando ``\texttt{clustalo {
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercício 8.\arabic{ex}}}\label{tut8:ex:8.4}
 
-Neste exercício você irá alinhar as mesmas sequências que alinhou com o Clustalw e Clustal--$\Omega$ utilizando Muscle. Você irá executar o Muscle utilizando seus parâmetros de \textit{default} com a seguinte linha de comando:
+Neste exercício você irá alinhar as mesmas sequências que alinhou com o Clustalw e Clustal--$\Omega$ utilizando Muscle. Você irá executar o Muscle utilizando seus parâmetros padrão com a seguinte linha de comando:
 
 \scriptsize
 \shellcmd{muscle -in seqdata1.fas -out seqdata1\_mus.fas}\\
@@ -181,7 +181,7 @@ Neste exercício, você deverá fazer um novo alinhamento das sequências no arq
 
 \end{blackBlock}
 
-Na linha de comando acima, o termo ``\texttt{-{}-maxiterate 1000}'' configura o número máximo de iterações que o MAFFT irá usar durante o processo de refinamento do alinhamento das sequências no arquivo de entrada ``\texttt{seqdata1.fas}'' cujo resultado será impresso no arquivo de saída ``\texttt{seqdata1\_mafft.fas}'' preservando as letras maiúsculas dos pares de base de acordo com a opção ``\texttt{-{}-preservecase}''\footnote{ por \textit{default} MAFFT imprime os pares de base em letras minúsculas. Embora para efeitos analíticos isso não importe, letras maiúsculas são desejáveis quando se deseja inspecionar os alinhamentos em programas como BioEdit.}.
+Na linha de comando acima, o termo ``\texttt{-{}-maxiterate 1000}'' configura o número máximo de iterações que o MAFFT irá usar durante o processo de refinamento do alinhamento das sequências no arquivo de entrada ``\texttt{seqdata1.fas}'' cujo resultado será impresso no arquivo de saída ``\texttt{seqdata1\_mafft.fas}'' preservando as letras maiúsculas dos pares de base de acordo com a opção ``\texttt{-{}-preservecase}''\footnote{ na configuração padrão do MAFFT ele imprime os pares de base em letras minúsculas. Embora para efeitos analíticos isso não importe, letras maiúsculas são desejáveis quando se deseja inspecionar os alinhamentos em programas como AliView.}.
 
 
 \subsection{Avaliação dos resultados}\label{tut8:msa:results}
@@ -192,7 +192,7 @@ Ao completarem os exercícios acima, seu diretório de trabalho deverá conter o
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercício 8.\arabic{ex}}}\label{tut8:ex:8.6}
 
-Sua primeira avaliação será puramente visual. Abra todos os arquivos simultaneamente em BioEdit e responda:
+Sua primeira avaliação será puramente visual. Abra todos os arquivos simultaneamente em AliView e responda:
 
 \end{blackBlock}
 
@@ -209,7 +209,12 @@ Sua primeira avaliação será puramente visual. Abra todos os arquivos simultan
 \line(1,0){400}\\
 \line(1,0){400}\\
 
-\item{Abaixo você deverá fazer uma análise filogenética em TNT de todos os alinhamentos gerados (veja Tutorial \ref{tut7} caso não saiba como isso deve ser feito), completar a Tabela \ref{tut8:table:align} e anotar o relacionamento filogenético encontrado em cada uma das análises nos espaços específicos abaixo.}
+\item{Abaixo você deverá fazer uma análise filogenética em TNT de todos os alinhamentos gerados, completar a Tabela \ref{tut8:table:align} e anotar o relacionamento filogenético encontrado em cada uma das análises nos espaços específicos abaixo. Para transformar esses arquivos no formato FASTA em formato compatível com arquivos de entrada no TNT (\texttt{xread}) você poderá usar o SequenceMatrix (veja Tutorial \ref{tut7}) ou você poderá usar o \textit{script} \texttt{fasta2tnt.py} com a seguinte linha de comando (exemplo): 
+
+\scriptsize
+\shellcmd{./fasta2tnt.py seqdata1\_mafft.fas > seqdata1\_mafft.tnt}\\
+\normalsize
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% TABELA DE ANÁLISE DE ALINHAMENTOS %%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -267,7 +272,7 @@ Todos os alinhamentos produzidos pelos programas acima baseiam-se em alinhamento
 
 Observe que são necessárias 4 operações para tornar uma das sequências igual a outra (denotadas com ''\texttt{*}''). Por exemplo, se considerarmos a sequência do \texttt{taxon1} e substituirmos \texttt{\A} por \texttt{\G} na segunda posição, \texttt{\T} por \texttt{\G} na terceira posição e \texttt{\gap} por \texttt{\C} na quinta e sexta posições, as sequências de ambos os terminais tornam-se idênticas. Neste caso, se o custo de cada evento de edição é atribuído a 1, o custo deste alinhamento seria 4. 
 
-Parâmetros de alinhamento podem considerar custos distintos para eventos de edição diferentes -- na expectativa de acomodar algumas premissas associada ao que sabemos sobre evolução molecular. No exemplo acima, a edição necessária na segunda posição envolve um evento de transição (\textit{i.e.}, substituições entre purinas ou pirimidinas), ao passo que na terceira posição o evento de edição envolve uma transversão (\textit{i.e.}, substituições de purina por uma pirimidina, ou vice versa). Em casos como esse, você poderia atribuir custos diferenciais para esses dois tipos de operações de edição. Você poderia ainda levar em consideração que o custo de um \textit{gap} é diferente de dois \textit{gaps} consecutivo. A justificativa para estes custos diferenciais associados à abertura e extensão de \textit{gaps} está no argumento de que INDELs (\textit{i.e.}, inserções e deleções) podem ocorrer em bloco \parencite[mas veja ][]{Giribet_and_Wheeler_1999, Phillips_et_al_2000}.
+Parâmetros de alinhamento podem considerar custos distintos para eventos de edição diferentes -- na expectativa de acomodar algumas premissas associadas ao que sabemos sobre evolução molecular. No exemplo acima, a edição necessária na segunda posição envolve um evento de transição (\textit{i.e.}, substituições entre purinas ou pirimidinas), ao passo que na terceira posição o evento de edição envolve uma transversão (\textit{i.e.}, substituições de purina por uma pirimidina, ou vice versa). Em casos como esse, você poderia atribuir custos diferenciais para esses dois tipos de operações de edição. Você poderia ainda levar em consideração que o custo de um \textit{gap} é diferente de dois \textit{gaps} consecutivos. A justificativa para estes custos diferenciais associados à abertura e extensão de \textit{gaps} está no argumento de que INDELs (\textit{i.e.}, inserções e deleções) podem ocorrer em bloco \parencite[mas veja ][]{Giribet_and_Wheeler_1999, Phillips_et_al_2000}.
 
 O cálculo do custo de um alinhamento é necessário por que a função objetiva que cada programa está buscando otimizar depende dele. Todos os programas exemplificados acima tentam maximizar a semelhança entre as sequências alinhadas e, portanto, sua função objetiva minimiza a distância de edição entre elas. Considere o seguinte alinhamento:
 
@@ -285,7 +290,7 @@ Para verificar as relações entre parâmetros de alinhamento e inferência filo
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercicio 8.\arabic{ex}}}\label{tut8:ex:8.7}
 
-O parâmetro ``\texttt{-{}-op}'' define o que é conhecido como \textit{gap open penalty} em programas de alinhamento e o parâmetro ``\texttt{-{}-ep}'' define o custo de extensão de \textit{gaps}. Em MAFFT, esses parâmetros recebem os valores de 1.53 e 0.123, respectivamente. Obedecendo a sintaxe das linhas de comando abaixo, você deverá produzir 4 alinhamentos distintos, sendo que para um deles será considerado os valores de \textit{default} para estes parâmetros. Para os demais serão atribuídos custos diferentes, porém idênticos para ``\texttt{-{}-op}'' e ``\texttt{-{}-ep}''. Os comandos de linha para a execução destes alinhamentos são as seguintes:\\
+O parâmetro ``\texttt{-{}-op}'' define o que é conhecido como \textit{gap open penalty} em programas de alinhamento e o parâmetro ``\texttt{-{}-ep}'' define o custo de extensão de \textit{gaps}. Em MAFFT, esses parâmetros recebem os valores de 1.53 e 0.123, respectivamente. Obedecendo a sintaxe das linhas de comando abaixo, você deverá produzir 4 alinhamentos distintos, sendo que para um deles será considerado os valores padrão para estes parâmetros. Para os demais serão atribuídos custos diferentes, porém idênticos para ``\texttt{-{}-op}'' e ``\texttt{-{}-ep}''. Os comandos de linha para a execução destes alinhamentos são as seguintes:\\
 
 \scriptsize
 \shellcmd{mafft -{}-maxiterate 1000 -{}-preservecase seqdata2.fas > seqdata2.d.fas}\\
@@ -429,7 +434,7 @@ As análise executadas até o momento sofrem de pelo menos duas inconsistências
 
 Quando se adota programas como Clustalw, Clustal-$\Omega$, Muscle e MAFFT não é possível manter consistência dos critérios de otimização -- assumindo que sua análise filogenética não utilize métodos fenéticos. Se seu critério de otimalidade em inferência filogenética é parcimônia, é necessário utilizar programas como, por exemplo, MALIGN \parencite{Wheeler_and_Gladstein_1994} para manter a consistência interna da análise. Seja como for, o que iremos fazer a seguir é minimizar estas inconsistências analíticas implementando as premissas de custo de alinhamento em análises filogenéticas.
 
-Para manter as premissas de alinhamento durante a análise filogenética é preciso implementar as mesmas funções de custo atribuídas para os abertura e extensão de \textit{gaps} e também custos diferenciais de transformação durante o alinhamento na análise filogenética. MAFFT atribui penalidades distintas para transversões e transições na razão de 2:1, respectivamente. Nas análises do Exercício 8.7, nós atribuímos custos diferentes dos parâmetros de \textit{default} do programa para os \textit{gaps}. A implementação dessas premissas em TNT é feita por matrizes de Sankoff. Consulte o a seção \ref{tut6:chartypes} do Tutorial \ref{tut6} para relembrar como caracteres de Sankoff são implementados em TNT.\\
+Para manter as premissas de alinhamento durante a análise filogenética é preciso implementar as mesmas funções de custo atribuídas para os abertura e extensão de \textit{gaps} e também custos diferenciais de transformação durante o alinhamento na análise filogenética. MAFFT atribui penalidades distintas para transversões e transições na razão de 2:1, respectivamente. Nas análises do Exercício 8.7, nós atribuímos custos diferentes dos parâmetros padrão do programa para os \textit{gaps}. A implementação dessas premissas em TNT é feita por matrizes de Sankoff. Consulte o a seção \ref{tut6:chartypes} do Tutorial \ref{tut6} para relembrar como caracteres de Sankoff são implementados em TNT.\\
 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercício 8.\arabic{ex}}}\label{tut8:ex:8.9}
@@ -438,7 +443,7 @@ Sua tarefa é implementar as premissas de alinhamento na reanálise das sequênc
 
 \end{blackBlock}
 
-
+\vspace{3cm}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% TABELA DE ANÁLISE DE PARÂMETROS ALINHAMENTOS %%%%%%%%%%%%%%%%%%%%%%%%%%% 
