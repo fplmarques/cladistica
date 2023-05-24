@@ -1,0 +1,9 @@
+read(prealigned:("partition1.fas"))
+read("partition2.fas","partition3.tnt")
+set(root:"Taxon1")
+build(100)
+swap()
+select()
+report(trees, treestats)
+exit()
+
