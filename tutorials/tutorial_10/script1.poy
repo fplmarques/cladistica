@@ -1,0 +1,7 @@
+read("partition2.fas")
+set(root:"Taxon1")
+search(max_time:0:0:0.1)
+select()
+report(trees)
+report(searchstats) 
+exit()

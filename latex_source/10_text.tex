@@ -46,11 +46,11 @@ O objetivo deste tutorial é apresentar novos conceitos associados a análise de
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% HERE TEXT STARTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Novas tecnologias de busca em POY}\label{tut10:search}
+\section{Novas tecnologias de busca em POY}\label{tut10:search}\\
 
 No tutorial anterior utilizamos os algoritmos mais simples de busca existentes em POY (\textit{i.e.}, RAS+SWAP). No entanto, o POY também permite que a maioria dos algoritmos implementados em TNT \parencite{GoloboffEtAl_2008}, considerados novas tecnologias de busca \parencite{Goloboff_1999,Nixon_1999}, sejam implementados em buscas de homologia dinâmica. No entanto, devido às propriedades dos algoritmos de POY, algumas implementações requerem uma série de transformações dos dados que podem ser complexas para o usuário com pouca experiência. Considere por exemplo a implementação de \textit{ratchet} \parencite{Nixon_1999}. Esse algoritmo atribui pesagem diferencial à uma proporção de seus caracteres, executa busca e refinamento na matriz, retorna ao esquema de pesagem inicial e avalia o custo da(s) topologia(s) em comparação àquela(s) inicialmente retida(s) na memória do programa. Em homologia dinâmica, é necessário transformar os caracteres dinâmicos em caracteres estáticos temporariamente para a implementação de \textit{ratchet}. Isso é necessário porque a noção de caráter em otimização direta varia a cada ciclo de otimização durante as buscas. Portanto, a implementação em POY de algoritmos de dependem de homologia estática, como é o caso de \textit{ratchet}, requer uma série de instruções no \textit{script} que, como verão, são de certa forma desnecessárias na maioria das análises que você irá fazer.
 
-Para facilitar o uso de POY, o desenvolvedores do programa criaram o comando ``\texttt{search}'' que implementa todas essas novas tecnologias de busca sem que o usuário tenha que se preocupar com as linhas de comando de cada uma das estratégias de refinamento. Por \textit{default}, o comando ``\texttt{search}'' inclui a construção inicial de uma árvore de Wagner, em seguida, implementa \textit{branch swapping} via TBR (veja Tutorial \ref{tut4} Seção \ref{tut4:search}), \textit{ratchet} \parencite{Nixon_1999} e \textit{tree fusing} \parencite{Goloboff_1999}, sequencialmente. Esse ciclo de algoritmos é considerado pelo POY como repetições independentes, cujo número de iterações dependerá da complexidade de seus dados e dos argumentos implementados no comando ``\texttt{search}''.
+Para facilitar o uso de POY, o desenvolvedores do programa criaram o comando ``\texttt{search}'' que implementa todas essas novas tecnologias de busca sem que o usuário tenha que se preocupar com as linhas de comando de cada uma das estratégias de refinamento. Por \textit{default}, o comando ``\texttt{search}'' inclui a construção inicial de uma árvore de Wagner, em seguida, implementa \textit{branch swapping} via TBR (veja Tutorial \ref{tut4}, Seção \ref{tut4:search}), \textit{ratchet} \parencite{Nixon_1999} e \textit{tree fusing} \parencite{Goloboff_1999}, sequencialmente. Esse ciclo de algoritmos é considerado pelo POY como repetições independentes, cujo número de iterações dependerá da complexidade de seus dados e dos argumentos implementados no comando ``\texttt{search}''.
 
 Os argumentos do comando ``\texttt{search}'' permitem uma série de controles (veja item 3.3.22, página 119, do manual do programa). Por \textit{default} o comando faz a busca por uma hora e usa 2 Gb de memória RAM em seu computador. Esse comando seria expresso literalmente da seguinte forma: \texttt{search(max\_time:0:1:0,min\_time:0:1:0,memory:gb:2)}\footnote{ No entanto, como estes são os argumentos originais do comando, bastaria escrever ``\texttt{search()}''.}. Nesta linha de comando, o argumento ``\texttt{max\_time:0:1:0}'' define o máximo de tempo estipulado para análise em dias:horas:minutos, o argumento ``\texttt{min\_time:0:1:0}'' define o mínimo de tempo estipulado para análise da mesma forma, e ``\texttt{memory:gb:2}'' controla o máximo de memória alocada durante a execução. Este último restringe o número de topologias retidas na memória durante as buscas. O número de repetições independentes, neste caso, dependerá apenas da complexidade de seus dados, ou seja, o tempo necessário para completar uma iteração. Há uma série de outros argumentos para este comando e o leitor deve consultar o manual do programa caso esteja interessado em implementar alguns deles em suas análises. No exemplo abaixo iremos explorar apenas um deles (\textit{i.e.}, \texttt{max\_time:d:m:s}), pois é o mais utilizado.
 
@@ -71,23 +71,23 @@ Neste \textit{script} o arquivo \texttt{partition2.fas} é lido pelo POY [linha 
 
 Execute este \textit{script} da seguinte maneira:\\
 
-\shellcmd{poy5s script1.poy >std.out 2>std.err \&}\\
+\shellcmd{poy5.1.2a script1.poy >std.out 2>std.err \&}\\
 
 Nesta linha de comando, o \textit{prompt} do terminal será liberado logo após você executá-lo, pois o caráter ``\texttt{\&}'' no final da linha faz com que o programa seja executado no \textit{background}. Para saber se o programa terminou a execução pressione a tecla \texttt{ENTER} após alguns segundos. Em algum momento você deverá obter:\\
 
 \scriptsize
 
-alan@turing:~/Desktop/tutorial\_10\$ poy5s script1.poy >std.out 2>std.err \&
+alan@turing:~/Desktop/tutorials/tutorial\_10\$ poy5.1.2a script1.poy >std.out 2>std.err \&
 
 [1] 3992\footnote{ número do processo, ou seja, o número que a máquina atribuiu para a linha de comando que você acaba de executar.}
 \vspace{20pt}
-alan@turing:~/Desktop/tutorial\_10\$ 
+alan@turing:~/Desktop/tutorials/tutorial\_10\$ 
 
-[1]+  Concluído              poy5s script1.poy >std.out 2> std.err\\
+[1]+  Concluído              poy5.1.2a script1.poy >std.out 2> std.err\\
 
 \normalsize
 
-Observe os redirecionamentos implementados na linha de comando (veja Tutorial \ref{tut1}, Seção \ref{tut1:pipered})\footnote{ mais informações sobre \textit{standard I/O streams} em linux veja \url{http://linux.about.com/library/cmd/blcmdl3\_stderr.htm}}. O primeiro deles (\textit{i.e.}, ``\texttt{>std.out}''), os registros de saída convencionais de POY -- geralmente aqueles que direcionamos para arquivos, como por exemplo \texttt{report(''trees.tre'',trees)} --, ou os chamados \textit{stdout}, são direcionados para o arquivo \texttt{std.out}. O segundo deles (\textit{i.e.}, ``\texttt{>std.err}''), os registros de execução ou erro convencionais de POY -- geralmente aqueles impressos no terminal durante a execução --, ou os chamados \textit{stderr}, são direcionados para o arquivo \texttt{std.err}. Vamos examinar o conteúdos destes dois arquivos.
+Observe os redirecionamentos implementados na linha de comando (veja Tutorial \ref{tut1})\footnote{ mais informações sobre \textit{standard I/O streams} em linux veja \url{http://linux.about.com/library/cmd/blcmdl3\_stderr.htm}}. O primeiro deles (\textit{i.e.}, ``\texttt{>std.out}''), os registros de saída convencionais de POY -- geralmente aqueles que direcionamos para arquivos, como por exemplo \texttt{report(``trees.tre'',trees)} --, ou os chamados \textit{stdout}, são direcionados para o arquivo \texttt{std.out}. O segundo deles (\textit{i.e.}, ``\texttt{>std.err}''), os registros de execução ou erro convencionais de POY -- geralmente aqueles impressos no terminal durante a execução --, ou os chamados \textit{stderr}, são direcionados para o arquivo \texttt{std.err}. Vamos examinar o conteúdos destes dois arquivos.
 
 Se você examinar o conteúdo do arquivo \texttt{std.out}, você deverá encontrar algo semelhante ao que está impresso abaixo:
 
@@ -128,7 +128,7 @@ Tree~length~~~~~~~~Number~of~hits
 
 \normalsize
 
-Neste arquivo de saida, as duas primeiras linhas contém as duas topologias encontradas na análise, impressas nesse arquivo pelo comando ``\texttt{report(trees)}'' e as demais linhas registram as estatísticas de busca, impressas nesse arquivo pelo comando ``\texttt{report(searchstats)}'' do \textit{script} \ref{tut10:search:script1}. Os registros de busca indicam que durante o tempo estipulado (1/10 minutos) POY realizou 16 réplicas independentes, 11 iterações de \textit{ratchet} e 93 iterações de \textit{tree fusing} sendo que em 195 ocasiões obteve uma topologia com 191 transformações. Lembre-se que eu poderia direcionar esses arquivos de saída para arquivos individuais implementando a seguinte linha de comando: \texttt{report(''treefile.tre'', trees,''searchstatistics.txt'', searchstats)}.
+Neste arquivo de saída, as duas primeiras linhas contém as duas topologias encontradas na análise, impressas nesse arquivo pelo comando ``\texttt{report(trees)}'' e as demais linhas registram as estatísticas de busca, impressas nesse arquivo pelo comando ``\texttt{report(searchstats)}'' do \textit{script} \ref{tut10:search:script1}. Os registros de busca indicam que durante o tempo estipulado (1/10 minutos) POY realizou 16 réplicas independentes, 11 iterações de \textit{ratchet} e 93 iterações de \textit{tree fusing} sendo que em 195 ocasiões obteve uma topologia com 191 transformações. Lembre-se que eu poderia direcionar esses arquivos de saída para arquivos individuais implementando a seguinte linha de comando: \texttt{report(''treefile.tre'', trees,''searchstatistics.txt'', searchstats)}.
 
 Examine o arquivo \texttt{>std.err}. Este registra toda a execução de POY que você acabou de implementar. Ele deverá conter registros semelhantes aos impressos abaixo, onde cada etapa da busca é marcada por ''\texttt{<-- ...}'':
 
@@ -349,7 +349,7 @@ report("trees_m111.tre",trees:(total),
 exit()
 \end{lstlisting}
 
-onde a matriz de custo \texttt{m111} é implementada nos dados moleculares -- embora \texttt{partition1.fas} não esteja sujeito à alinhamento -- e os resultados são direcionados para arquivos correspondentes às matrizes de custo\footnote{ caso tenha dificuldade de compreender os demais comandos deste \textit{script} revise o Tutorial \ref{tut9} e/ou consulte a documentação do programa.}. Seguindo a lógica deste \textit{script}, a análise de sensibilidade gerará três arquivos de árvores (\textit{i.e.}, \texttt{trees\_m111.tre}, \texttt{trees\_m211.tre} e \texttt{trees\_m411.tre} -- veja diretório \texttt{tutorial\_10}). Subsequentemente, você poderia inspecionar visualmente as topologias resultantes para identificar os clados que são dependentes dos parâmetros de alinhamento. No entanto, essa tarefa pode consumir um bom tempo e há ferramentas disponíveis que podem ser úteis nessa tarefa. É o que veremos a seguir.
+Neste \textit{script}, a matriz de custo \texttt{m111} é implementada nos dados moleculares -- embora \texttt{partition1.fas} não esteja sujeito à alinhamento -- e os resultados são direcionados para arquivos correspondentes às matrizes de custo\footnote{ caso tenha dificuldade de compreender os demais comandos deste \textit{script} revise o Tutorial \ref{tut9} e/ou consulte a documentação do programa.}. Seguindo a lógica deste \textit{script}, a análise de sensibilidade gerará três arquivos de árvores (\textit{i.e.}, \texttt{trees\_m111.tre}, \texttt{trees\_m211.tre} e \texttt{trees\_m411.tre} -- veja diretório \texttt{tutorial\_10}). Subsequentemente, você poderia inspecionar visualmente as topologias resultantes para identificar os clados que são dependentes dos parâmetros de alinhamento. No entanto, essa tarefa pode consumir um bom tempo e há ferramentas disponíveis que podem ser úteis nessa tarefa. É o que veremos a seguir.
 
 \subsection{Avaliação}\label{tut10:sa:evaluation}
 
@@ -371,9 +371,9 @@ No exemplo abaixo iremos explorar o uso de YBYRÁ e FigTree para avaliar o resul
 
 \subsubsection{YBYRÁ}\label{tut10:sa:evaluation:ybyra}
 
-O diretório \texttt{tutorial\_10} possui um tutorial do programa que explica todas as suas funções. Para o propósito deste tutorial iremos apenas explorar como o YBYRÁ \footnote{ certifique-se de que o programa está instalado em sua máquina. Se você estiver utilizando a imagem do curso, há dois aplicativos do YBYRÁ: \texttt{ybyra\_sa.py} e \texttt{ybyra\_apo.py}. O aplicativo está disponível no diretório deste tutorial, mas antes de executá-lo é necessário que você instale as dependências deste aplicativo. Para isso, como super-usuários (\textit{i.e.}, sudo) execute o \textit{script} install\_dependencies.sh.} pode ser utilizado para executar uma análise de sensibilidade.
+Toda documentação do YBYRÁ está diposponível do \href{https://gitlab.com/MachadoDJ/ybyra}{GitLab} do desenvolvedor. Para o propósito deste tutorial iremos apenas explorar como o YBYRÁ \footnote{Antes de iniciar este componente do tutorial execute o \textit{script} install\_dependencies.sh. Isso garantirá que você possui os programas necessários para executar os exercícios} pode ser utilizado para executar uma análise de sensibilidade.
 
-O programa recebe instruções de um arquivo de configuração. No caso do exemplo que iremos apresentar aqui, essas instruções estão no arquivo \texttt{tutorial\_10/sa/sensibilidade.conf}. Abra esse arquivo no \texttt{gedit}\footnote{ é desejável que você habilite a numeração de linhas em \textbf{Editar/Preferências/Exibir número} de linha para que você encontre mais facilmente as linhas editadas nesse arquivo} para que você siga as linhas que foram modificadas para que o YBYRÁ execute a análise de sensibilidade. As modificações feitas neste arquivo foram as seguintes:
+O programa recebe instruções de um arquivo de configuração. No caso do exemplo que iremos apresentar aqui, essas instruções estão no arquivo \texttt{sensibilidade.conf}. Abra esse arquivo no \texttt{gedit}\footnote{Verifique se a numeração de linhas está habilidada no \texttt{gedit}. Se não estiver, vá em \textbf{Preferences} e clique em \textbf{Display line numbers}.} para que você siga as linhas que foram modificadas para que o YBYRÁ execute a análise de sensibilidade. As modificações feitas neste arquivo foram as seguintes:
 
 \begin {myindentpar}{0.3cm}
 \begin{enumerate}[\itshape i.]
@@ -392,11 +392,11 @@ O programa recebe instruções de um arquivo de configuração. No caso do exemp
 
 A execução do YBYRÁ gera uma série de arquivos de saída e o você deve consular o tutorial apresentado pelo desenvolvedor do programa, bem como a documentação do YBYRÁ, caso tenha interesse de saber o conteúdo específico de cada um deles. Para o propósito deste tutorial iremos descrever apenas alguns.
 
-O diretório \texttt{tutorial\_10/sa/} contém o resultados da execução do YBYRÁ usando o arquivo de configuração \texttt{sensibilidade.conf}. Dentre estes arquivos, \texttt{LABELED\_sa\_aula.tre} contém a topologia de referência (\textit{i.e.}, \texttt{trees\_m111.tre}) com os nós anotados em referência aos arquivos \texttt{RUG\_000*\_sa\_aula.svg}. Estes últimos são arquivos vetoriais que mapeiam a frequência de cada clado presente na topologia de referência que foi encontrado nas demais topologias de acordo com o mapeamento apresentado no arquivo \texttt{RUG\_map\_sa\_aula.svg}. 
+Após a execução diretório \texttt{tutorial\_10/} deverá conter os resultados da execução do YBYRÁ usando o arquivo de configuração \texttt{sensibilidade.conf}. Dentre estes arquivos, \texttt{LABELED\_sa\_aula.tre} contém a topologia de referência (\textit{i.e.}, \texttt{trees\_m111.tre}) com os nós anotados em referência aos arquivos \texttt{RUG\_000*\_sa\_aula.svg}. Estes últimos são arquivos vetoriais que mapeiam a frequência de cada clado presente na topologia de referência que foi encontrado nas demais topologias de acordo com o mapeamento apresentado no arquivo \texttt{RUG\_map\_sa\_aula.svg}. 
 
 \subsubsection{FigTree \& Inkscape}\label{tut10:sa:evaluation:graphic}
 
-O resultado da análise de sensibilidade executada acima está ilustrado na Figura \ref{tut10:fig:sensitivity}. Esta figura foi gerada utilizando dois aplicativos disponíveis na imagem do curso \href{http://tree.bio.ed.ac.uk/software/figtree/}{FigTree} e \href{http://www.inkscape.org/en/download/}{Inkscape}. Ambos programas podem ser executados em todas as plataformas (\textit{i.e.}, OS X, Linux e Windows) e são \textit{freeware}. Há dois vídeos associados a esse componente do Tutorial \ref{tut10}. O vídeo \texttt{figtree\_1.ogv} explica como o FigTree foi usado para gerar uma figura no formato SVG que representa a topologia que YBYRÁ utilizou para referenciar os diagramas de sensibilidade.  O vídeo \texttt{inkscape\_1.ogv} explica como o Inkscape foi utilizado para compor a Figura \ref{tut10:fig:sensitivity}. Se você já está familiarizado com esses aplicativos siga o tutorial a diante. No entanto, se você não os conhece é necessário que você assista esses vídeos antes de executar o exercício a seguir.
+O resultado da análise de sensibilidade executada acima está ilustrado na Figura \ref{tut10:fig:sensitivity}. Esta figura foi gerada utilizando dois aplicativos disponíveis na imagem do curso \href{http://tree.bio.ed.ac.uk/software/figtree/}{FigTree} e \href{http://www.inkscape.org/en/download/}{Inkscape}. Ambos programas podem ser executados em todas as plataformas (\textit{i.e.}, OS X, Linux e Windows) e são \textit{freeware}. Há dois vídeos em \texttt{tutorial\_10/videos/} que dão uma expliação geral de como usar o FigTree e o Inkscape nesse tutorial. O vídeo \texttt{figtree\_1.mp4} explica como o FigTree foi usado para gerar uma figura no formato SVG que representa a topologia que YBYRÁ utilizou para referenciar os diagramas de sensibilidade.  O vídeo \texttt{inkscape\_1.mp4} explica como o Inkscape foi utilizado para compor a Figura \ref{tut10:fig:sensitivity}. Se você já está familiarizado com esses aplicativos siga o tutorial a diante. No entanto, se você não os conhece é necessário que você assista esses vídeos antes de executar o exercício a seguir.
 
  %%%%%%%%%%%%%%%%%%%%%%%%%%% FIGURA TAP%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \vspace{-1em}
@@ -411,7 +411,7 @@ O resultado da análise de sensibilidade executada acima está ilustrado na Figu
 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercicio 10.\arabic{ex}}}\label{tut10:ex:10.1}
-Neste exercício você deverá fazer uma análise de sensibilidade considerando os dados em \texttt{partition1.fas}, \texttt{partition2.fas} e \texttt{partition3.tnt} aplicando os conceitos e componentes técnicos apresentados acima. Sua análise de sensibilidade deverá contemplar todas as matrizes de custos disponíveis no diretório associado a esse tutorial.
+Neste exercício você deverá fazer uma análise de sensibilidade considerando os dados em \texttt{partition1.fas}, \texttt{partition2.fas} e \texttt{partition3.tnt} aplicando os conceitos e componentes técnicos apresentados acima. Sua análise de sensibilidade deverá contemplar todas as matrizes de custos disponíveis no diretório associado a esse tutorial (\textit{i.e.}, \texttt{m111}, \texttt{m112}, \texttt{m121}, etc.).
 
 \end{blackBlock}
 

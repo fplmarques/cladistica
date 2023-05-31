@@ -1,0 +1,8 @@
+read(prealigned:("partition1.fas", tcm:("m111")))
+read("partition2.fas","partition3.tnt")
+transform(names:("partition2.fas"),(tcm:("m111")))
+set(root:"Taxon1")
+search(max_time:0:00:0.5)
+select()
+report("trees_m111.tre",trees:(total), "scores_111.sts",treestats,searchstats)
+exit()
