@@ -349,9 +349,9 @@ Neste exercício você deverá fazer uma análise filogenética dos dados contid
 
 	\subsection{Dados lacunares em subpartições de POY}\label{tut11:missing:sub}
 
-Há outras duas formas de dados lacunares que devem ser tratados adequadamente em POY. A primeira delas refere-se aos \textit{gaps} iniciais e finais inseridos na sequências em decorrência do sequenciamento diferencial da região de interesse. Estes \textit{gaps} não representam eventos de transformação putativas e devem ser removidos ou substituídos por \texttt{N}s. Também existe a possibilidade de que haja regiões em suas sequências onde exista falta de dados resultado do processo de sequenciamento. Nestes casos, é possível -- e de certa forma desejável -- criar subpartições em suas sequências. O objetivo destas partições é primariamente evitar artefatos analíticos. No entanto, há um outro motivo para a criação de subpartições e esta está relacionada com o desempenho de POY. Considere que quanto maior é o comprimento da sequência, maior é a dificuldade de encontrar soluções ótimas pelos algoritmos disponíveis. Afinal, o algoritmo de Needleman-Wunsch é míope. \textcite{Giribet_2001} notou que a criação de subpartições nos arquivos de dados pode reduzir drasticamente o tempo computacional das análises em POY. Subpartições podem ser criadas em BioEdit inserindo uma coluna de ``$\sim$s'' entre as regiões que você deseja particionar e posteriormente substituir esses ``$\sim$s'' por ``\texttt{{\#}}s'' em um editor de texto. Onde definir essas partições é arbitrário e o POY pode fazer isso automaticamente (veja o comando \texttt{auto\_sequence\_partition} na documentação de POY. Geralmente, essas partições são inseridas em regiões de alinhamento inequívoco que separam regiões sujeitas a alinhamento ou para as quais há dados lacunares.
+Há outras duas formas de dados lacunares que devem ser tratados adequadamente em POY. A primeira delas refere-se aos \textit{gaps} iniciais e finais inseridos na sequências em decorrência do sequenciamento diferencial da região de interesse. Estes \textit{gaps} não representam eventos de transformação putativas e devem ser removidos ou substituídos por \texttt{N}s. Também existe a possibilidade de que haja regiões em suas sequências onde exista falta de dados resultado do processo de sequenciamento. Nestes casos, é possível -- e de certa forma desejável -- criar subpartições em suas sequências. O objetivo destas partições é primariamente evitar artefatos analíticos. No entanto, há um outro motivo para a criação de subpartições e esta está relacionada com o desempenho de POY. Considere que quanto maior é o comprimento da sequência, maior é a dificuldade de encontrar soluções ótimas pelos algoritmos disponíveis. Afinal, o algoritmo de Needleman-Wunsch é míope. \textcite{Giribet_2001} notou que a criação de subpartições nos arquivos de dados pode reduzir drasticamente o tempo computacional das análises em POY. Subpartições podem ser criadas em AliView inserindo uma coluna de com um caráter alfabético inexistente em seus dados entre as regiões que você deseja particionar e posteriormente substituir esse caráter por ``\texttt{{\#}}s'' em um editor de texto ou usando o comando \texttt{sed}. Onde definir essas partições é arbitrário e o POY pode fazer isso automaticamente (veja o comando \texttt{auto\_sequence\_partition} na documentação de POY. Geralmente, essas partições são inseridas em regiões de alinhamento inequívoco que separam regiões sujeitas a alinhamento ou para as quais há dados lacunares.
 
-O vídeo \texttt{partitions.avi} ilustra como isso deve ser feito. Este vídeo está no diretório associado a este tutorial ou pode ser visto no  \href{http://youtu.be/SeFRVRyBNbk}{YouTube}.\\
+O vídeo \texttt{make_partitions.mp4} ilustra como isso deve ser feito. Este vídeo está no diretório associado a este tutorial ou pode ser visto no  \href{https://youtu.be/ebL7XiXXpRo}{YouTube}.\\
 
 
 \section{Assignment 6}\label{tut11:assigment}
@@ -382,9 +382,9 @@ Neste trabalho você deverá apresentar uma reanálise de algum estudo filogené
 
  \item{\textbf{Nome do arquivo:}} Os nomes do arquivo deverão obedecer o seguinte formato: \texttt{assignment\_06.pdf}.\\
 
- \item{\textbf{Data de entrega:}} Dia 06/06/2019 até as 14:00 hrs (antes da Aula 13).\\
+ \item{\textbf{Data de entrega:}} 06/07/2023 até as 14:00 hrs (antes da Aula 12).\\
 
- \item{\textbf{Forma de entrega:}} Fazer o \textit{upload} em \href{https://forms.gle/sf2Lq2VsRdkYU4Uf7}{https://forms.gle/sf2Lq2VsRdkYU4Uf7}.\\
+ \item{\textbf{Forma de entrega:}} Fazer o \textit{upload} em \href{https://forms.gle/nUXWG1xVjinvPVnx8}{https://forms.gle/nUXWG1xVjinvPVnx8}.\\
 
 
 \end{enumerate}
