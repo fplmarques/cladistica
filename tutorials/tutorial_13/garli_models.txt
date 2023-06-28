@@ -1,0 +1,968 @@
+[model0]
+#JC
+#number of free parameters: 0
+datatype = nucleotide
+ratematrix = (a a a a a a)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#JC+G
+#number of free parameters: 1
+datatype = nucleotide
+ratematrix = (a a a a a a)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#JC+I
+#number of free parameters: 1
+datatype = nucleotide
+ratematrix = (a a a a a a)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#JC+I+G
+#number of free parameters: 2
+datatype = nucleotide
+ratematrix = (a a a a a a)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#F81
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a a a a a a)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#F81+G
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a a a a a a)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#F81+I
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a a a a a a)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#F81+I+G
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a a a a a a)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#K80
+#number of free parameters: 1
+datatype = nucleotide
+ratematrix = (a b a a b a)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#K80+G
+#number of free parameters: 2
+datatype = nucleotide
+ratematrix = (a b a a b a)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#K80+I
+#number of free parameters: 2
+datatype = nucleotide
+ratematrix = (a b a a b a)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#K80+I+G
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b a a b a)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#HKY
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b a a b a)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#HKY+G
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b a a b a)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#HKY+I
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b a a b a)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#HKY+I+G
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b a a b a)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TrNef
+#number of free parameters: 2
+datatype = nucleotide
+ratematrix = (a b a a c a)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TrNef+G
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b a a c a)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TrNef+I
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b a a c a)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TrNef+I+G
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b a a c a)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TrN
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b a a c a)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TrN+G
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b a a c a)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TrN+I
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b a a c a)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TrN+I+G
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b a a c a)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TPM1
+#number of free parameters: 2
+datatype = nucleotide
+ratematrix = (a b c c b a)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TPM1+G
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b c c b a)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TPM1+I
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b c c b a)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TPM1+I+G
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b c c b a)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TPM1uf
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b c c b a)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TPM1uf+G
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b c c b a)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TPM1uf+I
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b c c b a)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TPM1uf+I+G
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b c c b a)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TPM2
+#number of free parameters: 2
+datatype = nucleotide
+ratematrix = (a b a c b c)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TPM2+G
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b a c b c)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TPM2+I
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b a c b c)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TPM2+I+G
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b a c b c)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TPM2uf
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b a c b c)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TPM2uf+G
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b a c b c)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TPM2uf+I
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b a c b c)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TPM2uf+I+G
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b a c b c)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TPM3
+#number of free parameters: 2
+datatype = nucleotide
+ratematrix = (a b c a b c)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TPM3+G
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b c a b c)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TPM3+I
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b c a b c)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TPM3+I+G
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b c a b c)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TPM3uf
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b c a b c)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TPM3uf+G
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b c a b c)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TPM3uf+I
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b c a b c)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TPM3uf+I+G
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b c a b c)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TIM1ef
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b c c d a)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TIM1ef+G
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b c c d a)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TIM1ef+I
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b c c d a)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TIM1ef+I+G
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b c c d a)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TIM1
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b c c d a)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TIM1+G
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b c c d a)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TIM1+I
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b c c d a)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TIM1+I+G
+#number of free parameters: 8
+datatype = nucleotide
+ratematrix = (a b c c d a)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TIM2ef
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b a c d c)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TIM2ef+G
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b a c d c)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TIM2ef+I
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b a c d c)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TIM2ef+I+G
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b a c d c)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TIM2
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b a c d c)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TIM2+G
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b a c d c)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TIM2+I
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b a c d c)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TIM2+I+G
+#number of free parameters: 8
+datatype = nucleotide
+ratematrix = (a b a c d c)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TIM3ef
+#number of free parameters: 3
+datatype = nucleotide
+ratematrix = (a b c a d c)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TIM3ef+G
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b c a d c)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TIM3ef+I
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b c a d c)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TIM3ef+I+G
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b c a d c)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TIM3
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b c a d c)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TIM3+G
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b c a d c)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TIM3+I
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b c a d c)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TIM3+I+G
+#number of free parameters: 8
+datatype = nucleotide
+ratematrix = (a b c a d c)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TVMef
+#number of free parameters: 4
+datatype = nucleotide
+ratematrix = (a b c d b e)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TVMef+G
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b c d b e)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TVMef+I
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b c d b e)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TVMef+I+G
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b c d b e)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#TVM
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b c d b e)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#TVM+G
+#number of free parameters: 8
+datatype = nucleotide
+ratematrix = (a b c d b e)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#TVM+I
+#number of free parameters: 8
+datatype = nucleotide
+ratematrix = (a b c d b e)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#TVM+I+G
+#number of free parameters: 9
+datatype = nucleotide
+ratematrix = (a b c d b e)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#SYM
+#number of free parameters: 5
+datatype = nucleotide
+ratematrix = (a b c d e f)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#SYM+G
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b c d e f)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#SYM+I
+#number of free parameters: 6
+datatype = nucleotide
+ratematrix = (a b c d e f)
+statefrequencies = equal
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#SYM+I+G
+#number of free parameters: 7
+datatype = nucleotide
+ratematrix = (a b c d e f)
+statefrequencies = equal
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+
+[model0]
+#GTR
+#number of free parameters: 8
+datatype = nucleotide
+ratematrix = (a b c d e f)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = none
+
+
+[model0]
+#GTR+G
+#number of free parameters: 9
+datatype = nucleotide
+ratematrix = (a b c d e f)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = none
+
+
+[model0]
+#GTR+I
+#number of free parameters: 9
+datatype = nucleotide
+ratematrix = (a b c d e f)
+statefrequencies = estimate
+ratehetmodel = none
+numratecats = 1
+invariantsites = estimate
+
+
+[model0]
+#GTR+I+G
+#number of free parameters: 10
+datatype = nucleotide
+ratematrix = (a b c d e f)
+statefrequencies = estimate
+ratehetmodel = gamma
+numratecats = 4
+invariantsites = estimate
+
+

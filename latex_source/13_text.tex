@@ -88,7 +88,8 @@ collapsebranches = 1
 
 #linkmodels means to use a single set of model parameters for all subsets.
 linkmodels = 1
-# subsetspecificrates means to infer overall rate multipliers for each data subset. This is equivalent to *prset ratepr=variable* in MrBayes.
+# subsetspecificrates means to infer overall rate multipliers for each data subset.
+# This is equivalent to *prset ratepr=variable* in MrBayes.
 subsetspecificrates = 1
 # set for single model, different subset rates (like site-specific rates model in PAUP*)
 
@@ -303,7 +304,7 @@ Neste exercício você deverá fazer uma análise sob o critério de verossimilh
 
     \item{Executar o GARLI para cada um dos arquivos de configuração.}
 
-    \item{Sumarizar seus resultados na Tabela \ref{tut13:ex:13.2}, no qual $n$ é o número de caracteres em seu alinhamento, $k$ é o número de parâmetros livres\footnote{ Lembre-se que os parâmetros estimados pelo modelo compreende, a topologia, os comprimentos de cada um dos ramos desta topologia  -- cujo número é dado pela função $(2*t)-3$, no qual $t$ é o número de terminais), e os parâmetros livres do modelo de substituição.} e o $AIC_{c}$ deve ser computado de acordo com as equações \ref{tut12:first_sec:model_aic} e \ref{tut12:first_sec:model_aicc} do Tutorial \ref{tut12}\footnote{ O script aicc.pl pode ser utilizado para obter essa métrica, mas você deverá editar o valor das variáveis de acordo com seus resultados antes de executar o \textit{script}.}.}
+    \item{Sumarizar seus resultados na Tabela \ref{tut13:ex:13.2}, no qual $n$ é o número de caracteres em seu alinhamento, $k$ é o número de parâmetros livres\footnote{ Lembre-se que os parâmetros estimados pelo modelo compreende, a topologia, os comprimentos de cada um dos ramos desta topologia  -- cujo número é dado pela função $(2*t)-3$, no qual $t$ é o número de terminais), e os parâmetros livres do modelo de substituição.} e o $AIC_{c}$ deve ser computado de acordo com as equações \ref{tut12:first_sec:model_aic} e \ref{tut12:first_sec:model_aicc} do Tutorial \ref{tut12}\footnote{ O script \texttt{calculate\_aicc.py} pode ser utilizado para obter essa métrica, basta executar \textit{script}.}.}
 
 \end{enumerate}
 \end{myindentpar}
@@ -345,7 +346,7 @@ O GARLI permite que diferentes modelos sejam aplicados à distintas partições 
 Neste tipo de análise, o GARLI requer que os dados estejam no formato NEXUS. Isso é necessário, pois estes arquivos deverão conter um bloco de instrução definindo as partições. Considere por exemplo o arquivo \texttt{partition1+partition2aln1.nex}. Ele é a junção dos arquivos \texttt{partition1.fas} + \texttt{partition2aln1.fas} do Tutorial \ref{tut12}. O primeiro arquivo possui 120 caracteres, ao passo que o alinhamentdo do segundo resultou em 99 caracteres. Portando, no arquivo concatenado \texttt{partition1+partition2aln1.nex}, os caracteres 1 a 120 referem-se à primeira partição, ao passo que os caracteres 121 a 219 referem-se à segunda partição. Sendo este o caso, a primeira etapa de preparação para a análise requer a edição do arquivo \texttt{partition1+partition2aln1\_garli.nex} para que contenha as seguintes linhas:
 
 
-\begin{lstlisting}[label=tut3:ls1]
+\begin{lstlisting}[caption={\textt{partition1+partition2aln1\_garli.nex}}label=tut3:ls1]
 BEGIN SETS;
 	CHARSET p1 = 1-120;
 	CHARSET p2 = 121-219;
@@ -510,8 +511,7 @@ Os modelos de substituição disponíveis em POY incluem JC69/Neyman, F81, K2P/K
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA FIGURA MODELS IN POY %%%%%%%%%%%%%%%%%%%%%
 \scriptsize
-\begin{lstlisting}[caption= conteúdo do arquivo \texttt{model\_test\_part1.poy}.,label=tut13:modsel:model_test_mal]
-
+\begin{lstlisting}[caption={ \texttt{model\_test\_part1.poy}.},label=tut13:modsel:model_test_mal, numbers=left, numberblanklines=false]
 (*MAL Analysis: Partitions and Model Selection*)
 read(prealigned:("partition1.fas",tcm:(1,1)))
 build(100)
@@ -530,7 +530,7 @@ A forma de implementação da seleção de modelos em POY é relativamente simpl
 A execução do \texttt{model\_test\_part1.poy} resulta em 3 arquivos. O arquivo \texttt{part1\_AICc.txt} contém uma tabela comparativa dos modelos analisados cujo resultado é apresentado na Tabela \ref{tut13:table:modsel}. O arquivo \texttt{part1\_LK\_lkm.txt} detalha o modelo de substituição resultado da busca. Finalmente, o arquivo \texttt{part1\_LK.tre} contém a topologia com seus respectivos comprimentos de ramos resultado da análise.
 
 \scriptsize
-\begin{lstlisting}[caption= conteúdo do arquivo \texttt{model\_test\_part2a1mi.poy}.,label=tut13:modsel:model_test_mal_gap]
+\begin{lstlisting}[caption={\texttt{model\_test\_part2a1mi.poy}.},label=tut13:modsel:model_test_mal_gap, numbers=left, numberblanklines=false]
 (*ML Analysis: Partitions and Model Selection*)
 read("partition2a1.fas")
 transform(tcm:(1,1))
@@ -550,11 +550,11 @@ No exemplo anterior, os dados iniciais encontravam-se pré-alinhados. O \textit{
 %%%%%%%%%%%%%%%%%%%%%%%%%%% TABELA DE SELEÇAO DE MODELOS EM POY %%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %\begin{landscape}
 %\pagestyle{fancy}
-\begin{center}
+
 \scriptsize 
 \begin{table}[H]
 \caption[Seleção de modelos em POY]{Exemplo de arquivo de saída de POY para a seleção de modelos utilizando $AIC_{c}$ mostrando os valores de verosimilhança para cada modelo avaliado. Colunas representam, modelo avaliado, \textit{log} negativo da verossimilhança ($-L$), número de parâmetros estimados -- inclui parâmetros livres do modelo + número de comprimentos de ramos (= $2t-3$, onde $t$ é o número de terminais) + topologia -- ($K$), número de caracteres ($n$), valores de $AIC_{c}$, diferença entre valores de $AIC_{c}$ ($\Delta$), pesos de Akaike ($\omega$) e peso acumulado de Akaike (Cum($\omega$)).  Neste exemplo, o modelo HKY+$\Gamma$ possui o maior valor teórico de informação e seria o modelo selecionado.} \label{tut13:table:modsel}
-
+\begin{center}
 \begin{tabular}{llllllll}
 \hline
 \multicolumn{1}{c}{\textbf{Modelo}}&
@@ -583,9 +583,10 @@ K81 & \scriptsize 944.292608696 & \scriptsize 18 & \scriptsize 120 & \scriptsize
 JC69 & \scriptsize 955.127444482 & \scriptsize 17 & \scriptsize 120 & \scriptsize 1950.25488896 & \scriptsize 495.845342756 & \scriptsize 1.78156255514e-108 & \scriptsize 1. \\\hline
 
 \end{tabular}
+\end{center}
 \end{table}
 
-\end{center}
+
 %\end{landscape}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% FIM DA TABELA DE SELEÇAO DE MODELOS EM POY %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -676,7 +677,7 @@ Neste exercício você deverá fazer uma análise sob o critério de verossimilh
 Este componente do tutorial apresenta a análise de caracteres estáticos pelo critério de verossimilhança média máxima (MAL) e explora algumas estratégias que podem ser usadas para otimizar tempo de execução em POY. Esta análise é similar em intensidade às buscas feitas pelo programa PhyML \parencite{Guindon_et_al_2010}. Análises totalmente executadas sob este critério, como por exemplo em PAUP* \parencite{Swofford_2003} no qual as buscas (RAS+SWAP) são calculadas por verossimilhança, podem ser computacionalmente muito intensas. Desta forma, o exemplo abaixo, \textit{script} \ref{tut13:mal:scr1}, ilustra elementos de busca sob outro critério, parcimônia, na etapa de construção das topologias e posterior refinamento sob verossimilhança.
 
 \scriptsize
-\begin{lstlisting}[caption= conteúdo do arquivo mal\_part1+2a1.poy.,label=tut13:mal:scr1]
+\begin{lstlisting}[caption={mal\_part1+2a1.poy.},label=tut13:mal:scr1, numbers=left, numberblanklines=false]
 read(prealigned:("partition1.fas",tcm:(1,1)))
 read("partition2a1.fas")
 transform(names:("partition2a1.fas"),(tcm:(1,1)))
@@ -816,7 +817,7 @@ Como foi apresentado anteriormente, há diferentes sabores de verossimilhança. 
 	Considere o \textit{script} abaixo:
 
 \scriptsize
-\begin{lstlisting}[caption= conteúdo do arquivo mpl\_part1+2a1.poy.,label=tut13:mpl:scr1]
+\begin{lstlisting}[caption={mpl\_part1+2a1.poy.},label=tut13:mpl:scr1, numbers=left, numberblanklines=false]
 read(prealigned:("partition1.fas",tcm:(1,1)))
 read("partition2a1.fas")
 transform(names:("partition2a1.fas"),(tcm:(1,1)))

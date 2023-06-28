@@ -1,0 +1,25 @@
+Number of taxa: 10
+Tree Size: 27.5163967534
+Log-Likelihood: -697.377606224
+Discrete gamma model: Yes
+- Number of categories: 4
+- Gamma Shape Parameter: 0.1464
+Cost mode: mal;
+Priors / Base frequencies:
+- f(A)= 0.08833
+- f(C)= 0.03500
+- f(G)= 0.27917
+- f(T)= 0.59750
+Model Parameters: HKY85
+- Transition/transversion ratio:13.49608
+Gap property: missing;
+Instantaneous rate matrix:
+                                                               
+A               C               G              T
+-2.59599239686  0.0206492064788 2.22283173692  0.35251145346
+0.0521146639704 -4.97434011691  0.164702004057 4.75752344888
+0.703343773474  0.0206492064788 -1.07650443341 0.35251145346
+0.0521146639704 0.278683381943  0.164702004057 -0.495500049971
+
+
+
