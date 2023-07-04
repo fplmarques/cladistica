@@ -1,0 +1,12 @@
+xread
+4 6
+A 0000
+B 1000
+C 1100
+D 1110
+E 1111
+F 1111
+;
+ie;
+resample boot replications 1000;
+proc-;

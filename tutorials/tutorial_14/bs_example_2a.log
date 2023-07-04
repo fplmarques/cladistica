@@ -1,0 +1,22 @@
+Implicit enumeration, 1 trees found, score 57. 
+ 
+GC values, 1000 replicates, cut=0 (tree 0) - Standard Bootstrap 
+   ,-- A
+|--|     ,-- B
+   `--100|     ,-- C
+         `--100|    ,-- D
+               `--99|     ,-- E
+                    `--100|     ,-- F
+                          `--100|    ,-- G
+                                `--99|    ,-- H
+                                     `--99|    ,-- I
+                                          `--99|    ,-- J
+                                               `--85|    ,-- K
+                                                    `--86|    ,-- L
+                                                         `--63|    ,-- M
+                                                              `--60|    ,-- N
+                                                                   `--65|    ,-- O
+                                                                        `--65|    ,-- Q
+                                                                             `--63--- P
+Average group support: 85.9 
+ 

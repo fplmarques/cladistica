@@ -59,7 +59,7 @@ O objetivo deste tutorial é apresentar conceitos teóricos e práticos do cálc
 
 Como sugere \textcite[][]{GrantKluge2008b}, a avaliação de suporte de clados é um componente importante de análises filogenéticas, mesmo que pouca atenção tenha sido dada às bases conceituais dos métodos geralmente empregados para medi-lo. Adicionalmente, o próprio conceito de ``suporte'' difere entre cientistas, em geral, e filogeneticistas em particular. 
 
-Em estudos filogenéticos, há uma série de métricas utilizadas para inferir índices de suporte de clados. Dentro destes índices, há aqueles considerados métricas de suporte indireto, dentro dos quais encontramos Boostrap e Jackknife -- entre outros, e métricas de suporte direto, tais como Goodman-Bremer e Verossimilhança diferencial -- entre outros. Este tutorial irá apenas abordar a implementação de algumas destas métricas. Para uma revisão mais adequada sobre o assunto é recomendável a leitura de \textcite{Siddall_2001}, \textcite{Egan_2006}, \textcite{GrantKluge2008b} e \textcite{Wheeler_2012}; e referências citadas por esses autores. 
+Em estudos filogenéticos, há uma série de métricas utilizadas para inferir índices de suporte de clados. Dentro destes índices, há aqueles considerados métricas de suporte indireto, dentro dos quais encontramos Boostrap e Jackknife -- entre outros, e métricas de suporte direto, tais como Goodman-Bremer e Verossimilhança diferencial -- entre outros. Este tutorial irá apenas abordar a implementação de algumas destas métricas. Para uma revisão mais adequada sobre o assunto é recomendável a leitura de \textcite{Siddall_2001}, \textcite{Egan_2006}, \textcite{GrantKluge2008b}, \textcite{Wheeler_2012} e \textcite{machado_et_al_2022}; e referências citadas por esses autores. 
 
 Existem definições explícitas sobre suporte na literatura. No entanto, filogeneticistas parecem ignorá-las. Em seu livro clássico sobre Verossimilhança, \textcite{Edwards_1992} considera que índices de suporte devem aferir o mérito relativo de hipóteses rivais diante dos dados observados. Para este autor, a noção de suporte pode ser concebida por uma interpretação operacional perfeitamente simples da diferença entre as verossimilhanças entre duas hipóteses com relação aos dados. Neste contexto, essa diferença expressa, à longo prazo, a frequência na qual as hipóteses rivais explicam os dados observados.
 
@@ -120,36 +120,23 @@ Geralmente está relacionado à clados & Diz respeito a topologias \\
 
 \subsection{Considerações gerais}\label{tut14:boots:general}
 
-A proporção de Bootstrap é a métrica mais utilizada em estudos filogenéticos, apesar de ter sido criticado severamente quanto às violações de premissas do método \parencite[veja][; e referências citadas]{Siddall_2001, Wheeler_2012} e inconsistência epistemológica \parencite[][]{Wheeler_2012}. Este método estatístico foi concebido para melhorar estimativas de parâmetros de distribuições desconhecidas. O método se vale de obter $n$ pseudo-réplicas da amostra sobre as quais é calculado o parâmetro de interesse. 
+A proporção de Bootstrap é a métrica mais utilizada em estudos filogenéticos, apesar de ter sido criticado severamente quanto às violações de premissas do método \parencite[veja][; e referências citadas]{Siddall_2001, Wheeler_2012}, inconsistência epistemológica \parencite[][]{Wheeler_2012}, e a não-correlação desta métrica com medidas de suporte usadas na teoria da verossimilhança máxima \parencite{machado_et_al_2022}. Este método estatístico foi concebido para melhorar estimativas de parâmetros de distribuições desconhecidas. O método se vale de obter $n$ pseudo-réplicas da amostra sobre as quais é calculado o parâmetro de interesse. 
 
-Considere o seguinte exemplo executado em R:
+Considere o seguinte script em R:
 
-\begin{lstlisting}[label=tut14:bs]
-> s <- c(320.44, 303.98, 264.10, 286.90, 274.59, 332.72, 346.37, 240.83)
-> mean(s);
-[1] 296.2412
-> r1 <- s sample(s,8,replace=T)
-> r1
-[1] 303.98 274.59 286.90 274.59 240.83 274.59 303.98 346.37
-> r2 <- sample(s,8,replace=T)
-> r2
-[1] 320.44 286.90 320.44 264.10 286.90 286.90 240.83 303.98
-> r2 <- sample(s,8,replace=T)
-> r3 <- sample(s,8,replace=T)
-> r4 <- sample(s,8,replace=T)
-> r5 <- sample(s,8,replace=T)
-> r6 <- sample(s,8,replace=T)
-> r7 <- sample(s,8,replace=T)
-> r8 <- sample(s,8,replace=T)
-> r9 <- sample(s,8,replace=T)
-> r10 <- sample(s,8,replace=T)
-> R <- c(r1,r2,r3,r4,r5,r6,r7,r8,r9,r10)
-> mean(R)
-[1] 303.2571
+\begin{lstlisting}[numbers=left, basicstyle=\scriptsize, language=R, keywordstyle=\color{blue}, commentstyle=\color{gray!60!black}, stringstyle=\color{orange}, literate={é}{{\'e}}1 {ç}{{\c{c}}}1 {ã}{{\~a}}1, label=tut14:bs]
+s <- c(320.44, 303.98, 264.10, 286.90, 274.59, 332.72, 346.37, 240.83)
+replicates <- c()      # vetor vazio que receberá as médias de cada réplica
+for (r in 1:100) {     # Loop para 100 aleatorizações, 100 pseudo-réplicas (com reposição)
+  replicate <- mean(sample(s, 8, replace = TRUE))
+  replicates <- c(replicates, replicate)
+}
+mean_of_replicates <- mean(replicates)  # média das réplicas
+print(mean_of_replicates)   # imprime a média das médias das réplicas
 \end{lstlisting}
 
 
-Neste exemplo, a variável $s$ recebe 8 medidas morfométricas para aqual a média estimada é 296.2412 (linha 2 e 3). O método de bootstrap, se vale do uso de pseudo-réplicas ($r1, r2, r3 ... r10$), cada qual com o mesmo tamanho amostral (8) e considerando reposição. Observe, linha 6, que na pseudo-réplica 1 ($r1$) a quinta medida de minha amostra, 274.59, foi considerado 3 vezes. Da mesma forma, na segunda pseudo-réplica, linha 9, foi a medida 286.90 que foi incluída na mesma proporção. Ao final de 10 pseudo-réplicas, ao computar os valores obtidos, a média estimada via bootstrap é 303.25. Teoricamente, esse valor é uma estimativa mais aproximada da média real da população do qual eu obtive minha amostra. É importante considerar, que o método assume (\textit{i.}) que minha amostra foi obtida aleatoriamente, (\textit{ii.}) que eles são independentes e (\textit{iii.}) que eles são identicamente distribuídos -- ou seja, foram obtidos da mesma distribuição. É interessante observar que nenhuma dessas premissas pode ser assumida para dados filogenéticos.
+Neste exemplo, a variável $s$ (linha 1) recebe um vetor (lista) com 8 medidas morfométricas para qual a média estimada é 296.2412 (\texttt{mean(s)}). O método de bootstrap, se vale do uso de pseudo-réplicas ($r1, r2, r3 ... r100$, loop nas linhas 3 a 6). Para cada réplica, são sorteados 8 valores de $s$ -- com repetição, ou seja uma mesma medida pode ser considerada de 0 a 8 vezes --, a média desses valores é calculada (linha 4) e a média é inserida em um vetor (\texttt{replicates}, linha 5). Desta forma, uma réplica pode receber os valores \texttt{303.98, 274.59, 286.90, 274.59, 240.83, 274.59, 303.98 e 346.37}, cuja média seria 288.2287. Após 100 pseudo-réplicas, o script calcula a média das réplicas , ou seja a média das médias (lina 7) e finalmente imprime o resultado: 295.57\footnote{esse valor varia a cada execução do script.}. Em teoria, esse valor é uma estimativa mais aproximada da média real da população do qual amostra $s$ foi obtida. É importante considerar, que o método assume (\textit{i.}) que minha amostra foi obtida aleatoriamente, (\textit{ii.}) que eles são independentes e (\textit{iii.}) que eles são identicamente distribuídos -- ou seja, foram obtidos da mesma distribuição. É interessante observar que nenhuma dessas premissas pode ser assumida para dados filogenéticos.
 
 \subsection{Bootstrap sob o critério de Parcimônia}\label{tut14:boots:pars}
 
@@ -177,8 +164,7 @@ V_{Bt}=1-(1-\dfrac{r}{n})^n
 
 \stepcounter{ex}
 \begin{blackBlock}{\textbf{Exercicio 14.\arabic{ex}}}\label{tut14:ex:14.1}
-
-No diretório deste tutorial há seis arquivos \texttt{bs\_example\_1*.tnt} (*=a--f) no formato xread. Adicionalmente, há um arquivo chamado \texttt{vbt.r} que pode ser editado para calcular o valor de $V_{Bt}$ da equação acima (\texttt{\$ Rscript vbt.r}). Verifique o conteúdo destes arquivo e note as diferenças que existem entre as 6 matrizes de dados. Observe também que o arquivo contém as instruções para o cálculo dos valores de boostrap em TNT. Você deverá executar esses arquivos em TNT (\textit{e.g.}, \texttt{\$ tnt proc bs\_example\_1a.tnt}) e responder às seguintes perguntas:
+\texttt{*=a--f}) no formato xread. Adicionalmente, há um arquivo chamado \texttt{vbt.r} que pode ser editado para calcular o valor de $V_{Bt}$ da equação acima (\texttt{\$ Rscript vbt.r}). Verifique o conteúdo destes arquivo e note as diferenças que existem entre as 6 matrizes de dados. Observe também que o arquivo contém as instruções para o cálculo dos valores de boostrap em TNT. Você deverá executar esses arquivos em TNT (\textit{e.g.}, \texttt{\$ tnt proc bs\_example\_1a.tnt}) e responder às seguintes perguntas:
 
 \end{blackBlock}
 
@@ -368,9 +354,9 @@ Há algumas propriedades sobre esse índice que você deve considerar. Está cla
 
 Há várias estratégias adotadas para calcular o índice de BG. Em sua forma mais primitiva, você poderia compilar todas as topologias com $n$ passos de distância da topologia mais curta que você obteve para seus dados e posteriormente, calcular passo a passo esse índice filtrando as topologias $c+n$, no qual $c$ é o custo mínimo e $n$ é o número de passos adicionais, calculando o consenso, e verificando quais nós são colapsados. Fazer isso manualmente é laborioso e demanda tempo computacional e analítico.
 
-A melhor forma de calcular o índice de GB é utilizando um macro disponível em TNT chamado \texttt{BREMER.RUN}. Este macro utiliza buscas com os algoritmos de novas tecnologias para compilar de tologias sub-ótimas, que posteriormente são utilizadas para obter os índices. Para executar esse macro é necessário que você possua uma topologia na memória. Caso seus dados resultem um múltiplas topologias, o ideal seria você calcular o consenso estrito desta topologia, mantê-lo na memória e descartar as topologias fundamentais (veja Seção \ref{tut6:consenso} do Tutorial \ref{tut6}) e, finalmente, executar o macro do TNT.
+A melhor forma de calcular o índice de GB é utilizando um macro disponível em TNT chamado \texttt{BREMER.RUN}. Este macro utiliza buscas com os algoritmos de novas tecnologias para compilar de topologias sub-ótimas, que posteriormente são utilizadas para obter os índices. Para executar esse macro é necessário que você possua uma topologia na memória. Caso seus dados resultem um múltiplas topologias, o ideal seria você calcular o consenso estrito desta topologia, mantê-lo na memória e descartar as topologias fundamentais (veja Seção \ref{tut6:consenso} do Tutorial \ref{tut6}) e, finalmente, executar o macro do TNT.
 
-O POY também permite o cálculo deste índice utlizando algumas de suas estratégias internas. Porém isso é feito assumindo homologia estática dos dados, uma vez que o uso de homologia dinâmica para esse propósito se mostrou computacionalmente inviável -- além de desnecessário. Sendo assim, considero mais efetivo submeter o alinhamento implícito das análises em POY para o cálculo de BG. Considere o exemplo abaixo:\\
+O POY também permite o cálculo deste índice utilizando algumas de suas estratégias internas. Porém isso é feito assumindo homologia estática dos dados, uma vez que o uso de homologia dinâmica para esse propósito se mostrou computacionalmente inviável -- além de desnecessário. Sendo assim, considero mais efetivo submeter o alinhamento implícito das análises em POY para o cálculo de BG. Considere o exemplo abaixo:\\
 
 \begin{lstlisting}[label=tut14:bs]
 read("partition1.fas","partition2.fas","partition3.tnt")
@@ -426,7 +412,7 @@ Neste exercício você deverá obter os índices de bootstrap e GB para o arquiv
 
 \section{Verossimilhança diferencial (\textit{Likelihood difference})}\label{tut14:lkr}
 
-A Verossimilhança diferencial é equivalente ao índice de GB dentro do contexto de análises sob o critério de Verossimilhança. Embora pouco empregado \parencite[veja referências em][]{GrantKluge2008b}, esse índice possui todas as propriedades desejáveis de um índice de suporte \parencite[][]{Edwards_1992,GrantKluge2008b}. O índice é dado pela seguinte formulação:
+A Verossimilhança diferencial é equivalente ao índice de GB dentro do contexto de análises sob o critério de Verossimilhança. Embora pouco empregado \parencite[veja referências em][]{GrantKluge2008b, machado_et_al_2022}, esse índice possui todas as propriedades desejáveis de um índice de suporte \parencite[][]{Edwards_1992,GrantKluge2008b}. O índice é dado pela seguinte formulação:
 
 \begin{center}
 \begin{equation}
